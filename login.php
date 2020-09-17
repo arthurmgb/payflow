@@ -57,7 +57,7 @@
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Manter conectado
+                Manter-me conectado
               </label>
             </div>
           </div>
