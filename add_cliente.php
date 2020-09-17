@@ -163,12 +163,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Clientes</h1>
+            <h1 class="m-0 text-dark">Adicionar Cliente</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active">Adicionar</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -178,103 +179,105 @@
 
     <!-- Main content -->
     <section class="content">
-  <form>
-  <div class="form-check">
-    <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" checked>
-    <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios1">
-      Pessoa Física
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios2" value="opcao2">
-    <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios2">
-      Pessoa Jurídica
-    </label>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-8 ">
-      <label for="nome" class="font-weight-bold ml-2">Nome</label>
-      <input type="text" class="form-control" placeholder="Nome Completo">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="nascimento" class="font-weight-bold ml-2">Data de Nascimento</label>
-      <input type="date" class="form-control">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-8">
-      <label for="tipopessoa" class="font-weight-bold ml-2">CPF/CNPJ</label>
-      <input type="text" class="form-control" data-mask="000.000.000-00" >
-    </div>
-    <div class="form-group col-md-4">
-      <label for="rg" class="font-weight-bold ml-2">RG</label>
-      <input type="text" class="form-control" placeholder="00.000.000" data-mask="00.000.000">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="cep" class="font-weight-bold ml-2">CEP</label>
-      <input type="text" class="form-control" data-mask="00000.000">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="bairro" class="font-weight-bold ml-2">Bairro</label>
-      <input type="text" class="form-control">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-10">
-      <label for="endereco" class="font-weight-bold ml-2" >Endereço</label>
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group  col-md-2">
-      <label for="endereco" class="font-weight-bold ml-2">Número</label>
-      <input type="text" class="form-control" data-mask="00000">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="cidade" class="font-weight-bold ml-2">Cidade</label>
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="estado" class="font-weight-bold ml-2">Estado</label>
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="estado" class="font-weight-bold ml-2">País</label>
-      <input type="text" class="form-control">
-    </div>
-  </div> 
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="tipopessoa" class="font-weight-bold ml-2">telefone</label>
-      <input type="" class="form-control" data-mask="(000) 0000-0000" >
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="tipopessoa" class="font-weight-bold ml-2">celular</label>
-      <input type="" class="form-control" data-mask="(000) 0 0000-0000" >
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="email" class="font-weight-bold ml-2">E-mail</label>
-      <input type="email" class="form-control">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="cidade" class="font-weight-bold ml-2">Referência Comercial</label>
-      <input type="text" class="form-control">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="estado" class="font-weight-bold ml-2">Referência Pessoal</label>
-      <input type="text" class="form-control">
-    </div>
-  </div> 
-  <button class="btn btn-success ml-4" type="submit">Salvar</button>
-  </form>
+      <form class="sec-pad">
+      <div class="form-check">
+        <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" checked>
+        <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios1">
+          Pessoa Física
+        </label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios2" value="opcao2">
+        <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios2">
+          Pessoa Jurídica
+        </label>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8 mt-2">
+          <label for="nome" class="font-weight-bold ml-2">Nome</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group col-md-4 mt-2">
+          <label for="nascimento" class="font-weight-bold ml-2">Data de Nascimento</label>
+          <input type="date" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <label for="tipopessoa" class="font-weight-bold ml-2">CPF/CNPJ</label>
+          <input type="text" class="form-control" data-mask="000.000.000-00" >
+        </div>
+        <div class="form-group col-md-4">
+          <label for="rg" class="font-weight-bold ml-2">RG</label>
+          <input type="text" class="form-control" placeholder="00.000.000" data-mask="00.000.000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="cep" class="font-weight-bold ml-2">CEP</label>
+          <input type="text" class="form-control" data-mask="00000.000">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="bairro" class="font-weight-bold ml-2">Bairro</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="endereco" class="font-weight-bold ml-2" >Endereço</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group  col-md-2">
+          <label for="endereco" class="font-weight-bold ml-2">Número</label>
+          <input type="text" class="form-control" data-mask="00000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="cidade" class="font-weight-bold ml-2">Cidade</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="estado" class="font-weight-bold ml-2">Estado</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="estado" class="font-weight-bold ml-2">País</label>
+          <input type="text" class="form-control">
+        </div>
+      </div> 
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="tipopessoa" class="font-weight-bold ml-2">Telefone</label>
+          <input type="" class="form-control" data-mask="(000) 0000-0000" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="tipopessoa" class="font-weight-bold ml-2">Celular</label>
+          <input type="" class="form-control" data-mask="(000) 0 0000-0000" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="email" class="font-weight-bold ml-2">E-mail</label>
+          <input type="email" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="cidade" class="font-weight-bold ml-2">Referência Comercial</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="estado" class="font-weight-bold ml-2">Referência Pessoal</label>
+          <input type="text" class="form-control">
+        </div>
+      </div> 
+      <div class="d-flex justify-content-end">
+      <button class="btn btn-success save-btn" type="submit">Salvar</button>
+      </div>
+      </form>
     </section>
     <!-- /.content -->
   </div>

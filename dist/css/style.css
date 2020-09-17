@@ -39,3 +39,10 @@
     width: 70px !important;
     height: auto !important;
 }
+.sec-pad{
+    padding: 15px;
+}
+.save-btn{
+    padding: 8px 30px 8px 30px;
+    font-size: 18px;
+}
