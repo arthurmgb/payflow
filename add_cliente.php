@@ -204,11 +204,11 @@
   <div class="form-row">
     <div class="form-group col-md-8">
       <label for="tipopessoa" class="font-weight-bold ml-2">CPF/CNPJ</label>
-      <input type="text" class="form-control" data-mask="000.000.000-20" >
+      <input type="text" class="form-control" data-mask="000.000.000-00" >
     </div>
     <div class="form-group col-md-4">
       <label for="rg" class="font-weight-bold ml-2">RG</label>
-      <input type="number" class="form-control" placeholder="00.000.000">
+      <input type="text" class="form-control" placeholder="00.000.000" data-mask="00.000.000">
     </div>
   </div>
   <div class="form-row">
@@ -292,6 +292,10 @@
 </div>
 <!-- ./wrapper -->
 
+
+<!-- jQuery mask -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
