@@ -180,10 +180,20 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm">
-            <div class="d-flex flex-row-reverse bd-highlight">
-              <a href="add_cliente.php"> <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Cliente</button></a>
-            </div>
+        <div class="col-12">  
+          <div class="float-right">
+          <a href="add_cliente.php">
+          <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Cliente</button>
+          </a>
+          </div>
+          <div class="float-right mr-2">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
+               </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>

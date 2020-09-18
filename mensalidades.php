@@ -179,9 +179,18 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- /.row -->
-        <!-- Main row -->
-        <!-- /.row (main row) -->
+      <div class="row">
+        <div class="col-12">  
+          <div class="float-right">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
+               </div>
+          </div>
+          </div>
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

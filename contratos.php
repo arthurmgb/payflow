@@ -180,11 +180,22 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm">
-            <div class="d-flex flex-row-reverse bd-highlight">
-              <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Contrato</button>
-            </div>
+          <div class="col-12">  
+          <div class="float-right">
+          <a href="">
+          <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Contrato</button>
+          </a>
           </div>
+          <div class="float-right mr-2">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
+               </div>
+          </div>
+          </div>
+          </div>
+  
         </div>
       </div>
     </section>

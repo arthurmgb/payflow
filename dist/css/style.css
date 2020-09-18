@@ -46,3 +46,11 @@
     padding: 8px 30px 8px 30px;
     font-size: 18px;
 }
+.btn-edit{
+    border-color: #4d5585 !important;
+    color: #4d5585 !important;
+}
+.btn-edit:hover{
+    background-color: #4d5585 !important;
+    color: #fff !important;
+}
