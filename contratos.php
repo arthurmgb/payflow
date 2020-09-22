@@ -183,7 +183,7 @@
         <div class="row">
           <div class="col-12">  
           <div class="float-right">
-          <a href="">
+          <a href="add_contrato.php">
           <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Contrato</button>
           </a>
           </div>
