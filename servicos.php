@@ -60,7 +60,7 @@
               <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
-          <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
+          <a href="#" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
           <a href="#" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
         </div>
       </li>
