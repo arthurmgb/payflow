@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/style.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -179,6 +180,8 @@
 
     <!-- Main content -->
     <section class="content">
+    <div class="container-fluid">
+    <div class="card border-top">
       <form class="sec-pad">
       <div class="form-check">
         <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" checked>
@@ -277,7 +280,9 @@
       <div class="d-flex justify-content-end">
       <button class="btn btn-success save-btn" type="submit">Salvar</button>
       </div>
+      </div>
       </form>
+      </div>
     </section>
     <!-- /.content -->
   </div>

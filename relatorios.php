@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/style.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -179,9 +180,133 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- /.row -->
-        <!-- Main row -->
-        <!-- /.row (main row) -->
+    	<div class="card border-top">
+			<h4 class="m-2 text-dark ml-3">Filtrar Relatórios</h4>
+				<form class="sec-pad">
+					<div class="form-row">
+						<div class="form-group col-md-4 mt-2">
+							<label class="font-weight-bold ml-2">Status</label>
+								<select class="form-control">
+		      						<option>Todos</option>
+		    						<option>Pago</option>
+		      						<option>Pendente</option>
+		      						<option>Anulada</option>
+		    					</select>
+		    			</div>
+	    			<div class="form-group col-md-4 mt-2">
+    					<label class="font-weight-bold ml-2">Forma de pagamento</label>
+	    					<select class="form-control">
+	      						<option>Todos</option>
+	    						<option>Cartão de Crédito</option>
+	      						<option>Cartão de Débito</option>
+	      						<option>Depósito em conta</option>
+	      						<option>Boleto Bancário</option>
+	      						<option>Cheque</option>
+	      						<option>Saldo PagSeguro</option>
+	      						<option>Transferência Bancária</option>
+	      						<option>PIC PAY</option>
+	      						<option>NU BANK</option>
+	      						<option>NEXT</option>
+	      						<option>BB</option>
+	      						<option>CAIXA TED</option>
+	      						<option>CAIXA DOC</option>
+	      						<option>CAIXA LOTERIA</option>
+	      						<option>CAIXA FÁCIL</option>
+	      						<option>CAIXA AQUI</option>
+	      						<option>ITAU TED</option>
+	      						<option>ITAU DOC</option>
+	      						<option>ITAU ENVELOPE</option>
+	      						<option>CAIXA ENVELOPE</option>
+	    					</select>
+	    			</div>
+	    			<div class="form-group col-md-4 mt-2">
+    					<label class="font-weight-bold ml-2">Modalidade</label>
+	    					<select class="form-control">
+	      						<option>Todos</option>
+	    					</select>
+	    			</div>
+				</div> <!-- /. form-row -->
+
+				<div class="form-row">
+					<div class="form-group col-md-6 mt-2">
+						<label class="font-weight-bold ml-2" >Vencimento</label>
+						<input type="date" name="vencimento" class="form-control">
+					</div>
+					<div class="form-group col-md-6 mt-2">
+						<label class="font-weight-bold ml-2">Até</label>
+						<input type="date" name="vencimento" class="form-control">
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-6 mt-2">
+						<label class="font-weight-bold ml-2" >Pagamento</label>
+						<input type="date" name="vencimento" class="form-control">
+					</div>
+					<div class="form-group col-md-6 mt-2">
+						<label class="font-weight-bold ml-2">Até</label>
+						<input type="date" name="vencimento" class="form-control">
+					</div>
+				</div>
+				
+			
+				<div class="form-group col-md-13 mt-2">
+					<label class="font-weight-bold ml-2">Finalizado por</label>
+					<select class="form-control selectpicker" data-live-search="true">
+						<option >Todos</option>
+					</select>
+				</div>
+
+				<div class="d-flex justify-content-end">
+      				<a href="" class="btn btn-success btn-lg btn-block">Buscar</a>
+      	</div>
+
+			</form>
+      	</div> <!-- /.card --> 
+
+      	<div class="card border-top">   		
+			<div class="row navbar">
+				<h4 class="text-dark ml-3">Resultados</h4>	
+				<div class="nav justify-content-end">   
+					<a href="" class="btn btn-primary btn-sm nav-link active mr-3">
+	           <i class="fas fa-print pr-2"></i>Imprimir 
+	        </a>
+				</div>
+			</div>
+
+			<div>
+				<table class="table table-striped table-responsive">
+				  
+				  <thead>
+				    <tr>
+				      <th width="35%">Cliente</th>
+				      <th>Modalidade</th>
+				      <th>Valor</th>
+				      <th>Status</th>
+				      <th width="15%">Finalizado Por</th>
+				      <th>Vencimento</th>
+				      <th>Data Pagamento</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    <tr>
+				      <td>Nenhum registro encontrado</td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+
+				  </tbody>
+				</table>
+
+			</div>
+
+      	</div>
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
