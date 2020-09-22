@@ -103,7 +103,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="contratos.php" class="nav-link">
+            <a href="contratos.php" class="nav-link active">
               <i class="fas fa-file-signature nav-icon"></i>
               <p>
                 Contratos
@@ -111,7 +111,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="clientes.php" class="nav-link active">
+            <a href="clientes.php" class="nav-link">
               <i class="fas fa-users nav-icon"></i>
               <p>
                 Clientes
