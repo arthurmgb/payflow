@@ -181,8 +181,8 @@
     <!-- Main content -->
     <section class="content">
     <div class="container-fluid">
-    <div class="card">
-      <form class="sec-pad border-top">
+    <div class="card border-top">
+      <form class="sec-pad">
       <div class="form-check">
         <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" checked>
         <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios1">
