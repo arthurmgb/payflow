@@ -54,3 +54,45 @@
     background-color: #4d5585 !important;
     color: #fff !important;
 }
+.card-payflow{
+    background-color: #4d5585;
+    color: #fff;
+}
+.bg-payflow{
+    background-color: #4d5585;
+    color: #fff;
+}
+.edit-profile{
+    background-color: #4d5585;
+    color: #fff !important;
+    border: 2px solid #4d5585;
+    border-radius: 30px !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+.edit-profile:hover{
+    background-color: #fff;
+    color: #4d5585 !important;
+}
+.edit-profile.active{
+    color: #fff !important;
+}
+.edit-margin{
+    margin-top: 10px;
+}
+.sobre-btn{
+    background-color: #fff;
+    color: #4d5585;
+    padding: 5px 10px 5px 10px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+.sobre-btn:hover{
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
