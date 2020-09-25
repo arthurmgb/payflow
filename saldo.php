@@ -184,7 +184,7 @@
       <div class="container-fluid">
       <div class="row">
         <div class="col-12">  
-          <div class="float-right">
+         <!-- <div class="float-right">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -193,8 +193,8 @@
           </div>
           </div>
           </div>
-         </div>
-         <div class="col-lg-4 col-4 float-left pt-2">
+         </div> ficar assim por enquanto button search  -->
+         <div class="col-lg-3 col-4 float-right ">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -209,14 +209,14 @@
        </div><!-- /.container-fluid -->
       <div class="card border-top col-md-12">   		
 			<div class="row navbar cor">
-				<h4 class="ml-3">Lançamentos</h4>	
+				<h4 class="text-dark ml-3">Lançamentos</h4>	
+        <div class="nav justify-content-end">   
+					<a href="" class="btn btn-primary btn-sm nav-link active mr-3">
+	          <i class="fas fa-print pr-2"></i>Imprimir 
+	        </a>
+			</div>
 			</div>
 			<div class="col-md-12 table-responsive">
-      
-             <!-- <div class="card card-plain">
-                <div class="card-body">
-                  <div class="table-responsive">  -->
-                  
                     <table class="table table-hover">
                       <thead>
                         <th width="21%">
@@ -340,11 +340,6 @@
                         </tr>
                       </tbody>
                     </table>
-                    <div class="nav justify-content-end">   
-					            <a href="" class="btn btn-primary btn-sm nav-link active mr-3">
-	                      <i class="fas fa-print pr-2"></i>Imprimir 
-	                    </a>
-				            </div>
                   </div>
                 </div>
               </div>
