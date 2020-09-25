@@ -183,54 +183,48 @@
     <div class="container-fluid">
     <div class="card border-top">
       <form class="sec-pad">
-      <div class="form-check">
-        </label>
-      </div>
-        </label>
-      </div>
       <div class="form-row">
-        <div class="form-group col-md-4 mt-2">
-          <label for="nome" class="font-weight-bold ml-2"> Primeiro Nome</label>
-          <input type="text" class="form-control">
+        <div class="form-group col-md-12 mt-2">
+          <label for="nome" class="font-weight-bold ml-2">Primeiro vencimento</label>
+          <input type="date" class="form-control">
         </div>
-        <div class="form-group col-md-4 mt-2">
-          <label for="segundo Nome" class="font-weight-bold ml-2"> Segundo Nome</label>
-          <input type="text" class="form-control">
-        </div>
-        </div>
-      <div class="form-row">
-        <div class="form-group col-md-8">
-          <label for="email" class="font-weight-bold ml-2">E-mail</label>
-          <input type="email" class="form-control">
+        <div class="form-group col-md-12 mt-2">
+          <label for="nascimento" class="font-weight-bold ml-2">Valor</label>
+          <input type="text" class="form-control">     
         </div>
       </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-8">
-          <label for="passaporte" class="font-weight-bold ml-2">passaporte</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-8">
-          <label for="endereco" class="font-weight-bold ml-2" >Endereço</label>
-          <input type="text" class="form-control">
-        </div>
         <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="cidade" class="font-weight-bold ml-2">Cidade</label>
+          <div class="form-group col-md-12">
+        <button type="button" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> Selecionar Cliente</button>
+        </div>
+        </div>
+      <div class="form-row">
+      <div class="form-group col-md-8">
+    					<label class="font-weight-bold ml-2">Serviços</label>
+	    					<select class="form-control">
+	      						<option>Selecionar</option>
+	    					</select>
+            </div>
+            <div class="form-group col-md-4">
+            <label class="font-weight-bold ml-2">Criar novo serviço</label>
+        <button type="button" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Novo Serviço</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="cep" class="font-weight-bold ml-2">Meses</label>
           <input type="text" class="form-control">
         </div>
-        <div class="form-group col-md-4">
-          <label for="estado" class="font-weight-bold ml-2">Estado</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="Codico Postal" class="font-weight-bold ml-2">Codico Postal</label>
-          <input type="text" class="form-control">
-        </div>
-        <div class="d-flex justify-content-end">
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-12">
+    <label class="font-weight-bold ml-2" for="exampleFormControlTextarea1">Observações</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+      </div>
+      <div class="d-flex justify-content-end">
       <button class="btn btn-success save-btn" type="submit">Salvar</button>
+      </div>
       </div>
       </div>
       </form>
