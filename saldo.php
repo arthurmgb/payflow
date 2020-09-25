@@ -36,6 +36,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="dist/css/saldo.css">
+  <link rel="stylesheet" href="dist/css/saldo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -191,9 +193,167 @@
           </div>
           </div>
           </div>
+         </div>
+         <div class="col-lg-4 col-4 float-left pt-2">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>297,53</h3>
+                <p>Saldo</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+            </div>
+         </div>
+       </div><!-- /.container-fluid -->
+      <div class="card border-top col-md-12">   		
+			<div class="row navbar cor">
+				<h4 class="ml-3">Lançamentos</h4>	
+			</div>
+			<div class="col-md-12 table-responsive">
+      
+             <!-- <div class="card card-plain">
+                <div class="card-body">
+                  <div class="table-responsive">  -->
+                  
+                    <table class="table table-hover">
+                      <thead>
+                        <th width="21%">
+                          Cliente
+                        </th>
+                        <th>
+                          E-mail
+                        </th>
+                        <th>
+                          Modalidade
+                        </th>
+                        <th>
+                          Data de lançamento
+                        </th>
+                        <th>
+                          Valor Lançado
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                          Dakotarice
+                          </td>
+                          <td>
+                          Dakotarice@gmail.com
+                          </td>
+                          <td>
+                            venda
+                          </td>
+                          <td>
+                            10/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$36,73
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Minerva Hooper
+                          </td>
+                          <td>
+                          Minervahooper@gmail.com
+                          </td>
+                          <td>
+                            Sinaai-Waas
+                          </td>
+                          <td>
+                            10/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$23,78
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Sage Rodriguez
+                          </td>
+                          <td>
+                          Sagerodriguez@gmail.com
+                          </td>
+                          <td>
+                            Baileux
+                          </td>
+                          <td>
+                            09/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$56,14
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Philip Chaney
+                          </td>
+                          <td>
+                            Philipchaney@gmail.com
+                          </td>
+                          <td>
+                            Overland
+                          </td>
+                          <td>
+                            20/9/2020
+                          </td>
+                          <td class="text-success">
+                            R$38,73
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Doris Greene
+                          </td>
+                          <td>
+                          Dorisgreene@gmail.com
+                          </td>
+                          <td>
+                            Feldkirchen
+                          </td>
+                          <td>
+                            15/9/2000
+                          </td>
+                          <td class="text-success">
+                            R$63,54
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Mason Porter
+                          </td>
+                          <td>
+                          Masonporter@gmail.com
+                          </td>
+                          <td>
+                            Gloucester
+                          </td>
+                          <td>
+                            05/09/2000
+                          </td>
+                          <td class="text-success">
+                            R$ 78,61
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="nav justify-content-end">   
+					            <a href="" class="btn btn-primary btn-sm nav-link active mr-3">
+	                      <i class="fas fa-print pr-2"></i>Imprimir 
+	                    </a>
+				            </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
+       <!-- fim do saldo -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
