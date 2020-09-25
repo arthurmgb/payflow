@@ -164,39 +164,38 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Serviços</h1>
+            <h1 class="m-0 text-dark">Adicionar Serviços</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Serviços</li>
+              <li class="breadcrumb-item active">Adicionar</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-        <div class="col-12">  
-          <div class="float-right">
-          <a href="add_servico.php">
-          <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Serviço</button>
-          </a>
-          </div>
-          <div class="float-right mr-2">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
-              <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
-               </div>
-          </div>
-          </div>
-          </div>
+    
+      <!-- Main content -->
+      <section class="content">
+    <div class="container-fluid">
+    <div class="card border-top">
+      <form class="sec-pad">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="cep" class="font-weight-bold ml-2">Nome do Serviço</label>
+          <input type="text" class="form-control">
         </div>
+      </div>
+       <div class="d-flex justify-content-end">
+      <button class="btn btn-success save-btn" type="submit">Salvar</button>
+      </div>
+      </div>
+      </div>
+      </div>
+      </form>
       </div>
     </section>
     <!-- /.content -->
@@ -215,6 +214,10 @@
 </div>
 <!-- ./wrapper -->
 
+
+<!-- jQuery mask -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
