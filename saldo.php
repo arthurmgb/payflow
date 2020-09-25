@@ -229,7 +229,7 @@
                           Modalidade
                         </th>
                         <th>
-                          Data de lançamento
+                          Data de lançamentos
                         </th>
                         <th>
                           Valor Lançado
