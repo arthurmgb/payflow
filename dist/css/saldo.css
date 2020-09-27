@@ -1,0 +1,10 @@
+.print-edit{
+    background-color: #4d5585;
+    color: #fff;
+    border-radius: 30px;
+    letter-spacing: 1px;
+}
+.print-edit:hover{
+    background-color: #434b77;
+    color: #fff;
+}

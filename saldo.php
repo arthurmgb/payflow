@@ -37,11 +37,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/style.css">
   <link rel="stylesheet" href="dist/css/saldo.css">
-  <link rel="stylesheet" href="dist/css/saldo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -70,7 +68,6 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
@@ -78,7 +75,6 @@
       <img src="dist/img/favicon.png" alt="PayFlow" class="brand-margin brand-image rounded d-block">
       <span class="brand-text d-block fredoka">PayFlow</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -90,7 +86,6 @@
           <a href="#" class="d-block">Nome do usuário</a>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -158,7 +153,6 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -178,22 +172,11 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
       <div class="row">
         <div class="col-12">  
-         <!-- <div class="float-right">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
-              <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
-               </div>
-          </div>
-          </div>
-          </div>
-         </div> ficar assim por enquanto button search  -->
          <div class="col-lg-3 col-4 float-right ">
             <!-- small box -->
             <div class="small-box bg-success">
@@ -211,10 +194,10 @@
 			<div class="row navbar cor">
 				<h4 class="text-dark ml-3">Lançamentos</h4>	
         <div class="nav justify-content-end">   
-					<a href="" class="btn btn-primary btn-sm nav-link active mr-3">
-	          <i class="fas fa-print pr-2"></i>Imprimir 
+					<a href="" class="btn print-edit mr-2">
+	           <i class="fas fa-print pr-2"></i>Imprimir 
 	        </a>
-			</div>
+				</div>
 			</div>
 			<div class="col-md-12 table-responsive">
                     <table class="table table-hover">
@@ -348,7 +331,6 @@
         </div>
       </div>
     </section>
-       <!-- fim do saldo -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
