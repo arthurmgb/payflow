@@ -173,15 +173,16 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
+    <div class="sec-pad">
     <section class="content">
       <div class="container-fluid">
       <div class="row">
         <div class="col-12">  
-         <div class="col-lg-3 col-4 float-right ">
+         <div class="col-lg-3 col-3 float-right">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>297,53</h3>
+                <h3>R$297,53</h3>
                 <p>Saldo</p>
               </div>
               <div class="icon">
@@ -190,8 +191,8 @@
             </div>
          </div>
        </div><!-- /.container-fluid -->
-      <div class="card border-top col-md-12">   		
-			<div class="row navbar cor">
+      <div class="card border-top col-md-12">
+			<div class="row navbar">
 				<h4 class="text-dark ml-3">Lançamentos</h4>	
         <div class="nav justify-content-end">   
 					<a href="" class="btn print-edit mr-2">
@@ -199,6 +200,15 @@
 	        </a>
 				</div>
 			</div>
+      <label class="font-weight-normal" for="">
+            <select class="pr-3 ml-3 mb-2">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            </select>
+            registros por página
+      </label>
 			<div class="col-md-12 table-responsive">
                     <table class="table table-hover">
                       <thead>
@@ -209,7 +219,7 @@
                           E-mail
                         </th>
                         <th>
-                          Modalidade
+                          Serviço
                         </th>
                         <th>
                           Data de lançamento
@@ -322,7 +332,7 @@
                           </td>
                         </tr>
                       </tbody>
-                    </table>
+                    </table>		
                   </div>
                 </div>
               </div>
@@ -330,7 +340,29 @@
           </div>
         </div>
       </div>
+      <div class="nav justify-content-end pr-2 pt-1">
+        <nav aria-label="Navegação de página exemplo">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Anterior</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Próximo">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Próximo</span>
+            </a>
+            </li>
+          </ul>  
+        </nav>
+      </div>
     </section>
+    </div > <!-- final div dec-pad -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
