@@ -178,7 +178,7 @@
       <div class="container-fluid">
       <div class="row">
         <div class="col-12">  
-         <div class="col-lg-3 col-3 float-right">
+         <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -191,7 +191,7 @@
             </div>
          </div>
        </div><!-- /.container-fluid -->
-      <div class="card border-top col-md-12">
+      <div class="card border-top col-md-9">
 			<div class="row navbar">
 				<h4 class="text-dark ml-3">Lançamentos</h4>	
         <div class="nav justify-content-end">   
