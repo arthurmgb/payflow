@@ -268,7 +268,7 @@
 			<div class="row navbar">
 				<h4 class="text-dark ml-3">Resultados</h4>	
 				<div class="nav justify-content-end">   
-					<a href="" class="btn btn-primary btn-sm nav-link active mr-3">
+					<a href="" class="btn print-edit mr-2">
 	           <i class="fas fa-print pr-2"></i>Imprimir 
 	        </a>
 				</div>
