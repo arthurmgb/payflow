@@ -36,12 +36,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/style.css">
-  <link rel="stylesheet" href="dist/css/saldo.css">
-  <link rel="stylesheet" href="dist/css/saldo.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -70,7 +67,6 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
@@ -78,7 +74,6 @@
       <img src="dist/img/favicon.png" alt="PayFlow" class="brand-margin brand-image rounded d-block">
       <span class="brand-text d-block fredoka">PayFlow</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -90,7 +85,6 @@
           <a href="#" class="d-block">Nome do usuário</a>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -158,7 +152,6 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -178,25 +171,197 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
+    <div class="sec-pad">
     <section class="content">
       <div class="container-fluid">
       <div class="row">
         <div class="col-12">  
-          <div class="float-right">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
-              <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
-          </div>
-          </div>
-          </div>
+         <div class="col-lg-3 col-3">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>R$297,53</h3>
+                <p>Saldo</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+            </div>
          </div>
+       </div><!-- /.container-fluid -->
+      <div class="card border-top col-md-9">
+			<div class="row navbar">
+				<h4 class="text-dark ml-3">Lançamentos</h4>	
+        <div class="nav justify-content-end">   
+					<a href="" class="btn print-edit mr-2">
+	           <i class="fas fa-print pr-2"></i>Imprimir 
+	        </a>
+				</div>
+			</div>
+      <label class="font-weight-normal" for="">
+            <select class="pr-3 ml-3 mb-2">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            </select>
+            registros por página
+      </label>
+			<div class="col-md-12 table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <th width="21%">
+                          Cliente
+                        </th>
+                        <th>
+                          E-mail
+                        </th>
+                        <th>
+                          Serviço
+                        </th>
+                        <th>
+                          Data de lançamento
+                        </th>
+                        <th>
+                          Valor Lançado
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                          Dakotarice
+                          </td>
+                          <td>
+                          Dakotarice@gmail.com
+                          </td>
+                          <td>
+                            venda
+                          </td>
+                          <td>
+                            10/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$36,73
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Minerva Hooper
+                          </td>
+                          <td>
+                          Minervahooper@gmail.com
+                          </td>
+                          <td>
+                            Sinaai-Waas
+                          </td>
+                          <td>
+                            10/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$23,78
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Sage Rodriguez
+                          </td>
+                          <td>
+                          Sagerodriguez@gmail.com
+                          </td>
+                          <td>
+                            Baileux
+                          </td>
+                          <td>
+                            09/10/2020
+                          </td>
+                          <td class="text-success">
+                            R$56,14
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Philip Chaney
+                          </td>
+                          <td>
+                            Philipchaney@gmail.com
+                          </td>
+                          <td>
+                            Overland
+                          </td>
+                          <td>
+                            20/9/2020
+                          </td>
+                          <td class="text-success">
+                            R$38,73
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Doris Greene
+                          </td>
+                          <td>
+                          Dorisgreene@gmail.com
+                          </td>
+                          <td>
+                            Feldkirchen
+                          </td>
+                          <td>
+                            15/9/2000
+                          </td>
+                          <td class="text-success">
+                            R$63,54
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Mason Porter
+                          </td>
+                          <td>
+                          Masonporter@gmail.com
+                          </td>
+                          <td>
+                            Gloucester
+                          </td>
+                          <td>
+                            05/09/2000
+                          </td>
+                          <td class="text-success">
+                            R$ 78,61
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>		
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="nav justify-content-end pr-2 pt-1">
+        <nav aria-label="Navegação de página exemplo">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Anterior</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Próximo">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Próximo</span>
+            </a>
+            </li>
+          </ul>  
+        </nav>
+      </div>
     </section>
-       <!-- fim do saldo -->
+    </div > <!-- final div dec-pad -->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
