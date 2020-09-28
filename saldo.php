@@ -196,17 +196,7 @@
         </div>
         <div class="row">
         <div class="col-3">
-        <div class="small-box bg-success">
-              <div class="inner">
-                <h3>R$ 0,00</h3>
-
-                <p>Saldo</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-cash-register"></i>
-              </div>
-              <a href="saldo.php" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
-            </div><div class="small-box bg-success">
+            <div class="small-box bg-success">
               <div class="inner">
                 <h3>R$ 0,00</h3>
 
