@@ -310,7 +310,7 @@
                     <!-- todo text -->
                     <span class="text">Nome da tarefa</span>
                     <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 min</small>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                       <i class="fas fa-edit"></i>
@@ -327,7 +327,7 @@
                       <label for="todoCheck2"></label>
                     </div>
                     <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 horas</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -343,7 +343,7 @@
                       <label for="todoCheck3"></label>
                     </div>
                     <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 dia</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -359,7 +359,7 @@
                       <label for="todoCheck4"></label>
                     </div>
                     <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 dias</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -375,7 +375,7 @@
                       <label for="todoCheck5"></label>
                     </div>
                     <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 semana</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>
@@ -391,7 +391,7 @@
                       <label for="todoCheck6"></label>
                     </div>
                     <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 mês</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
                       <i class="fas fa-trash-o"></i>

@@ -88,16 +88,16 @@
 .edit-margin{
     margin-top: 10px;
 }
-.sobre-btn{
+.sobre-btn i{
     background-color: #fff;
-    color: #4d5585;
-    padding: 5px 10px 5px 10px;
+    color: #4d5585 !important;
+    padding: 10px 10px 10px 10px;
     border: 2px solid #fff;
     border-radius: 10px;
     transition-property: all;
     transition-duration: 0.2s;
 }
-.sobre-btn:hover{
+.sobre-btn i:hover{
     background-color: transparent;
     color: #fff;
     border: 2px solid #fff;
