@@ -205,7 +205,19 @@
               <div class="icon">
                 <i class="fas fa-cash-register"></i>
               </div>
-              <a href="saldo.php" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            <div class="card">
+              <div class="card-header card-payflow">
+                <h3 class="card-title"><i class="fas fa-tasks mr-1"></i> Serviços vendidos</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
             </div>
         </div>
         <div class="col-9">
@@ -214,7 +226,7 @@
                 <h3 class="card-title">Lançamentos</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive">
+              <div class="card-body">
                 <table class="table table-bordered">
                   <thead>                  
                     <tr>
@@ -231,7 +243,7 @@
                       <td>1.</td>
                       <td>Marcos Antonio de Freitas Júnior</td>
                       <td>marcossd@gmail.com</td>
-                      <td>vendasknd</td>
+                      <td>Site</td>
                       <td>10/10/2020</td>
                       <td style="color: green;font-weight: 600">R$ 50,50</td>
                     </tr>
@@ -239,7 +251,7 @@
                       <td>2.</td>
                       <td>Marcos Antonio de Freitas Júnior</td>
                       <td>marcossd@gmail.com</td>
-                      <td>vendasknd</td>
+                      <td>Site</td>
                       <td>10/10/2020</td>
                       <td style="color: green;font-weight: 600">R$ 50,50</td>
                     </tr>
@@ -247,7 +259,7 @@
                       <td>3.</td>
                       <td>Marcos Antonio de Freitas Júnior</td>
                       <td>marcossd@gmail.com</td>
-                      <td>vendasknd</td>
+                      <td>Site</td>
                       <td>10/10/2020</td>
                       <td style="color: green;font-weight: 600">R$ 50,50</td>
                     </tr>
@@ -255,7 +267,55 @@
                       <td>4.</td>
                       <td>Marcos Antonio de Freitas Júnior</td>
                       <td>marcossd@gmail.com</td>
-                      <td>vendasknd</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>5.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>6.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>7.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>8.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>9.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>10.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>Site</td>
                       <td>10/10/2020</td>
                       <td style="color: green;font-weight: 600">R$ 50,50</td>
                     </tr>
@@ -328,5 +388,35 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+  $(function () {
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'Site', 
+          'Sistema',
+          'Hospedagem', 
+          'Manutenção', 
+          'Formatação', 
+          'Backup', 
+      ],
+      datasets: [
+        {
+          data: [700,500,400,600,300,100],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    var donutChart = new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions      
+    })
+  })
+</script>
 </body>
 </html>
