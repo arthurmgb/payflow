@@ -56,7 +56,13 @@
 }
 .card-payflow{
     background-color: #4d5585;
-    color: #fff;
+    color: #fff !important;
+}
+.card-payflow i{
+    color: rgb(240, 240, 240) !important;
+}
+.card-payflow i:hover{
+    color: rgb(255, 255, 255) !important;
 }
 .bg-payflow{
     background-color: #4d5585;
