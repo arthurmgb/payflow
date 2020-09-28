@@ -194,6 +194,97 @@
           </div>
          </div>
         </div>
+        <div class="row">
+        <div class="col-3">
+        <div class="small-box bg-success">
+              <div class="inner">
+                <h3>R$ 0,00</h3>
+
+                <p>Saldo</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+              <a href="saldo.php" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+            </div><div class="small-box bg-success">
+              <div class="inner">
+                <h3>R$ 0,00</h3>
+
+                <p>Saldo</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+              <a href="saldo.php" class="small-box-footer">Ver mais <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-9">
+        <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lançamentos</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive">
+                <table class="table table-bordered">
+                  <thead>                  
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Cliente</th>
+                      <th>E-mail</th>
+                      <th>Serviço</th>
+                      <th >Data do lançamento</th>
+                      <th >Valor lançado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>vendasknd</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>vendasknd</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>vendasknd</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>Marcos Antonio de Freitas Júnior</td>
+                      <td>marcossd@gmail.com</td>
+                      <td>vendasknd</td>
+                      <td>10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
       </div>
     </section>
        <!-- fim do saldo -->
