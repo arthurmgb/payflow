@@ -112,3 +112,6 @@
     background-color: #434b77;
     color: #fff;
 }
+tbody tr:hover{
+  background-color: rgb(241, 241, 241);  
+}
