@@ -192,6 +192,182 @@
           </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lançamentos</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered text-center">
+                  <thead>                  
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Cliente</th>
+                      <th>Valor</th>
+                      <th>Serviço</th>
+                      <th>Vencimento</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>5.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>6.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>7.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    <tr>
+                      <td>8.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>9.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>10.</td>
+                      <td>João Flávio de Assis Araújo Rodrigues</td>
+                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
+                      <td>Hospedagem</td>
+                      <td style="color: red;">26/09/2020</td>
+                      <td>
+                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
+                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
+                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
