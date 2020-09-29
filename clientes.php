@@ -211,7 +211,7 @@
                       <th style="width: 10px">#</th>
                       <th>Cliente</th>
                       <th>Cidade</th>
-                      <th>Email</th>
+                      <th>E-mail</th>
                       <th>Celular</th>
                       <th>Status</th>
                       <th>Ações</th>
