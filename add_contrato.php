@@ -195,7 +195,7 @@
       </div>
         <div class="form-row">
           <div class="form-group col-md-12">
-        <button type="button" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> Selecionar Cliente</button>
+        <button type="button" class="btn btn-primary btn-block"><i class="fas fa-user-plus mr-1"></i> Selecionar Cliente</button>
         </div>
         </div>
       <div class="form-row">
@@ -207,7 +207,7 @@
             </div>
             <div class="form-group col-md-4">
             <label class="font-weight-bold ml-2">Criar novo serviço</label>
-        <button type="button" class="btn btn-success btn-block"><i class="fas fa-plus"></i> Novo Serviço</button>
+        <button type="button" class="btn btn-success btn-block"><i class="fas fa-plus mr-1"></i> Novo Serviço</button>
         </div>
       </div>
       <div class="form-row">

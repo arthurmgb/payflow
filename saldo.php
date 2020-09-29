@@ -227,7 +227,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
                       <th style="width: 10px">#</th>

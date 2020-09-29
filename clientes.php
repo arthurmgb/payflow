@@ -205,15 +205,15 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
                       <th style="width: 10px">#</th>
                       <th>Cliente</th>
                       <th>Cidade</th>
                       <th>Email</th>
-                      <th >Celular</th>
-                      <th >Status</th>
+                      <th>Celular</th>
+                      <th>Status</th>
                       <th>Ações</th>
                     </tr>
                   </thead>

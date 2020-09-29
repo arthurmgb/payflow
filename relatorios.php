@@ -220,7 +220,7 @@
 	    					</select>
 	    			</div>
 	    			<div class="form-group col-md-4 mt-2">
-    					<label class="font-weight-bold ml-2">Modalidade</label>
+    					<label class="font-weight-bold ml-2">Serviço</label>
 	    					<select class="form-control">
 	      						<option>Todos</option>
 	    					</select>
@@ -240,7 +240,7 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-6 mt-2">
-						<label class="font-weight-bold ml-2" >Pagamento</label>
+						<label class="font-weight-bold ml-2">Pagamento</label>
 						<input type="date" name="vencimento" class="form-control">
 					</div>
 					<div class="form-group col-md-6 mt-2">
@@ -269,7 +269,7 @@
 				<h4 class="text-dark ml-3">Resultados</h4>	
 				<div class="nav justify-content-end">   
 					<a href="" class="btn print-edit mr-2">
-	           <i class="fas fa-print pr-2"></i>Imprimir 
+	           <i class="fas fa-print mr-1"></i>Imprimir 
 	        </a>
 				</div>
 			</div>
@@ -280,12 +280,12 @@
 				  <thead>
 				    <tr>
 				      <th width="35%">Cliente</th>
-				      <th>Modalidade</th>
+				      <th>Serviço</th>
 				      <th>Valor</th>
 				      <th>Status</th>
-				      <th width="15%">Finalizado Por</th>
+				      <th width="15%">Finalizado por</th>
 				      <th>Vencimento</th>
-				      <th>Data Pagamento</th>
+				      <th>Data de pagamento</th>
 				    </tr>
 				  </thead>
 
