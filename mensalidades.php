@@ -220,7 +220,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -234,7 +234,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -248,7 +248,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -262,7 +262,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -276,7 +276,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -290,7 +290,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -304,7 +304,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -317,7 +317,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -331,7 +331,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
@@ -345,7 +345,7 @@
                       <td style="color: red;">26/09/2020</td>
                       <td>
                         <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
+                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
                         <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
                         <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
