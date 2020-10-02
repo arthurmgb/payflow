@@ -73,7 +73,7 @@
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Eu concordo com os termos
+                Eu concordo com os <a href="termos.php">termos</a> 
               </label>
             </div>
           </div>
@@ -92,7 +92,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#">Já sou cadastrado</a>
+        <a href="login.php">Já sou cadastrado</a>
       </p>
     </div>
     <!-- /.login-card-body -->
