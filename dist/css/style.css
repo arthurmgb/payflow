@@ -115,3 +115,22 @@
 tbody tr:hover{
   background-color: rgb(241, 241, 241);  
 }
+.text-pf{
+    color: #33364D;
+}
+.erro404{
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 3px solid #4d5585;
+    border-radius: 30px;
+    background-color: #4d5585;
+    font-size: 1.2em;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all 0.4s;
+}
+.erro404:hover{
+    color: #4d5585;
+    background-color: transparent;
+}
