@@ -65,16 +65,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Manter-me conectado
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
+          <div class="col-12">
             <button type="submit" name="btnLogin" value="Acessar" class="btn btn-success btn-block">Acessar</button>
           </div>
           <!-- /.col -->
@@ -90,7 +81,7 @@ session_start();
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#">Esqueci minha senha</a>
+        <a href="recuperarsenha.php">Esqueci minha senha</a>
       </p>
     </div>
     <!-- /.login-card-body -->

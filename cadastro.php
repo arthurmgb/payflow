@@ -133,8 +133,11 @@ if($btnCadUsuario){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="senha" class="form-control" placeholder="Senha">
+          <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
+          <div class="input-group-text">
+              <a type="button" style="color: #777;" onclick="show()"><i class="fas fa-eye"></i></a> 
+            </div>
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
@@ -165,6 +168,16 @@ if($btnCadUsuario){
 </div>
 <!-- /.login-box -->
 <!-- jQuery -->
+<script>
+  function show(){
+    var tipo = document.getElementById("senha");
+    if(tipo.type == "password"){
+      tipo.type = "text";
+    }else{
+      tipo.type = "password";
+    }
+  }
+</script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
