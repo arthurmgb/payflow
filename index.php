@@ -4,7 +4,6 @@
       
   }
   else{
-    $_SESSION['msg'] = "Área restrita, faça login para continuar.";
     header("Location: login.php");
   }
 ?>

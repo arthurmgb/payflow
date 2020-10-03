@@ -1,3 +1,70 @@
+<?php
+session_start();
+ob_start();
+$btnCadUsuario = filter_input(INPUT_POST, 'btnCadUsuario', FILTER_SANITIZE_STRING);
+if($btnCadUsuario){
+  include_once'conexao.php';
+  $dados_rc = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+  $erro = false;
+  $dados_st = array_map('strip_tags', $dados_rc);
+  $dados = array_map('trim', $dados_st);
+  if(in_array('',$dados)){
+    $erro = true;
+    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>É necessário preencher todos os campos.</div>";
+  }
+  elseif((strlen($dados['senha'])) < 6){
+    $erro = true;
+    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>A senha deve ter no mínimo 6 caracteres.</div>";
+  }
+  elseif(stristr($dados['senha'], "'")){
+    $erro = true;
+    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>A senha possui caracter inválido.</div>";
+  }
+  else{
+    $result_usuario = "SELECT id FROM usuarios WHERE usuario='".$dados['usuario']."'";
+    $resultado_usuario = mysqli_query($conn, $result_usuario);
+    if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
+      $erro = true;
+      $_SESSION['msg'] = "<div class='alert alert-warning' role='alert'>
+      Este usuário já foi cadastrado.
+    </div>";
+    }
+    $result_usuario = "SELECT id FROM usuarios WHERE email='".$dados['email']."'";
+    $resultado_usuario = mysqli_query($conn, $result_usuario);
+    if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
+      $erro = true;
+      $_SESSION['msg'] = "<div class='alert alert-warning' role='alert'>
+      Este e-mail já foi cadastrado.
+    </div>";
+    }
+  }
+
+  if(!$erro){
+    //var_dump($dados);
+    password_hash($dados['senha'], PASSWORD_DEFAULT);
+    $dados['senha'] = password_hash($dados['senha'], PASSWORD_DEFAULT);
+    $result_usuario = "INSERT INTO usuarios (nome, email, usuario, senha) VALUES (
+    '".$dados['nome']."',
+    '".$dados['email']."',
+    '".$dados['usuario']."',
+    '".$dados['senha']."'
+    )";
+    $resultado_usuario = mysqli_query($conn, $result_usuario);
+    if(mysqli_insert_id($conn)){
+    $_SESSION['msgcad'] = "<div class='alert alert-success' role='alert'>
+    Cadastro realizado com sucesso.
+  </div>";
+    header("Location: login.php");
+    }
+    else{
+    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
+    Erro ao cadastrar o usuário.
+  </div>";
+    }
+  }
+  
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +100,16 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Faça seu registro no PayFlow</p>
-
-      <form action="index.php" method="post">
+      <p class="login-box-msg">Faça seu cadastro no PayFlow</p>
+      <?php
+          if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset ($_SESSION['msg']);
+          }
+      ?>
+      <form action="" method="POST">
       <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nome completo">
+          <input type="text" name="nome" class="form-control" placeholder="Nome completo">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -45,7 +117,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="E-mail">
+          <input type="email" name="email" class="form-control" placeholder="E-mail">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -53,15 +125,15 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input type="text" name="usuario" class="form-control" placeholder="Usuário">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Repita a sua senha">
+          <input type="password" name="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -71,7 +143,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" id="remember" required>
               <label for="remember">
                 Eu concordo com os <a href="termos.php">termos</a> 
               </label>
@@ -79,18 +151,11 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            <button type="submit" name="btnCadUsuario" value="Cadastrar" class="btn btn-primary btn-block">Cadastrar</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-
-      
-       
-       
-      
-      <!-- /.social-auth-links -->
-
       <p class="mb-1">
         <a href="login.php">Já sou cadastrado</a>
       </p>
@@ -99,7 +164,6 @@
   </div>
 </div>
 <!-- /.login-box -->
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

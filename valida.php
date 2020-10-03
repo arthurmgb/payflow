@@ -20,17 +20,23 @@ if($btnLogin){
                 header("Location: index.php");
             }
             else{
-                $_SESSION['msg'] = "Login ou senha incorretos.";
+                $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
+                Login ou senha incorretos.
+              </div>";
                 header("Location: login.php");
             }
         }
     }
     else{
-        $_SESSION['msg'] = "Login ou senha incorretos.";
+        $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
+        Login ou senha incorretos.
+      </div>";
         header("Location: login.php");
     }
 }
 else{
-    $_SESSION['msg'] = "Página não encontrada.";
+    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
+    Página não encontrada.
+  </div>";
     header("Location: login.php");
 }

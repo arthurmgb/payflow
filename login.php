@@ -37,7 +37,16 @@ session_start();
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para acessar o painel</p>
-
+      <?php
+        if(isset($_SESSION['msg'])){
+          echo $_SESSION['msg'];
+          unset ($_SESSION['msg']);
+        }
+        if(isset($_SESSION['msgcad'])){
+          echo $_SESSION['msgcad'];
+          unset ($_SESSION['msgcad']);
+        }
+      ?>
       <form method="POST" action="valida.php">
         <div class="input-group mb-3">
           <input type="email" name="usuario" class="form-control" placeholder="E-mail">
@@ -72,7 +81,7 @@ session_start();
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
+      <div class="social-auth-links text-center my-3">
         <p>Ainda não é cadastrado?</p>
         <a href="cadastro.php" class="btn btn-block btn-primary">
         Cadastre-se
@@ -88,13 +97,6 @@ session_start();
   </div>
 </div>
 <!-- /.login-box -->
-<?php
-  if(isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset ($_SESSION['msg']);
-  }
-?>
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
