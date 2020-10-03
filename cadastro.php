@@ -128,15 +128,15 @@ if($btnCadUsuario){
           <input type="text" name="usuario" class="form-control" placeholder="Usuário">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              <span class="fas fa-user-circle"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
           <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
-          <div class="input-group-text">
-              <a type="button" style="color: #777;" onclick="show()"><i class="fas fa-eye"></i></a> 
+          <div class="input-group-text" title="Ver senha">
+              <a type="button" id="senhaico" style="color: #777;" onclick="show()"><i class="fas fa-eye"></i></a> 
             </div>
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -171,10 +171,13 @@ if($btnCadUsuario){
 <script>
   function show(){
     var tipo = document.getElementById("senha");
+    var cor = document.getElementById("senhaico");
     if(tipo.type == "password"){
       tipo.type = "text";
+      cor.style.color = "#007BFF";
     }else{
       tipo.type = "password";
+      cor.style.color = "#777";
     }
   }
 </script>

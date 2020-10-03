@@ -94,7 +94,7 @@
           <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?=$_SESSION['nome']?></a>
+          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
         </div>
       </div>
 

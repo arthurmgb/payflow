@@ -49,10 +49,10 @@ session_start();
       ?>
       <form method="POST" action="valida.php">
         <div class="input-group mb-3">
-          <input type="email" name="usuario" class="form-control" placeholder="E-mail">
+          <input type="text" name="usuario" class="form-control" placeholder="Usuário">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user-circle"></span>
             </div>
           </div>
         </div>
