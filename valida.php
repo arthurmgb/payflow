@@ -29,7 +29,7 @@ if($btnLogin){
     }
     else{
         $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
-        Login ou senha incorretos.
+        É necessário preencher todos os campos.
       </div>";
         header("Location: login.php");
     }
