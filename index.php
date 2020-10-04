@@ -291,15 +291,10 @@
                   <i class="ion ion-clipboard mr-1"></i>
                   Lista de tarefas
                 </h3>
-
                 <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -312,18 +307,14 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </span>
                     <!-- checkbox -->
-                    <div  class="icheck-primary d-inline ml-2">
+                    <div class="icheck-primary d-inline ml-2">
                       <input type="checkbox" value="" name="todo1" id="todoCheck1">
                       <label for="todoCheck1"></label>
                     </div>
                     <!-- todo text -->
                     <span class="text">Nome da tarefa</span>
-                    <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 min</small>
-                    <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
@@ -339,7 +330,7 @@
                     <small class="badge badge-info"><i class="far fa-clock"></i> 4 horas</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
@@ -355,7 +346,7 @@
                     <small class="badge badge-warning"><i class="far fa-clock"></i> 1 dia</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
@@ -371,7 +362,7 @@
                     <small class="badge badge-success"><i class="far fa-clock"></i> 3 dias</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
@@ -387,7 +378,7 @@
                     <small class="badge badge-primary"><i class="far fa-clock"></i> 1 semana</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                   <li>
@@ -403,7 +394,7 @@
                     <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 mês</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                 </ul>
@@ -497,6 +488,10 @@
       options: donutOptions      
     })
   })
+</script>
+<!-- Lista de Tarefas -->
+<script>
+ 
 </script>
 </body>
 </html>
