@@ -57,8 +57,11 @@ session_start();
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="senha" class="form-control" placeholder="Senha">
+          <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
+            <div class="input-group-text" title="Ver senha">
+              <a type="button" id="senhalog" style="color: #777;" onclick="show()"><i id="iconlog" class="fas fa-eye"></i></a>
+            </div>
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
@@ -89,11 +92,28 @@ session_start();
 </div>
 <!-- /.login-box -->
 <!-- jQuery -->
+<script>
+  function show(){
+    var tipo = document.getElementById("senha");
+    var cor = document.getElementById("senhalog");
+    var icon = document.getElementById("iconlog");
+    if(tipo.type == "password"){
+      tipo.type = "text";
+      cor.style.color = "#007BFF";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    }else{
+      tipo.type = "password";
+      cor.style.color = "#777";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-
 </body>
 </html>
