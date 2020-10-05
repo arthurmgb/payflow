@@ -110,6 +110,12 @@ session_start();
     }
   }
 </script>
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("logout");
+  msg.parentNode.removeChild(msg);   
+  }, 3000);
+</script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
