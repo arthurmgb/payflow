@@ -134,3 +134,10 @@ tbody tr:hover{
     color: #4d5585;
     background-color: transparent;
 }
+.info a{
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+.info a:hover{  
+    border-bottom: 2px solid #4d5585;
+}

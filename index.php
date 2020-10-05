@@ -317,95 +317,46 @@
                       <i class="fas fa-trash"></i>
                     </div>
                   </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo2" id="todoCheck2">
-                      <label for="todoCheck2"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 horas</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                      <label for="todoCheck3"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 dia</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                      <label for="todoCheck4"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 dias</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                      <label for="todoCheck5"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 semana</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                      <label for="todoCheck6"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 mês</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
                 </ul>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <button type="button" class="btn btn-success float-right"><i class="fas fa-plus"></i> Nova tarefa</button>
+                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#taskmodal"><i class="fas fa-plus mr-1"></i>Nova tarefa</button>
               </div>
             </div>
-              </div>          
-          </div>
+              </div>  
+              </div>
+              <div class="row">
+              <div class="col-12">
+                <div class="modal fade" id="taskmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header card-payflow">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="ion ion-clipboard mr-1"></i> Adicionar tarefa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <i aria-hidden="true" class="fas fa-times-circle"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-12">
+                              <form action="">
+                            <input name="title" class="form-control" type="text" placeholder="Digite o nome da tarefa...">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer" style="background-color: #F7F7F7;">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              </div>       
           </div>   
         </div>
     </section>
