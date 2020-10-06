@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Cadastro</title>
+	<meta name="UniTorrent é um site de torrent focado em download de filmes que possui uma enorme diversidade" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/carousel.css">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/v4-shims.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>					
+	</header>
+	
+	<div class="container">
+		<div class="formulario">
+			<h4>Cadastre-se abaixo</h4>
+			<h5>Para efetuar o cadastro preencha os campos abaixo com os seus dados corretos.</h5>
+		</div>
+		<form method="post" action="validation/valida_cadastro.php">
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Nome completo</label>
+				<input type="text" class="form-control" name="nome" id="exampleFormControlInput1" placeholder="Nome completo aqui" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Apelido</label>
+				<input type="text" class="form-control" name="apelido" id="exampleFormControlInput1" placeholder="Apelido aqui" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Telefone</label>
+				<input type="number" class="form-control" name="telefone" id="exampleFormControlInput1" placeholder="Telefone aqui" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Endereço de email</label>
+				<input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="Endereço de email aqui" required>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Senha</label>
+				<input type="password" class="form-control" name="senha" id="exampleFormControlInput1" placeholder="Senha aqui" minlength="6" maxlength="15" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<div class="alert alert-warning" role="alert">
+				Já tem uma conta? <a href="login.php" class="alert-link">Clique aqui</a>.
+			</div>
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/46a40cdd8f.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
