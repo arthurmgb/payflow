@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  if(!empty($_SESSION['id'])){
+      
+  }
+  else{
+    header("Location: login.php");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +64,14 @@
           <i class="fas fa-user-cog color-fas"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="drop-name dropdown-item dropdown-header">Nome do usuário</span>
+          <span class="drop-name dropdown-item dropdown-header"><?=$_SESSION['nome']?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
               <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
-          <a href="#" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
+          <a href="sair.php" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
         </div>
       </li>
     </ul>
@@ -85,7 +94,7 @@
           <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nome do usuário</a>
+          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
         </div>
       </div>
 
@@ -282,15 +291,10 @@
                   <i class="ion ion-clipboard mr-1"></i>
                   Lista de tarefas
                 </h3>
-
                 <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -303,109 +307,56 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </span>
                     <!-- checkbox -->
-                    <div  class="icheck-primary d-inline ml-2">
+                    <div class="icheck-primary d-inline ml-2">
                       <input type="checkbox" value="" name="todo1" id="todoCheck1">
                       <label for="todoCheck1"></label>
                     </div>
                     <!-- todo text -->
                     <span class="text">Nome da tarefa</span>
-                    <!-- Emphasis label -->
-                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 min</small>
-                    <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo2" id="todoCheck2">
-                      <label for="todoCheck2"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-info"><i class="far fa-clock"></i> 4 horas</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                      <label for="todoCheck3"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 dia</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                      <label for="todoCheck4"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 dias</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                      <label for="todoCheck5"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 semana</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <div  class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                      <label for="todoCheck6"></label>
-                    </div>
-                    <span class="text">Nome da tarefa</span>
-                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 mês</small>
-                    <div class="tools">
-                      <i class="fas fa-edit"></i>
-                      <i class="fas fa-trash-o"></i>
+                      <i class="fas fa-trash"></i>
                     </div>
                   </li>
                 </ul>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <button type="button" class="btn btn-success float-right"><i class="fas fa-plus"></i> Nova tarefa</button>
+                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#taskmodal"><i class="fas fa-plus mr-1"></i>Nova tarefa</button>
               </div>
             </div>
-              </div>          
-          </div>
+              </div>  
+              </div>
+              <div class="row">
+              <div class="col-12">
+                <div class="modal fade" id="taskmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header card-payflow">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="ion ion-clipboard mr-1"></i> Adicionar tarefa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <i aria-hidden="true" class="fas fa-times-circle"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-12">
+                              <form action="">
+                            <input name="title" class="form-control" type="text" placeholder="Digite o nome da tarefa...">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer" style="background-color: #F7F7F7;">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              </div>       
           </div>   
         </div>
     </section>
@@ -488,6 +439,10 @@
       options: donutOptions      
     })
   })
+</script>
+<!-- Lista de Tarefas -->
+<script>
+ 
 </script>
 </body>
 </html>

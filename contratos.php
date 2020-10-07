@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  if(!empty($_SESSION['id'])){
+      
+  }
+  else{
+    header("Location: login.php");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +64,14 @@
           <i class="fas fa-user-cog color-fas"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="drop-name dropdown-item dropdown-header">Nome do usuário</span>
+          <span class="drop-name dropdown-item dropdown-header"><?=$_SESSION['nome']?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
               <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
-          <a href="#" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
+          <a href="sair.php" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
         </div>
       </li>
     </ul>
@@ -85,7 +94,7 @@
           <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nome do usuário</a>
+          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
         </div>
       </div>
 
@@ -200,8 +209,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Lista de Contratos</h3>
+              <div class="card-header card-payflow">
+                <h3 class="card-title"><i class="fas fa-file-signature mr-2"></i>Lista de Contratos</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

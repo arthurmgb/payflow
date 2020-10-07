@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,64 +37,89 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para acessar o painel</p>
-
-      <form action="index.php" method="post">
+      <?php
+        if(isset($_SESSION['msg'])){
+          echo $_SESSION['msg'];
+          unset ($_SESSION['msg']);
+        }
+        if(isset($_SESSION['msgcad'])){
+          echo $_SESSION['msgcad'];
+          unset ($_SESSION['msgcad']);
+        }
+      ?>
+      <form method="POST" action="valida.php">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="E-mail">
+          <input type="text" name="usuario" class="form-control" placeholder="Usuário">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user-circle"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
           <div class="input-group-append">
+            <div class="input-group-text" title="Ver senha">
+              <a type="button" id="senhalog" style="color: #777;" onclick="show()"><i id="iconlog" class="fas fa-eye"></i></a>
+            </div>
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Manter-me conectado
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-success btn-block">Acessar</button>
+          <div class="col-12">
+            <button type="submit" name="btnLogin" value="Acessar" class="btn btn-success btn-block">Acessar</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
+      <div class="social-auth-links text-center my-3">
         <p>Ainda não é cadastrado?</p>
-        <a href="#" class="btn btn-block btn-primary">
+        <a href="cadastro.php" class="btn btn-block btn-primary">
         Cadastre-se
         </a>
       </div>
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#">Esqueci minha senha</a>
+        <a href="recuperarsenha.php">Esqueci minha senha</a>
       </p>
     </div>
     <!-- /.login-card-body -->
   </div>
 </div>
 <!-- /.login-box -->
-
 <!-- jQuery -->
+<script>
+  function show(){
+    var tipo = document.getElementById("senha");
+    var cor = document.getElementById("senhalog");
+    var icon = document.getElementById("iconlog");
+    if(tipo.type == "password"){
+      tipo.type = "text";
+      cor.style.color = "#007BFF";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    }else{
+      tipo.type = "password";
+      cor.style.color = "#777";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script>
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("logout");
+  msg.parentNode.removeChild(msg);   
+  }, 3000);
+</script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-
 </body>
 </html>

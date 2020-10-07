@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  if(!empty($_SESSION['id'])){
+      
+  }
+  else{
+    header("Location: login.php");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +64,14 @@
           <i class="fas fa-user-cog color-fas"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="drop-name dropdown-item dropdown-header">Nome do usuário</span>
+          <span class="drop-name dropdown-item dropdown-header"><?=$_SESSION['nome']?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
               <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
-          <a href="#" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
+          <a href="sair.php" class="btn btn-danger float-right my-2 mx-2" role="button">Sair <i class="mg-button fas fa-sign-out-alt"></i></a>
         </div>
       </li>
     </ul>
@@ -85,7 +94,7 @@
           <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nome do usuário</a>
+          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
         </div>
       </div>
 
@@ -186,8 +195,8 @@
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-payflow">
-                <h3 class="widget-user-username">Nome do usuário</h3>
-                <h5 class="widget-user-desc">Função do usuário</h5>
+                <h3 class="widget-user-username"><?=$_SESSION['nome']?></h3>
+                <h5 class="widget-user-desc">Empresa</h5>
               </div>
               <div class="widget-user-image">
                 <img class="img-circle elevation-2" src="dist/img/avatar.png" alt="User Avatar">
@@ -283,7 +292,13 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Nome completo" readonly>
+                          <input type="text" class="form-control" id="inputName" placeholder="<?=$_SESSION['nome']?>" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmpresa" class="col-sm-2 col-form-label">Empresa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -329,7 +344,13 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Nome completo">
+                          <input type="text" class="form-control" id="inputName" placeholder="Nome completo">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmpresa" class="col-sm-2 col-form-label">Empresa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa">
                         </div>
                       </div>
                       <div class="form-group row">
