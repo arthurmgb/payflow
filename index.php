@@ -6,6 +6,7 @@
   else{
     header("Location: login.php");
   }
+  include_once("conexao.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -286,7 +287,7 @@
           <div class="row">
               <div class="col-12">
               <div class="card">
-              <div class="card-header card-payflow">
+              <div class="card-header card-payflow" id="task-list">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
                   Lista de tarefas
@@ -300,25 +301,41 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <ul class="todo-list" data-widget="todo-list">
-                  <li>
-                    <!-- drag handle -->
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                    <!-- checkbox -->
-                    <div class="icheck-primary d-inline ml-2">
-                      <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                      <label for="todoCheck1"></label>
-                    </div>
-                    <!-- todo text -->
-                    <span class="text">Nome da tarefa</span>
-                    <div class="tools">
-                      <i class="fas fa-trash"></i>
-                    </div>
-                  </li>
+                  <?php 
+                     $result_tarefas = "SELECT * FROM tarefas";
+                     $tarefas_query = mysqli_query($conn, $result_tarefas);
+                     $reg_tarefas = mysqli_num_rows($tarefas_query);
+                     while($row_tarefa = mysqli_fetch_assoc($tarefas_query)){
+                       $data_br = date("d/m/Y", strtotime($row_tarefa ['created']));
+                       echo "<li>
+                              <span class='handle'>
+                                <i class='fas fa-ellipsis-v'></i>
+                                <i class='fas fa-ellipsis-v'></i>
+                              </span>
+                              <div class='icheck-primary d-inline ml-2'>
+                                <input type='checkbox' value='' name='' id=''>
+                                <label for=''></label>
+                              </div>
+                              <span class='text'>{$row_tarefa ['tarefa']}</span>
+                              <small class='badge badge-primary'><i class='far fa-clock '></i> {$data_br}</small>
+                              <div class='tools'>
+                              <a href='todo-list-delete.php?id=" . $row_tarefa['id'] . "'>
+                                <i class='fas fa-trash trash-color'></i>
+                                </a>
+                              </div>
+                            </li>" ;
+                     }
+                  ?>
+                  <?php 
+                    if($reg_tarefas === 0){
+                      echo "<div class='alert alert-payflow'>
+                      Adicione uma nova tarefa através do botão abaixo!
+                    </div>";
+                    }
+                  ?>
                 </ul>
               </div>
+              
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#taskmodal"><i class="fas fa-plus mr-1"></i>Nova tarefa</button>
@@ -341,15 +358,15 @@
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
-                              <form action="">
-                            <input name="title" class="form-control" type="text" placeholder="Digite o nome da tarefa...">
+                              <form method="POST" action="todo-list.php">
+                            <input name="tarefa" class="form-control" type="text" placeholder="Digite o nome da tarefa...">
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="modal-footer" style="background-color: #F7F7F7;">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
+                        <button type="submit" value="cadTarefa" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
                         </form>
                       </div>
                     </div>

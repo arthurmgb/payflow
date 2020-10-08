@@ -134,10 +134,24 @@ tbody tr:hover{
     color: #4d5585;
     background-color: transparent;
 }
-.info a{
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
+.info a::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: #4d5585;
+    position: absolute;
+    bottom: 0%; left: 50%;
+    border-radius: 10px;
+    transition: all 500ms ease;
 }
-.info a:hover{  
-    border-bottom: 2px solid #4d5585;
+.info a:hover::after{  
+    left: 0%;
+    width: 100%;
+}
+.alert-payflow{
+    background-color: #4d5585dc;
+    color: #fff;
+}
+.trash-color{
+    color: #DC3545 !important;
 }
