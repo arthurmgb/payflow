@@ -154,4 +154,20 @@ tbody tr:hover{
 }
 .trash-color{
     color: #DC3545 !important;
+    transition-property: all;
+}
+.trash-color:hover{
+    transform: scale(1.3);
+    cursor: grab;
+}
+.trash-color:active{
+    cursor: grabbing;
+}
+.list-task{
+    border-left: 4px solid rgb(202, 202, 202) !important;
+    border: 1px solid transparent;
+    margin-bottom: 5px !important;
+}
+.list-task:hover{
+    border: 1px solid rgb(173, 173, 173);
 }

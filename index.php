@@ -307,22 +307,19 @@
                      $reg_tarefas = mysqli_num_rows($tarefas_query);
                      while($row_tarefa = mysqli_fetch_assoc($tarefas_query)){
                        $data_br = date("d/m/Y", strtotime($row_tarefa ['created']));
-                       echo "<li>
-                              <span class='handle'>
-                                <i class='fas fa-ellipsis-v'></i>
-                                <i class='fas fa-ellipsis-v'></i>
+                       $hora_br = date("H:i", strtotime($row_tarefa ['created']));
+                       echo "<li class='list-task'>
+                              <span>
+                                <i class='fas fa-thumbtack ml-2 mr-1'></i>
                               </span>
-                              <div class='icheck-primary d-inline ml-2'>
-                                <input type='checkbox' value='' name='' id=''>
-                                <label for=''></label>
-                              </div>
                               <span class='text'>{$row_tarefa ['tarefa']}</span>
-                              <small class='badge badge-primary'><i class='far fa-clock '></i> {$data_br}</small>
-                              <div class='tools'>
-                              <a href='todo-list-delete.php?id=" . $row_tarefa['id'] . "'>
-                                <i class='fas fa-trash trash-color'></i>
+                              <small class='badge badge-primary'><i class='far fa-calendar-alt mr-1'></i>{$data_br}</small>
+                              <small class='badge badge-success'><i class='far fa-clock mr-1'></i>{$hora_br}</small>
+                              <span>
+                                <a class='ml-2 mr-1' title='Remover tarefa' href='todo-list-delete.php?id=" . $row_tarefa['id'] . "'>
+                                <i id='lixeira' class='lixeira fas fa-trash trash-color'></i>
                                 </a>
-                              </div>
+                              </span>
                             </li>" ;
                      }
                   ?>
@@ -456,10 +453,6 @@
       options: donutOptions      
     })
   })
-</script>
-<!-- Lista de Tarefas -->
-<script>
- 
 </script>
 </body>
 </html>
