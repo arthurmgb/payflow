@@ -191,15 +191,15 @@
     <section class="content">
     <div class="container-fluid">
     <div class="card border-top">
-      <form class="sec-pad">
+      <form method="POST" action="novo-cliente.php" class="sec-pad">
       <div class="form-check">
-        <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" checked>
+        <input class="form-check-input ml-1" type="checkbox" name="" id="exampleRadios1" value="opcao1" checked>
         <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios1">
           Pessoa Física
         </label>
       </div>
       <div class="form-check mb-2">
-        <input class="form-check-input ml-1" type="radio" name="exampleRadios" id="exampleRadios2" value="opcao2">
+        <input class="form-check-input ml-1" type="checkbox" name="" id="exampleRadios2" value="opcao2">
         <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios2">
           Pessoa Jurídica
         </label>
@@ -207,88 +207,88 @@
       <div class="form-row">
         <div class="form-group col-md-8 mt-2">
           <label for="nome" class="font-weight-bold ml-2">Nome</label>
-          <input type="text" class="form-control">
+          <input type="text" name="nome" class="form-control" required>
         </div>
         <div class="form-group col-md-4 mt-2">
           <label for="nascimento" class="font-weight-bold ml-2">Data de Nascimento</label>
-          <input type="date" class="form-control">
+          <input type="date" name="nascimento" class="form-control" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-8">
           <label for="tipopessoa" class="font-weight-bold ml-2">CPF/CNPJ</label>
-          <input type="text" class="form-control" data-mask="000.000.000-00" >
+          <input type="text" name="cpf" class="form-control" required>
         </div>
         <div class="form-group col-md-4">
           <label for="rg" class="font-weight-bold ml-2">RG</label>
-          <input type="text" class="form-control" placeholder="00.000.000" data-mask="00.000.000">
+          <input type="text" name="rg" class="form-control" placeholder="00.000.000" data-mask="00.000.000" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cep" class="font-weight-bold ml-2">CEP</label>
-          <input type="text" class="form-control" data-mask="00000.000">
+          <input type="text" name="cep" class="form-control" data-mask="00000.000" required>
         </div>
         <div class="form-group col-md-6">
           <label for="bairro" class="font-weight-bold ml-2">Bairro</label>
-          <input type="text" class="form-control">
+          <input type="text" name="bairro" class="form-control" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-10">
           <label for="endereco" class="font-weight-bold ml-2" >Endereço</label>
-          <input type="text" class="form-control">
+          <input type="text" name="endereco" class="form-control" required>
         </div>
         <div class="form-group  col-md-2">
           <label for="endereco" class="font-weight-bold ml-2">Número</label>
-          <input type="text" class="form-control" data-mask="00000">
+          <input type="text" name="numero" class="form-control" data-mask="00000" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="cidade" class="font-weight-bold ml-2">Cidade</label>
-          <input type="text" class="form-control">
+          <input type="text" name="cidade" class="form-control" required>
         </div>
         <div class="form-group col-md-4">
           <label for="estado" class="font-weight-bold ml-2">Estado</label>
-          <input type="text" class="form-control">
+          <input type="text" name="estado" class="form-control" required>
         </div>
         <div class="form-group col-md-4">
           <label for="estado" class="font-weight-bold ml-2">País</label>
-          <input type="text" class="form-control">
+          <input type="text" name="pais" class="form-control" required>
         </div>
       </div> 
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="tipopessoa" class="font-weight-bold ml-2">Telefone</label>
-          <input type="" class="form-control" data-mask="(000) 0000-0000" >
+          <label for="telefone" class="font-weight-bold ml-2">Telefone</label>
+          <input type="text" name="telefone" class="form-control" data-mask="(00) 0 0000-0000" >
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="tipopessoa" class="font-weight-bold ml-2">Celular</label>
-          <input type="" class="form-control" data-mask="(000) 0 0000-0000" >
+          <label for="celular" class="font-weight-bold ml-2">Celular</label>
+          <input type="text" name="celular" class="form-control" data-mask="(00) 0 0000-0000" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="email" class="font-weight-bold ml-2">E-mail</label>
-          <input type="email" class="form-control">
+          <input type="email" name="email" class="form-control" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="cidade" class="font-weight-bold ml-2">Referência Comercial</label>
-          <input type="text" class="form-control">
+          <input type="text" name="comercial" class="form-control">
         </div>
         <div class="form-group col-md-6">
           <label for="estado" class="font-weight-bold ml-2">Referência Pessoal</label>
-          <input type="text" class="form-control">
+          <input type="text" name="pessoal" class="form-control">
         </div>
       </div> 
       <div class="form-row">
       <div class="form-group col-md-12">
-        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        <input type="checkbox" name="status" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
         </div>
       <div class="d-flex justify-content-end">

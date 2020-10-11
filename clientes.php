@@ -1,4 +1,5 @@
-<?php 
+<?php
+  include_once("conexao.php");
   session_start();
   if(!empty($_SESSION['id'])){
       
@@ -208,6 +209,12 @@
         </div>
         <div class="row">
           <div class="col-12">
+            <?php 
+              if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset ($_SESSION['msg']);
+              }
+            ?>
             <div class="card">
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="fas fa-users mr-2"></i>Lista de Clientes</h3>
@@ -217,7 +224,7 @@
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">ID</th>
                       <th>Cliente</th>
                       <th>Cidade</th>
                       <th>E-mail</th>
@@ -227,147 +234,41 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: red; font-weight: 600;">Inativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                     <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>7.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    <tr>
-                      <td>8.</td>
-                     <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>9.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>10.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>Patos de Minas</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>996303625</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                       <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-success btn-xs mr-1" title="Listar Contratos"><i class="fas fa-file-signature nav-icon"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
+                  <?php
+                    $result_clientes = "SELECT * FROM clientes";
+                    $clientes_query = mysqli_query($conn, $result_clientes);
+                    $reg_clientes = mysqli_num_rows($clientes_query);
+                    while($row_cliente = mysqli_fetch_assoc($clientes_query)){
+                      $tid = $row_cliente['id'];
+                      $tcliente = $row_cliente['nome'];
+                      $tcidade = $row_cliente['cidade'];
+                      $temail = $row_cliente['email'];
+                      $tcelular = $row_cliente['celular'];
+                    echo "
+                      <tr>
+                        <td>{$tid}.</td>
+                        <td>{$tcliente}</td>
+                        <td>{$tcidade}</td>
+                        <td>{$temail}</td>
+                        <td>{$tcelular}</td>
+                        <td style='color: green; font-weight: 600;'>Ativo</td>
+                        <td>
+                          <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                          <a href='' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature nav-icon'></i></a>
+                          <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                          <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                        </td>
+                      </tr>
+                      ";
+                    }  
+                  ?>           
                   </tbody>
                 </table>
+                  <?php 
+                      if($reg_clientes === 0){
+                        echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                      }
+                    ?>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
@@ -400,7 +301,12 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("cliente_cad");
+  msg.parentNode.removeChild(msg);   
+  }, 5000);
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
