@@ -1,2 +1,4 @@
-# PayFlow
- Projeto Integrador de Sistemas de Informação - 2º Período
+# PayFlow  
+## Sistema de Gerenciamento de Mensalidades  
+
+#### *Em desenvolvimento/Under development*
