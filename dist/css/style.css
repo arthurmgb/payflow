@@ -178,3 +178,20 @@ tbody tr:hover{
 .alert-registro:hover{
     background-color: #eeeeee !important;
 }
+.cor-footer{
+    background-color: #f7f7f7 !important;
+}
+.cor-header{
+    color: #fff !important;
+    background-color: #DC3545 !important;
+}
+.fa-times-circle{
+    color: #fff;
+    outline: none;
+}
+.cor-branca{
+    color: #fff !important;
+}
+.description-header{
+    font-size: 1.3em !important;
+}

@@ -192,17 +192,21 @@
     <div class="container-fluid">
     <div class="card border-top">
       <form method="POST" action="novo-cliente.php" class="sec-pad">
+      <div class="form-row">
+      <div class="form-group col-md-12 ml-2">
       <div class="form-check">
-        <input class="form-check-input ml-1" type="checkbox" name="" id="exampleRadios1" value="opcao1" checked>
-        <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios1">
+        <input class="form-check-input" type="radio" name="tipo" id="exampleRadios1" value="Física" checked>
+        <label class="form-check-label font-weight-bold" for="exampleRadios1">
           Pessoa Física
         </label>
       </div>
-      <div class="form-check mb-2">
-        <input class="form-check-input ml-1" type="checkbox" name="" id="exampleRadios2" value="opcao2">
-        <label class="form-check-label ml-4 font-weight-bold" for="exampleRadios2">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="tipo" id="exampleRadios2" value="Jurídica">
+        <label class="form-check-label font-weight-bold" for="exampleRadios2">
           Pessoa Jurídica
         </label>
+      </div>
+      </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-8 mt-2">
@@ -288,7 +292,7 @@
       </div> 
       <div class="form-row">
       <div class="form-group col-md-12">
-        <input type="checkbox" name="status" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        <input type="checkbox" name="status" value="Ativo" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
         </div>
       <div class="d-flex justify-content-end">

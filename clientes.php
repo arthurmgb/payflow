@@ -244,22 +244,80 @@
                       $tcidade = $row_cliente['cidade'];
                       $temail = $row_cliente['email'];
                       $tcelular = $row_cliente['celular'];
-                    echo "
+                      $tstatus = $row_cliente['modo'];
+                    if($tstatus === 'Ativo'){
+                      echo "
                       <tr>
                         <td>{$tid}.</td>
                         <td>{$tcliente}</td>
                         <td>{$tcidade}</td>
                         <td>{$temail}</td>
                         <td>{$tcelular}</td>
-                        <td style='color: green; font-weight: 600;'>Ativo</td>
+                        <td style='color: green; font-weight: 600;'>{$tstatus}</td>
                         <td>
                           <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
                           <a href='' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature nav-icon'></i></a>
                           <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                          <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                          <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
                         </td>
                       </tr>
+                      <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                            <div class='modal-content'>
+                            <div class='modal-header cor-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                <a href='apagar-cliente.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
                       ";
+                    }else{
+                      echo "
+                      <tr>
+                        <td>{$tid}.</td>
+                        <td>{$tcliente}</td>
+                        <td>{$tcidade}</td>
+                        <td>{$temail}</td>
+                        <td>{$tcelular}</td>
+                        <td style='color: red; font-weight: 600;'>{$tstatus}</td>
+                        <td>
+                          <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                          <a href='' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature nav-icon'></i></a>
+                          <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                          <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
+                        </td>
+                      </tr>
+                      <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                            <div class='modal-content'>
+                            <div class='modal-header cor-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                <a href='apagar-cliente.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      ";
+                    }  
                     }  
                   ?>           
                   </tbody>

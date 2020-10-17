@@ -1,4 +1,5 @@
-<?php 
+<?php
+  include_once("conexao.php");
   session_start();
   if(!empty($_SESSION['id'])){
       
@@ -211,9 +212,14 @@
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
+                  <?php 
+                    $result_clientes = "SELECT * FROM clientes";
+                    $clientes_query = mysqli_query($conn, $result_clientes);
+                    $reg_clientes = mysqli_num_rows($clientes_query);
+                  ?>
                   <div class="col-sm-4 border-right">
                     <div class="description-block">
-                      <h5 class="description-header">0</h5>
+                      <h5 class="description-header"><?php echo "{$reg_clientes}"?></h5>
                       <span class="description-text">CLIENTES</span>
                     </div>
                     <!-- /.description-block -->

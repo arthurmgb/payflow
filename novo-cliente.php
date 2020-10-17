@@ -19,9 +19,16 @@ $celular = filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 $comercial = filter_input(INPUT_POST, 'comercial', FILTER_SANITIZE_STRING);
 $pessoal = filter_input(INPUT_POST, 'pessoal', FILTER_SANITIZE_STRING);
-$status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
+$tipo = $_POST['tipo'];
 
-$inserir_cliente = "INSERT INTO clientes (created, fisica, juridica, nome, nascimento, cpf, rg, cep, bairro, endereco, numero, cidade, estado, pais, telefone, celular, email, comercial, pessoal, modo) VALUES (NOW(), 0, 0,'$nome','$nascimento','$cpf','$rg','$cep','$bairro','$endereco','$numero','$cidade','$estado','$pais','$telefone','$celular','$email','$comercial','$pessoal', 0)";
+if(isset($_POST['status'])){
+    $status = $_POST['status'];
+}
+else{
+    $status = 'Inativo';
+}
+
+$inserir_cliente = "INSERT INTO clientes (created, tipo_cliente, nome, nascimento, cpf, rg, cep, bairro, endereco, numero, cidade, estado, pais, telefone, celular, email, comercial, pessoal, modo) VALUES (NOW(), '$tipo','$nome','$nascimento','$cpf','$rg','$cep','$bairro','$endereco','$numero','$cidade','$estado','$pais','$telefone','$celular','$email','$comercial','$pessoal', '$status')";
 
 $executar_cliente = mysqli_query($conn, $inserir_cliente);
 
