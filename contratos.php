@@ -189,20 +189,18 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">  
-          <div class="float-right">
-          <a href="add_contrato.php">
-          <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Contrato</button>
-          </a>
-          </div>
-          <div class="float-right mr-2">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="Pesquisar..." aria-describedby="basic-addon2">
-              <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-edit" type="button"><i class="fas fa-search"></i></button>
-               </div>
-          </div>
+      <div class="row mb-3">
+        <div class="col-12">  
+        <div class="d-flex flex-row-reverse">
+          <form class="form-inline" method="GET" action="contratos-search.php">
+              <div class="form-group">
+                <input type="text" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar...">
+                  <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+              <a class="ml-2" href="add_contrato.php">
+              <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Contrato</button>
+            </a>
+          </form>
           </div>
           </div>
         </div>

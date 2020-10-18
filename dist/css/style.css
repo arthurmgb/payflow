@@ -47,12 +47,11 @@
     font-size: 18px;
 }
 .btn-edit{
-    border-color: #4d5585 !important;
+    border: none;
     color: #4d5585 !important;
 }
 .btn-edit:hover{
-    background-color: #4d5585 !important;
-    color: #fff !important;
+    transform: scale(1.2);
 }
 .card-payflow{
     background-color: #4d5585;
@@ -194,4 +193,19 @@ tbody tr:hover{
 }
 .description-header{
     font-size: 1.3em !important;
+}
+.form-payflow{
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #f4f6f9;
+}
+.form-payflow:focus{
+    background-color: #f4f6f9;
+    border-bottom: 2px solid #ccc;
+    border-color: #4d5585;
+}
+.form-payflow::placeholder{
+    color: #575757;
+    letter-spacing: 1px;
 }

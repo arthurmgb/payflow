@@ -234,12 +234,14 @@
                   <tbody>
                   <?php
 
+                    $valor_pesquisar = $_GET['pesquisar'];
+
                     $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
                     $qtd_result = 10;
                     $start = ($qtd_result * $pagina) - $qtd_result;
 
-                    $result_clientes = "SELECT * FROM clientes LIMIT $start, $qtd_result";
+                    $result_clientes = "SELECT * FROM clientes WHERE nome LIKE '%$valor_pesquisar%' OR cidade LIKE '%$valor_pesquisar%' OR email LIKE '%$valor_pesquisar%' OR celular LIKE '%$valor_pesquisar%' OR modo LIKE '%$valor_pesquisar%' LIMIT $start, $qtd_result";
                     $clientes_query = mysqli_query($conn, $result_clientes);
                     $reg_clientes = mysqli_num_rows($clientes_query);
                     while($row_cliente = mysqli_fetch_assoc($clientes_query)){
