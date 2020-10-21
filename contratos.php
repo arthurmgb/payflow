@@ -206,6 +206,12 @@
         </div>
         <div class="row">
           <div class="col-12">
+          <?php 
+              if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset ($_SESSION['msg']);
+              }
+            ?>
             <div class="card">
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="fas fa-file-signature mr-2"></i>Lista de Contratos</h3>
@@ -420,7 +426,12 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("cliente_cad");
+  msg.parentNode.removeChild(msg);   
+  }, 5000);
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
