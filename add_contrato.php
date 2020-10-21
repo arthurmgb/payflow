@@ -191,15 +191,15 @@
       <section class="content">
     <div class="container-fluid">
     <div class="card border-top">
-      <form class="sec-pad">
+      <form method="POST" action="novo-contrato.php" class="sec-pad">
       <div class="form-row">
         <div class="form-group col-md-12 mt-2">
           <label for="nome" class="font-weight-bold ml-2">Primeiro vencimento</label>
-          <input type="date" class="form-control">
+          <input name="vencimento" type="date" class="form-control">
         </div>
         <div class="form-group col-md-12 mt-2">
           <label for="nascimento" class="font-weight-bold ml-2">Valor</label>
-          <input type="text" class="form-control">     
+          <input name="valor" type="text" class="form-control">     
         </div>
       </div>
         <div class="form-row">
@@ -222,17 +222,17 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="cep" class="font-weight-bold ml-2">Meses</label>
-          <input type="text" class="form-control">
+          <input name="meses" type="text" class="form-control">
         </div>
       </div>
       <div class="form-row">
       <div class="form-group col-md-12">
     <label class="font-weight-bold ml-2" for="exampleFormControlTextarea1">Observações</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea name="observacoes" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
       </div>
       <div class="d-flex justify-content-end">
-      <button class="btn btn-success save-btn" type="submit">Salvar</button>
+      <button class="btn btn-success save-btn" value="cad-contrato" type="submit">Salvar</button>
       </div>
       </div>
       </div>
