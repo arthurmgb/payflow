@@ -191,14 +191,14 @@
       <section class="content">
     <div class="container-fluid">
     <div class="card border-top">
-      <form class="sec-pad">
+      <form method="POST" class="sec-pad" action="novo-servico.php">
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="cep" class="font-weight-bold ml-2">Nome do Serviço</label>
-          <input type="text" class="form-control">
+          <input type="text" name="servicos" class="form-control">
         </div>
         <div class="form-group col-md-12">
-        <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        <input type="checkbox" name="modo" value="Ativo" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
       </div>
        <div class="d-flex justify-content-end">
