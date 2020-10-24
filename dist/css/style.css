@@ -209,3 +209,9 @@ tbody tr:hover{
     color: #575757;
     letter-spacing: 1px;
 }
+.bg-list{
+    background-color: rgb(248, 248, 248);
+}
+.table-borda{
+    border: 1px solid rgb(172, 172, 172) !important;
+}
