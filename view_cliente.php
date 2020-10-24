@@ -174,12 +174,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Clientes</h1>
+            <h1 class="m-0 text-dark">Nome do cliente</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item">Clientes</li>
+              <li class="breadcrumb-item active">Visualizar</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -192,17 +193,11 @@
       <div class="container-fluid">
         <div class="row mb-3">
         <div class="col-12">  
-        <div class="d-flex flex-row-reverse">
-          <form class="form-inline" method="GET" action="clientes-search.php">
-              <div class="form-group">
-                <input type="text" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar...">
-                  <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
-              </div>
-              <a class="ml-2" href="add_cliente.php">
-              <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Novo Cliente</button>
-            </a>
-          </form>
-          </div>
+            <div class="d-flex">
+              <a href="clientes.php">
+              <button type="button" class="btn btn-primary"><i class="fas fa-arrow-left mr-1"></i> Voltar</button>
+              </a> 
+            </div>
           </div>
         </div>
         <div class="row">
@@ -215,159 +210,114 @@
             ?>
             <div class="card">
               <div class="card-header card-payflow">
-                <h3 class="card-title"><i class="fas fa-users mr-2"></i>Lista de Clientes</h3>
+                <h3 class="card-title"><i class="fas fa-user-tie mr-2"></i>Perfil do Cliente</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered text-center">
-                  <thead>                  
-                    <tr>
-                      <th style="width: 10px">ID</th>
-                      <th>Cliente</th>
-                      <th>Cidade</th>
-                      <th>E-mail</th>
-                      <th>Celular</th>
-                      <th>Status</th>
-                      <th>Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-
-                    $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
-                    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-                    $qtd_result = 10;
-                    $start = ($qtd_result * $pagina) - $qtd_result;
-
-                    $result_clientes = "SELECT * FROM clientes LIMIT $start, $qtd_result";
-                    $clientes_query = mysqli_query($conn, $result_clientes);
-                    $reg_clientes = mysqli_num_rows($clientes_query);
-                    while($row_cliente = mysqli_fetch_assoc($clientes_query)){
-                      $tid = $row_cliente['id'];
-                      $tcliente = $row_cliente['nome'];
-                      $tcidade = $row_cliente['cidade'];
-                      $temail = $row_cliente['email'];
-                      $tcelular = $row_cliente['celular'];
-                      $tstatus = $row_cliente['modo'];
-                    if($tstatus === 'Ativo'){
-                      echo "
-                      <tr>
-                        <td>{$tid}.</td>
-                        <td>{$tcliente}</td>
-                        <td>{$tcidade}</td>
-                        <td>{$temail}</td>
-                        <td>{$tcelular}</td>
-                        <td style='color: green; font-weight: 600;'>{$tstatus}</td>
-                        <td>
-                          <a href='view_cliente.php' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                          <a href='listar_contratos.php' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature nav-icon'></i></a>
-                          <a href='edit_cliente.php?id={$tid}' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                          <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
-                        </td>
-                      </tr>
-                      <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog modal-dialog-centered'>
-                            <div class='modal-content'>
-                            <div class='modal-header cor-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
-                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <i class='fas fa-times-circle'></i>
-                                </button>
-                            </div>
-                            <div class='modal-body'>
-                                <p class='h5'>Deseja realmente apagar esse cliente?</p>
-                            </div>
-                            <div class='modal-footer cor-footer'>
-                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                                <a href='apagar-cliente.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
-                            </div>
-                            </div>
-                          </div>
-                        </div>
-                      ";
-                    }else{
-                      echo "
-                      <tr>
-                        <td>{$tid}.</td>
-                        <td>{$tcliente}</td>
-                        <td>{$tcidade}</td>
-                        <td>{$temail}</td>
-                        <td>{$tcelular}</td>
-                        <td style='color: red; font-weight: 600;'>{$tstatus}</td>
-                        <td>
-                          <a href='view_cliente.php' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                          <a href='listar_contratos.php' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature'></i></a>
-                          <a href='edit_cliente.php?id={$tid}' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                          <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
-                        </td>
-                      </tr>
-                      <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog modal-dialog-centered'>
-                            <div class='modal-content'>
-                            <div class='modal-header cor-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
-                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <i class='fas fa-times-circle'></i>
-                                </button>
-                            </div>
-                            <div class='modal-body'>
-                                <p class='h5'>Deseja realmente apagar esse cliente?</p>
-                            </div>
-                            <div class='modal-footer cor-footer'>
-                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                                <a href='apagar-cliente.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
-                            </div>
-                            </div>
-                          </div>
-                        </div>
-                      ";
-                    }  
-                    } 
-                    $result_pg = "SELECT COUNT(id) AS num_result FROM clientes";
-                    $resultado_pg = mysqli_query($conn, $result_pg);
-                    $row_pg = mysqli_fetch_assoc($resultado_pg);
-                    $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
-                    $max_links = 1;
-                  ?>           
-                  </tbody>
-                </table>
-                  <?php 
-                      if($reg_clientes === 0){
-                        echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
-                      }
-                    ?>
+                <div class="row">
+                    <div class="col-12 d-flex flex-row-reverse">
+                    <a href="listar_contratos.php" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
+                    <a href="" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    <div class="col-12">
+                    <table class="table table-striped">
+                        <tbody class="table-borda">
+                            <tr>
+                            <th scope="row">ID</th>
+                            <td>000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Nome</th>
+                            <td>Nome do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Criado em</th>
+                            <td>00/00/0000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Nascimento</th>
+                            <td>00/00/0000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">CPF</th>
+                            <td>000.000.000-00</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">RG</th>
+                            <td>00.000.000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">CEP</th>
+                            <td>00000-000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Bairro</th>
+                            <td>Bairro do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Endereço</th>
+                            <td>Endereço do Cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Número</th>
+                            <td>000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Cidade</th>
+                            <td>Cidade do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Estado</th>
+                            <td>Estado do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">País</th>
+                            <td>País do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Telefone</th>
+                            <td>(00) 0 0000-0000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Celular</th>
+                            <td>(00) 0 0000-0000</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">E-mail</th>
+                            <td>E-mail do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Referência Comercial</th>
+                            <td>Referência comercial do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Referência Pessoal</th>
+                            <td>Referência pessoal do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Tipo</th>
+                            <td>Tipo do cliente</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Status</th>
+                            <td style="color: green;">Status do cliente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
               </div>
-              <?php    
-
-              echo "<div class='card-footer clearfix'>
-                <ul class='pagination pagination-sm m-0 float-right'>
-                  <li class='page-item'><a class='page-link' href='clientes.php?pagina=1'>&laquo;</a></li>";
-
-                  for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
-                    if($pag_ant >= 1){
-                        echo "<li class='page-item'><a class='page-link' href='clientes.php?pagina=$pag_ant'>$pag_ant</a></li>";
-                    }
-                }
-              echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
-
-              for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
-                if($pag_dep <= $quantidade_pg){
-                    echo "<li class='page-item'><a class='page-link' href='clientes.php?pagina=$pag_dep'>$pag_dep</a></li>";
-                }
-            }
-              echo"
-                  <li class='page-item'><a class='page-link' href='clientes.php?pagina=$quantidade_pg'>&raquo;</a></li>
-                </ul>
-              </div>";
-
-              ?>
-            </div>
-          </div>
         </div>
       </div>
+      </div>
+      </div>
     </section>
+    </div>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; <?= date('Y')?> <a href="index.php">PayFlow</a>.</strong>
@@ -381,12 +331,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-  setTimeout(function(){ 
-  var msg = document.getElementById("cliente_cad");
-  msg.parentNode.removeChild(msg);   
-  }, 5000);
-</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
