@@ -216,97 +216,233 @@
               <div class="card-body">
                 <div class="row">
                     <div class="col-12 d-flex flex-row-reverse">
+                    <?php
+                      $editID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+                      $editCliente = "SELECT * FROM clientes WHERE id='$editID'";
+                      $query_Edit = mysqli_query($conn, $editCliente);
+                      while($editInfo = mysqli_fetch_assoc($query_Edit)){
+                        $ClienteID = $editInfo['id'];
+                      }
+                    ?>
                     <a href="listar_contratos.php" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
-                    <a href="" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
+                    <a href="edit_cliente.php?id=<?=$ClienteID?>" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
                     </div>
                 </div>
                 <hr>
                 <div class="row mt-3">
                     <div class="col-12">
-                    <table class="table table-striped">
-                        <tbody class="table-borda">
+                    <?php
+
+                      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+                      $viewCliente = "SELECT * FROM clientes WHERE id='$id'";
+                      $exec_view = mysqli_query($conn, $viewCliente);
+                      while($dados = mysqli_fetch_assoc($exec_view)){
+
+                          $idCliente = $dados['id'];
+                          $nomeCliente = $dados['nome'];
+                          $createdCliente = $dados['created'];
+                          $tipoCliente = $dados['tipo_cliente'];
+                          $nascCliente = $dados['nascimento'];
+                          $cpfCliente = $dados['cpf'];
+                          $rgCliente = $dados['rg'];
+                          $cepCliente = $dados['cep'];
+                          $bairroCliente = $dados['bairro'];
+                          $enderecoCliente = $dados['endereco'];
+                          $numCliente = $dados['numero'];
+                          $cidadeCliente = $dados['cidade'];
+                          $estadoCliente = $dados['estado'];
+                          $paisCliente = $dados['pais'];
+                          $telCliente = $dados['telefone'];
+                          $celCliente = $dados['celular'];
+                          $emailCliente = $dados['email'];
+                          $comercialCliente = $dados['comercial'];
+                          $pessoalCliente = $dados['pessoal'];
+                          $statusCliente = $dados['modo'];
+                          $formatCreated = date("d/m/Y",strtotime($createdCliente));
+                          $formatNasc = date("d/m/Y",strtotime($nascCliente));
+                      }
+                    ?>
+                    <?php 
+                      if($statusCliente === 'Ativo'){
+
+                        echo"
+                        <table class='table table-striped'>
+                        <tbody class='table-borda'>
                             <tr>
-                            <th scope="row">ID</th>
-                            <td>000</td>
+                            <th scope='row'>ID</th>
+                            <td>{$idCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Nome</th>
-                            <td>Nome do cliente</td>
+                            <th scope='row'>Nome</th>
+                            <td>{$nomeCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Criado em</th>
-                            <td>00/00/0000</td>
+                            <th scope='row'>Criado em</th>
+                            <td>{$formatCreated}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Nascimento</th>
-                            <td>00/00/0000</td>
+                            <th scope='row'>Nascimento</th>
+                            <td>{$formatNasc}</td>
                             </tr>
                             <tr>
-                            <th scope="row">CPF</th>
-                            <td>000.000.000-00</td>
+                            <th scope='row'>CPF</th>
+                            <td>{$cpfCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">RG</th>
-                            <td>00.000.000</td>
+                            <th scope='row'>RG</th>
+                            <td>{$rgCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">CEP</th>
-                            <td>00000-000</td>
+                            <th scope='row'>CEP</th>
+                            <td>{$cepCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Bairro</th>
-                            <td>Bairro do cliente</td>
+                            <th scope='row'>Bairro</th>
+                            <td>{$bairroCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Endereço</th>
-                            <td>Endereço do Cliente</td>
+                            <th scope='row'>Endereço</th>
+                            <td>{$enderecoCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Número</th>
-                            <td>000</td>
+                            <th scope='row'>Número</th>
+                            <td>{$numCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Cidade</th>
-                            <td>Cidade do cliente</td>
+                            <th scope='row'>Cidade</th>
+                            <td>{$cidadeCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Estado</th>
-                            <td>Estado do cliente</td>
+                            <th scope='row'>Estado</th>
+                            <td>{$estadoCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">País</th>
-                            <td>País do cliente</td>
+                            <th scope='row'>País</th>
+                            <td>{$paisCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Telefone</th>
-                            <td>(00) 0 0000-0000</td>
+                            <th scope='row'>Telefone</th>
+                            <td>{$telCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Celular</th>
-                            <td>(00) 0 0000-0000</td>
+                            <th scope='row'>Celular</th>
+                            <td>{$celCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">E-mail</th>
-                            <td>E-mail do cliente</td>
+                            <th scope='row'>E-mail</th>
+                            <td>{$emailCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Referência Comercial</th>
-                            <td>Referência comercial do cliente</td>
+                            <th scope='row'>Referência Comercial</th>
+                            <td>{$comercialCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Referência Pessoal</th>
-                            <td>Referência pessoal do cliente</td>
+                            <th scope='row'>Referência Pessoal</th>
+                            <td>{$pessoalCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Tipo</th>
-                            <td>Tipo do cliente</td>
+                            <th scope='row'>Tipo</th>
+                            <td>{$tipoCliente}</td>
                             </tr>
                             <tr>
-                            <th scope="row">Status</th>
-                            <td style="color: green;">Status do cliente</td>
+                            <th scope='row'>Status</th>
+                            <td style='color: green; font-weight: 600;'>{$statusCliente}</td>
                             </tr>
                         </tbody>
                     </table>
+                        ";
+
+                      }else{
+
+                        echo"
+                        <table class='table table-striped'>
+                        <tbody class='table-borda'>
+                            <tr>
+                            <th scope='row'>ID</th>
+                            <td>{$idCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Nome</th>
+                            <td>{$nomeCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Criado em</th>
+                            <td>{$formatCreated}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Nascimento</th>
+                            <td>{$formatNasc}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>CPF</th>
+                            <td>{$cpfCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>RG</th>
+                            <td>{$rgCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>CEP</th>
+                            <td>{$cepCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Bairro</th>
+                            <td>{$bairroCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Endereço</th>
+                            <td>{$enderecoCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Número</th>
+                            <td>{$numCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Cidade</th>
+                            <td>{$cidadeCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Estado</th>
+                            <td>{$estadoCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>País</th>
+                            <td>{$paisCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Telefone</th>
+                            <td>{$telCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Celular</th>
+                            <td>{$celCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>E-mail</th>
+                            <td>{$emailCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Referência Comercial</th>
+                            <td>{$comercialCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Referência Pessoal</th>
+                            <td>{$pessoalCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Tipo</th>
+                            <td>{$tipoCliente}</td>
+                            </tr>
+                            <tr>
+                            <th scope='row'>Status</th>
+                            <td style='color: red; font-weight: 600;'>{$statusCliente}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        ";
+
+                      }
+                    ?>
                     </div>
                 </div>
               </div>
