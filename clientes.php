@@ -259,7 +259,7 @@
                         <td>{$tcelular}</td>
                         <td style='color: green; font-weight: 600;'>{$tstatus}</td>
                         <td>
-                          <a href='view_cliente.php' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                          <a href='view_cliente.php?id={$tid}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
                           <a href='listar_contratos.php' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature nav-icon'></i></a>
                           <a href='edit_cliente.php?id={$tid}' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                           <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
@@ -295,7 +295,7 @@
                         <td>{$tcelular}</td>
                         <td style='color: red; font-weight: 600;'>{$tstatus}</td>
                         <td>
-                          <a href='view_cliente.php' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                          <a href='view_cliente.php?id={$tid}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
                           <a href='listar_contratos.php' class='btn btn-success btn-xs mr-1' title='Listar Contratos'><i class='fas fa-file-signature'></i></a>
                           <a href='edit_cliente.php?id={$tid}' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                           <a data-toggle='modal' data-target='#apagar{$tid}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash cor-branca'></i></a>
