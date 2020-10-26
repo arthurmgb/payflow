@@ -12,7 +12,7 @@
     	$status = 'Inativo';
 	}
 	
-	$inserir_servico = "INSERT INTO serviços (servicos, modo ,created) VALUES ('$servicos', '$status', NOW())"; 
+	$inserir_servico = "INSERT INTO servicos (servicos, modo, created) VALUES ('$servicos', '$status', NOW())"; 
 	$executar_servico = mysqli_query($conn, $inserir_servico);
 
 
