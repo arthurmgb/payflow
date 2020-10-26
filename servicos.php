@@ -1,4 +1,5 @@
 <?php 
+  include_once("conexao.php");
   session_start();
   if(!empty($_SESSION['id'])){
       
@@ -206,7 +207,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-          <?php 
+            <?php 
               if(isset($_SESSION['msg'])){
                 echo $_SESSION['msg'];
                 unset ($_SESSION['msg']);
@@ -221,7 +222,7 @@
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">ID</th>
                       <th>Nome</th>
                       <th>Status</th>
                       <th>Criado em</th>
@@ -229,73 +230,47 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Site</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Sistema</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Manutenção</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>Formatação</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                     <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Backup</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>01/10/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    
+                    <?php 
+                      $query_servicos = "SELECT * FROM servicos";
+                      $exec_query = mysqli_query($conn, $query_servicos); 
+                      while($todos_servicos = mysqli_fetch_assoc($exec_query)){
+
+                        $servicos = $todos_servicos['servicos'];
+                        $criado = $todos_servicos['created'];
+                        $status = $todos_servicos['modo']; 
+                        $id = $todos_servicos['id'];
+                        $data = date('d/m/Y', strtotime($criado));
+
+                          if($status === 'Ativo'){
+                                echo "
+                                  <tr>
+                                    <td>{$id}</td>
+                                    <td>{$servicos}</td>
+                                    <td style='color: green; font-weight: 600;'>{$status}</td>
+                                    <td>{$data}</td>
+                                    <td>
+                                      <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                      <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                    </td>
+                                  </tr>";
+                                }
+                                else{
+                                  echo "
+                                    <tr>
+                                      <td>{$id}</td>
+                                      <td>{$servicos}</td>
+                                      <td style='color: red; font-weight: 600;'>{$status}</td>
+                                      <td>{$data}</td>
+                                      <td>
+                                        <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                        <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                        <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                      </td>
+                                    </tr>";
+                                }
+                        } 
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -333,7 +308,7 @@
 <script>
   setTimeout(function(){ 
   var msg = document.getElementById("cliente_cad");
-  msg.parentNode.removeChild(msg);   
+  msg.parentNode.removeChild(msg);
   }, 5000);
 </script>
 <!-- jQuery -->
