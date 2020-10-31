@@ -186,18 +186,47 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <?php 
+      $query_user = "SELECT * FROM usuarios WHERE id={$_SESSION['id']}";
+      $exec_user = mysqli_query($conn, $query_user);
+      while($row_usuario = mysqli_fetch_assoc($exec_user)){
 
+        $user_id = $row_usuario['id'];
+        $user_foto = $row_usuario['foto'];
+        $user_name = $row_usuario['nome'];
+        $user_empresa = $row_usuario['empresa'];
+        $user_email = $row_usuario['email'];
+        $user_nascimento = $row_usuario['nascimento'];
+        $user_exp = $row_usuario['exp'];
+        $user_celular = $row_usuario['celular'];
+        $user_formacao = $row_usuario['formacao'];
+        $user_local = $row_usuario['localizacao'];
+        $user_habilidades =$row_usuario['habilidades'];
+        $user_info = $row_usuario['info'];
+
+      }
+    ?>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <div class="row">
+            <div class="col-12">
+            <?php 
+              if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset ($_SESSION['msg']);
+              }
+            ?>
+            </div>
+          </div>
         <div class="row">
         <div class="col-12">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-payflow">
-                <h3 class="widget-user-username"><?=$_SESSION['nome']?></h3>
-                <h5 class="widget-user-desc">Empresa</h5>
+                <h3 class="widget-user-username"><?= $user_name ?></h3>
+                <h5 class="widget-user-desc"><?= $user_empresa ?></h5>
               </div>
               <div class="widget-user-image">
                 <img class="img-circle elevation-2" src="dist/img/avatar.png" alt="User Avatar">
@@ -242,44 +271,66 @@
           <div class="col-3">
           <div class="card">
               <div class="card-header card-payflow">
-                <h3 class="card-title my-2">Sobre mim</h3>
+                <h3 class="card-title my-2"><i class="far fa-address-card mr-2"></i>Sobre mim</h3>
                 <div class="d-flex flex-row-reverse bd-highlight">
-                <a class="sobre-btn" href="#"><i class="fas fa-edit"></i></a>
+                <a class="sobre-btn" data-toggle="modal" data-target="#sobremim"><i class="fas fa-edit"></i></a>
               </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> Formação Acadêmica</strong>
-
-                <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
-                </p>
-
+                <p class="text-muted mt-2"><?= $user_formacao ?></p>
                 <hr>
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Localização</strong>
-
-                <p class="text-muted">Malibu, California</p>
-
+                <p class="text-muted mt-2"><?= $user_local ?></p>
                 <hr>
 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Habilidades</strong>
-
-                <p class="text-muted">
-                  <span class="tag tag-danger">UI Design</span>
-                  <span class="tag tag-success">Coding</span>
-                  <span class="tag tag-info">Javascript</span>
-                  <span class="tag tag-warning">PHP</span>
-                  <span class="tag tag-primary">Node.js</span>
-                </p>
-
+                <p class="text-muted mt-2"><?= $user_habilidades ?></p>
                 <hr>
 
                 <strong><i class="far fa-file-alt mr-1"></i> Informações pessoais</strong>
-
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque. Lorem ipsum dolor. Lorem ipsum dolor.</p>
+                <p class="text-muted mt-2"><?= $user_info ?></p>
               </div>
-              <!-- /.card-body -->
+            </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="sobremim" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header card-payflow">
+                  <h5 class="modal-title" id="exampleModalLabel"><i class="far fa-address-card mr-2"></i>Sobre mim</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <i aria-hidden="true" class="fas fa-times-circle"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <form action="editar-sobre.php" method="POST">
+                  <input type="hidden" name="id" value="<?= $user_id ?>">
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1"><i class="fas fa-book mr-2"></i>Formação Acadêmica</label>
+                    <textarea name="formacaoUsuario" class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $user_formacao ?></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea2"><i class="fas fa-map-marker-alt mr-2"></i>Localização</label>
+                    <input name="localUsuario" value="<?= $user_local ?>" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea3"><i class="fas fa-pencil-alt mr-2"></i>Habilidades</label>
+                    <textarea name="habilidadesUsuario" class="form-control" id="exampleFormControlTextarea3" rows="3"><?= $user_habilidades ?></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea4"><i class="far fa-file-alt mr-2"></i>Informações pessoais</label>
+                    <textarea name="infoUsuario" class="form-control" id="exampleFormControlTextarea4" rows="3"><?= $user_info ?></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer" style="background-color: #F7F7F7;">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-success">Salvar</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-9">
@@ -293,110 +344,103 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                <div class="active tab-pane" id="">
+                <div class="active tab-pane">
                     <form class="form-horizontal">
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" value="<?=$_SESSION['nome']?>" readonly>
+                          <input type="text" class="form-control" id="inputName" value="<?= $user_name ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmpresa" class="col-sm-2 col-form-label">Empresa</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa" readonly>
+                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa" value="<?= $user_empresa ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" readonly>
+                          <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" value="<?= $user_email ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Data de nascimento</label>
                         <div class="col-sm-10">
-                          <input type="date" class="form-control" id="inputName2" placeholder="00/00/0000" readonly>
+                          <input type="date" class="form-control" id="inputName2" placeholder="00/00/0000" value="<?= $user_nascimento ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Experiências</label>
                         <div class="col-sm-10">
-                          <textarea readonly class="form-control" id="inputExperience" placeholder="Descreva suas experiências..."></textarea>
+                          <textarea readonly class="form-control" id="inputExperience" placeholder="Descreva suas experiências..."><?= $user_exp ?></textarea>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Celular</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Nova senha</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputSkills" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Confirmar senha</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputSkills" readonly>
+                          <input type="text" class="form-control" id="inputSkills" placeholder="(00) 0 0000-0000" readonly value="<?= $user_celular ?>">
                         </div>
                       </div>
                     </form>
                   </div>
+
+                  <!-- Editar -->
+
                   <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
+                    <form action="editar-usuario.php" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                      <input type="hidden" name="id" value="<?= $user_id ?>">
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Foto</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control-file" name="img" id="imagem">
+                        </div>
+                      </div>
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Nome completo">
+                          <input type="text" class="form-control" id="inputName" placeholder="Nome completo" name="nomeUsuario" value="<?= $user_name ?>">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmpresa" class="col-sm-2 col-form-label">Empresa</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa">
+                          <input type="text" class="form-control" id="inputEmpresa" placeholder="Nome da empresa" name="nomeEmpresa" value="<?= $user_empresa ?>">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="E-mail">
+                          <input type="email" name="emailUsuario" class="form-control" id="inputEmail" placeholder="E-mail" value="<?= $user_email ?>">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Data de nascimento</label>
                         <div class="col-sm-10">
-                          <input type="date" class="form-control" id="inputName2" placeholder="00/00/0000">
+                          <input type="date" class="form-control" id="inputName2" placeholder="00/00/0000" name="nascUsuario" value="<?= $user_nascimento ?>">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Experiências</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" id="inputExperience" placeholder="Descreva suas experiências..."></textarea>
+                          <textarea name="expUsuario" class="form-control" id="inputExperience" placeholder="Descreva suas experiências..."><?= $user_exp ?></textarea>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Celular</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputSkills" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000">
+                          <input type="text" name="celUsuario" class="form-control" id="inputSkills" placeholder="(00) 0 0000-0000" value="<?= $user_celular ?>" data-mask="(00) 0 0000-0000">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Nova senha</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputSkills">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Confirmar senha</label>
                         <div class="col-sm-10">
                           <input type="password" class="form-control" id="inputSkills">
                         </div>
                       </div>
                       <div class="d-flex flex-row-reverse bd-highlight">
                       <button type="submit" class="btn btn-success save-btn">Salvar</button>
+                      <a href="usuario.php" class="btn btn-secondary save-btn mr-2">Cancelar</a>
                       </div>
                     </form>
                   </div>
@@ -408,7 +452,6 @@
             <!-- /.nav-tabs-custom -->
           </div>
         </div>
-
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -426,7 +469,12 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("cliente_cad");
+  msg.parentNode.removeChild(msg);   
+  }, 4000);
+</script>
 <!-- JQuery Mask -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
