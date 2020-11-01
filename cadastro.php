@@ -50,6 +50,15 @@ if($btnCadUsuario){
     '".$dados['senha']."'
     )";
     $resultado_usuario = mysqli_query($conn, $result_usuario);
+
+    $ultimo_id = mysqli_insert_id($conn);
+
+    //Pasta onde vai ser salvo
+    $_UP['pasta'] = 'usuarios/'.$ultimo_id.'/';
+
+    //Criar pasta de imovel
+    mkdir($_UP['pasta'], 0777);
+
     if(mysqli_insert_id($conn)){
     $_SESSION['msgcad'] = "<div class='alert alert-success' role='alert'>
     Cadastro realizado com sucesso.

@@ -49,7 +49,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+<?php 
+      require_once("info-perfil.php");
+?>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -65,10 +67,10 @@
           <i class="fas fa-user-cog color-fas"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="drop-name dropdown-item dropdown-header"><?=$_SESSION['nome']?></span>
+          <span class="drop-name dropdown-item dropdown-header"><?= $user_name ?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
-              <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
+              <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
@@ -87,17 +89,19 @@
       <span class="brand-text d-block fredoka">PayFlow</span>
     </a>
 
-    <!-- Sidebar -->
+    <!-- Info Perfil -->
+
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
+          <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
+          <a href="usuario.php" class="d-block"><?= $user_name ?></a>
         </div>
       </div>
+
+    <!-- Fim de Info Perfil -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -186,26 +190,6 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <?php 
-      $query_user = "SELECT * FROM usuarios WHERE id={$_SESSION['id']}";
-      $exec_user = mysqli_query($conn, $query_user);
-      while($row_usuario = mysqli_fetch_assoc($exec_user)){
-
-        $user_id = $row_usuario['id'];
-        $user_foto = $row_usuario['foto'];
-        $user_name = $row_usuario['nome'];
-        $user_empresa = $row_usuario['empresa'];
-        $user_email = $row_usuario['email'];
-        $user_nascimento = $row_usuario['nascimento'];
-        $user_exp = $row_usuario['exp'];
-        $user_celular = $row_usuario['celular'];
-        $user_formacao = $row_usuario['formacao'];
-        $user_local = $row_usuario['localizacao'];
-        $user_habilidades =$row_usuario['habilidades'];
-        $user_info = $row_usuario['info'];
-
-      }
-    ?>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -229,7 +213,16 @@
                 <h5 class="widget-user-desc"><?= $user_empresa ?></h5>
               </div>
               <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="dist/img/avatar.png" alt="User Avatar">
+                <?php 
+                if((isset($user_foto) AND !empty($user_foto))){
+                  echo"
+                  <img class='img-circle elevation-2' src='usuarios/{$user_id}/{$user_foto}'>
+                  ";
+                }else{
+                  echo"
+                  <img class='img-circle elevation-2' src='dist/img/avatar5.png'>";                 
+                }
+                ?>
               </div>
               <div class="card-footer">
                 <div class="row">
@@ -393,7 +386,8 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-10">
-                          <input type="file" class="form-control-file" name="img" id="imagem">
+                          <img id="preview" class="img-fluid d-block mb-4" style="width: 20%; height: auto;">
+                          <input type="file" class="form-control-file" onchange="previewImagem()" name="img" id="imagem">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -430,12 +424,6 @@
                         <label for="inputSkills" class="col-sm-2 col-form-label">Celular</label>
                         <div class="col-sm-10">
                           <input type="text" name="celUsuario" class="form-control" id="inputSkills" placeholder="(00) 0 0000-0000" value="<?= $user_celular ?>" data-mask="(00) 0 0000-0000">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Nova senha</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputSkills">
                         </div>
                       </div>
                       <div class="d-flex flex-row-reverse bd-highlight">
@@ -475,6 +463,7 @@
   msg.parentNode.removeChild(msg);   
   }, 4000);
 </script>
+
 <!-- JQuery Mask -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
@@ -512,5 +501,23 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+        function previewImagem(){
+                var imagem = document.querySelector('input[name=img]').files[0];
+                var preview = document.getElementById("preview");
+                
+                var reader = new FileReader();
+
+                reader.onloadend = function(){
+                    preview.src = reader.result;
+                } 
+
+                if(imagem){
+                    reader.readAsDataURL(imagem);
+                }else{
+                    preview.src = "";
+                }
+            }
+</script>
 </body>
 </html>
