@@ -100,6 +100,7 @@
     background-color: transparent;
     color: #fff;
     border: 2px solid #fff;
+    cursor: pointer;
 }
 .print-edit{
     background-color: #4d5585;

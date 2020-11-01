@@ -1,4 +1,5 @@
 <?php 
+  include_once("conexao.php");
   session_start();
   if(!empty($_SESSION['id'])){
       
@@ -48,7 +49,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+<?php 
+      require_once("info-perfil.php");
+?>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -64,10 +67,10 @@
           <i class="fas fa-user-cog color-fas"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="drop-name dropdown-item dropdown-header"><?=$_SESSION['nome']?></span>
+          <span class="drop-name dropdown-item dropdown-header"><?= $user_name ?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
-              <img src="dist/img/usuario.png" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
+              <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
@@ -86,17 +89,19 @@
       <span class="brand-text d-block fredoka">PayFlow</span>
     </a>
 
-    <!-- Sidebar -->
+    <!-- Info Perfil -->
+
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/usuario.png" class="img-circle elevation-2" alt="User Image">
+          <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="usuario.php" class="d-block"><?=$_SESSION['nome']?></a>
+          <a href="usuario.php" class="d-block"><?= $user_name ?></a>
         </div>
       </div>
+
+    <!-- Fim de Info Perfil -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
