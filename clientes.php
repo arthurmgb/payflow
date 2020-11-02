@@ -70,7 +70,19 @@
           <span class="drop-name dropdown-item dropdown-header"><?= $user_name ?></span>
           <div class="dropdown-divider"></div> 
             <div class="user-panel">
-              <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2 my-4 mx-auto d-block user-edit" alt="User Image">
+              <!-- Painel -->
+            <?php 
+            if((isset($user_foto) AND !empty($user_foto))){
+              echo"
+              <img src='usuarios/$user_id/$user_foto' class='img-circle elevation-2 my-4 mx-auto d-block user-edit' alt='User Image'>
+              ";
+            }else{
+              echo"
+              <img src='dist/img/avatar5.png' class='img-circle elevation-2 my-4 mx-auto d-block user-edit' alt='User Image'>
+              ";
+            }
+            ?>
+            <!-- Fim Painel -->
             </div>
           <div class="dropdown-divider"></div>
           <a href="usuario.php" class="btn btn-info float-left my-2 mx-2" role="button"><i class="mg-button fas fa-user-edit"></i> Perfil</a>
@@ -94,7 +106,18 @@
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="usuarios/<?= $user_id ?>/<?= $user_foto ?>" class="img-circle elevation-2" alt="User Image">
+          <?php 
+            if((isset($user_foto) AND !empty($user_foto))){
+              echo"
+              <img src='usuarios/$user_id/$user_foto' class='img-circle elevation-2' alt='User Image'>
+              ";
+            }else{
+              echo"
+              <img src='dist/img/avatar5.png' class='img-circle elevation-2' alt='User Image'>
+              ";
+            }
+          ?>
+          
         </div>
         <div class="info">
           <a href="usuario.php" class="d-block"><?= $user_name ?></a>
