@@ -265,17 +265,19 @@
                    $query_contratos = "SELECT * FROM contratos";    
                    $exec_contratos = mysqli_query($conn, $query_contratos);
                    while($row_contrato = mysqli_fetch_assoc($exec_contratos)){
-                    $c_id= $row_contrato['id'];
-                    $c_created= $row_contrato['created'];
-                    $c_vencimento= $row_contrato['vencimento'];
-                    $c_valor= $row_contrato['valor'];
-                    $c_meses= $row_contrato['meses'];
-                    $c_obs= $row_contrato['observacoes'];
-                    $c_ativo= $row_contrato['ativo'];
-                    $format_created= date('d/m/Y', strtotime($c_created)); 
-                    $format_vencimento= date('d/m/Y', strtotime($c_vencimento)); 
+
+                    $c_id = $row_contrato['id'];
+                    $c_created = $row_contrato['created'];
+                    $c_vencimento = $row_contrato['vencimento'];
+                    $c_valor = $row_contrato['valor'];
+                    $c_meses = $row_contrato['meses'];
+                    $c_obs = $row_contrato['observacoes'];
+                    $c_ativo = $row_contrato['ativo'];
+                    $format_created = date('d/m/Y', strtotime($c_created)); 
+                    $format_vencimento = date('d/m/Y', strtotime($c_vencimento)); 
                     
                     if($c_ativo === '1'){
+
                       echo "
                       <tr>
                        <td>{$c_id}</td>
@@ -294,6 +296,7 @@
                        </td>
                      </tr>
                       ";
+
                     }else{
                       echo "
                       <tr>
@@ -315,7 +318,6 @@
                       ";
                     }
                    }
-                  
                   ?> 
                   </tbody>
                 </table>
