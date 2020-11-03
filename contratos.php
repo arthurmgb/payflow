@@ -249,7 +249,7 @@
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">ID</th>
                       <th>Cliente</th>
                       <th>Criado</th>
                       <th>Vencimento</th>
@@ -261,165 +261,62 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red; font-weight: 600;">Inativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>7.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    <tr>
-                      <td>8.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>9.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>10.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td style="color: green;">25/07/2020</td>
-                      <td style="color: red;">25/07/2020</td>
-                      <td style="color: green; font-weight: 600;">R$ 600,00</td>
-                      <td>12</td>
-                      <td>Hospedagem</td>
-                      <td style="color: green; font-weight: 600;">Ativo</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
+                  <?php
+                   $query_contratos = "SELECT * FROM contratos";    
+                   $exec_contratos = mysqli_query($conn, $query_contratos);
+                   while($row_contrato = mysqli_fetch_assoc($exec_contratos)){
+                    $c_id= $row_contrato['id'];
+                    $c_created= $row_contrato['created'];
+                    $c_vencimento= $row_contrato['vencimento'];
+                    $c_valor= $row_contrato['valor'];
+                    $c_meses= $row_contrato['meses'];
+                    $c_obs= $row_contrato['observacoes'];
+                    $c_ativo= $row_contrato['ativo'];
+                    $format_created= date('d/m/Y', strtotime($c_created)); 
+                    $format_vencimento= date('d/m/Y', strtotime($c_vencimento)); 
+                    
+                    if($c_ativo === '1'){
+                      echo "
+                      <tr>
+                       <td>{$c_id}</td>
+                       <td>NOME DO CLIENTE</td>
+                       <td style='color: green;'>{$format_created}</td>
+                       <td style='color: red;'>{$format_vencimento}</td>
+                       <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
+                       <td>{$c_meses}</td>
+                       <td>SERVIÇO</td>
+                       <td style='color: green; font-weight: 600;'>Ativo</td>
+                       <td>
+                         <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                         <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                         <a href='' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
+                         <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                       </td>
+                     </tr>
+                      ";
+                    }else{
+                      echo "
+                      <tr>
+                       <td>{$c_id}</td>
+                       <td>NOME DO CLIENTE</td>
+                       <td style='color: green;'>{$format_created}</td>
+                       <td style='color: red;'>{$format_vencimento}</td>
+                       <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
+                       <td>{$c_meses}</td>
+                       <td>SERVIÇO</td>
+                       <td style='color: red; font-weight: 600;'>Inativo</td>
+                       <td>
+                         <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                         <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                         <a href='' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
+                         <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                       </td>
+                     </tr>
+                      ";
+                    }
+                   }
+                  
+                  ?> 
                   </tbody>
                 </table>
               </div>
