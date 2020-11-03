@@ -4,7 +4,7 @@ session_start();
 include_once("conexao.php");
 
 $vencimento = filter_input(INPUT_POST, 'vencimento', FILTER_SANITIZE_STRING);
-$valor = filter_input(INPUT_POST, 'valor', FILTER_SANITIZE_NUMBER_FLOAT);
+$valor = filter_input(INPUT_POST, 'valor', FILTER_SANITIZE_STRING);
 $meses = filter_input(INPUT_POST, 'meses', FILTER_SANITIZE_NUMBER_INT);
 $observacoes = filter_input(INPUT_POST, 'observacoes', FILTER_SANITIZE_STRING);
 
