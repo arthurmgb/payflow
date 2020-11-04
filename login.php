@@ -33,7 +33,6 @@ session_start();
   <div class="login-logo">
     <img src="dist/img/login.png" alt="">
   </div>
-  <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para acessar o painel</p>
@@ -71,23 +70,15 @@ session_start();
           <div class="col-12">
             <button type="submit" name="btnLogin" value="Acessar" class="btn btn-success btn-block">Acessar</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
-
-      <div class="social-auth-links text-center my-3">
+      <div class="social-auth-links text-center mt-3">
         <p>Ainda não é cadastrado?</p>
         <a href="cadastro.php" class="btn btn-block btn-primary">
         Cadastre-se
         </a>
       </div>
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="recuperarsenha.php">Esqueci minha senha</a>
-      </p>
     </div>
-    <!-- /.login-card-body -->
   </div>
 </div>
 <!-- /.login-box -->
