@@ -60,7 +60,7 @@ if($btnCadUsuario){
     mkdir($_UP['pasta'], 0777);
 
     if(mysqli_insert_id($conn)){
-    $_SESSION['msgcad'] = "<div class='alert alert-success' role='alert'>
+    $_SESSION['msgcad'] = "<div id='logout' class='alert alert-success' role='alert'>
     Cadastro realizado com sucesso.
   </div>";
     header("Location: login.php");
@@ -176,7 +176,6 @@ if($btnCadUsuario){
     <!-- /.login-card-body -->
   </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="termos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
