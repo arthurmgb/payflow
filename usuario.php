@@ -303,7 +303,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1"><i class="fas fa-lock mx-2"></i>Alterar senha</label>
-                          <input name="senha" type="password" class="form-control" id="exampleInputPassword1" minlength="6">
+                          <input name="senha" type="password" class="form-control" id="exampleInputPassword1" minlength="6" required>
                           <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seus dados com ninguém.</small>
                         </div>
                         <div class="form-group">
