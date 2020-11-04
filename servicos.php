@@ -262,39 +262,77 @@
                       $exec_query = mysqli_query($conn, $query_servicos); 
                       while($todos_servicos = mysqli_fetch_assoc($exec_query)){
 
-                        $servicos = $todos_servicos['servicos'];
-                        $criado = $todos_servicos['created'];
-                        $status = $todos_servicos['modo']; 
-                        $id = $todos_servicos['id'];
-                        $data = date('d/m/Y', strtotime($criado));
+                        $tservicos = $todos_servicos['servicos'];
+                        $tcriado = $todos_servicos['created'];
+                        $tstatus = $todos_servicos['modo']; 
+                        $tid = $todos_servicos['id'];
+                        $tdata = date('d/m/Y', strtotime($tcriado));
 
-                          if($status === 'Ativo'){
+                          if($tstatus === 'Ativo'){
                                 echo "
                                   <tr>
-                                    <td>{$id}</td>
-                                    <td>{$servicos}</td>
-                                    <td style='color: green; font-weight: 600;'>{$status}</td>
-                                    <td>{$data}</td>
+                                    <td>{$tid}</td>
+                                    <td>{$tservicos}</td>
+                                    <td style='color: green; font-weight: 600;'>{$tstatus}</td>
+                                    <td>{$tdata}</td>
                                     <td>
                                       <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                      <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                                      <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                      <a href='edit_servicos.php?id=".$tid."'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                     </td>
-                                  </tr>";
+                                  </tr>
+                                  <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                      <div class='modal-content'>
+                                      <div class='modal-header cor-header'>
+                                          <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                          <i class='fas fa-times-circle'></i>
+                                          </button>
+                                      </div>
+                                      <div class='modal-body'>
+                                          <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                                      </div>
+                                      <div class='modal-footer cor-footer'>
+                                          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                          <a href='apagar-servicos.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                                      </div>
+                                      </div>
+                                    </div>
+                                  </div>";                                 
                                 }
                                 else{
                                   echo "
                                     <tr>
-                                      <td>{$id}</td>
-                                      <td>{$servicos}</td>
-                                      <td style='color: red; font-weight: 600;'>{$status}</td>
-                                      <td>{$data}</td>
+                                      <td>{$tid}</td>
+                                      <td>{$tservicos}</td>
+                                      <td style='color: red; font-weight: 600;'>{$tstatus}</td>
+                                      <td>{$tdata}</td>
                                       <td>
-                                        <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                        <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                                        <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                        <a href=' ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                        <a href='edit_servicos.php?=id".$tid."' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                       </td>
-                                    </tr>";
+                                    </tr>
+                                    <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                        <div class='modal-header cor-header'>
+                                            <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                            <i class='fas fa-times-circle'></i>
+                                            </button>
+                                        </div>
+                                        <div class='modal-body'>
+                                            <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                                        </div>
+                                        <div class='modal-footer cor-footer'>
+                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                            <a href='apagar-servicos.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                                        </div>
+                                        </div>
+                                      </div>
+                                    </div>";
                                 }
                         } 
                     ?>
