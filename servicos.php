@@ -276,8 +276,8 @@
                                     <td style='color: green; font-weight: 600;'>{$tstatus}</td>
                                     <td>{$tdata}</td>
                                     <td>
-                                      <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                      <a href='edit_servicos.php?id=".$tid."'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href='view-servicos.php?id=".$tid."'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                      <a href=''class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                                       <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                     </td>
                                   </tr>
@@ -309,8 +309,8 @@
                                       <td style='color: red; font-weight: 600;'>{$tstatus}</td>
                                       <td>{$tdata}</td>
                                       <td>
-                                        <a href=' ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                        <a href='edit_servicos.php?=id".$tid."' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                        <a href='view-servicos.php?id=".$tid." ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                        <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                                       <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                       </td>
                                     </tr>
