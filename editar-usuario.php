@@ -13,8 +13,6 @@ $celUsuario = filter_input(INPUT_POST, 'celUsuario', FILTER_SANITIZE_STRING);
 $imagem = $_FILES['img']['name'];
 
 if($imagem == ""){
-    password_hash($novaSenha, PASSWORD_DEFAULT);
-    $novaSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
     
     $update_usuario = "UPDATE usuarios SET nome='$nomeUsuario', empresa='$nomeEmpresa', email='$emailUsuario', nascimento='$nascUsuario', exp='$expUsuario', celular='$celUsuario' WHERE id='$id'";
     $executar_update = mysqli_query($conn, $update_usuario);
@@ -28,9 +26,7 @@ if($imagem == ""){
         header("Location: usuario.php");
     }
 }else{
-    password_hash($novaSenha, PASSWORD_DEFAULT);
-    $novaSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
-    
+
     $update_usuario = "UPDATE usuarios SET foto='$imagem', nome='$nomeUsuario', empresa='$nomeEmpresa', email='$emailUsuario', nascimento='$nascUsuario', exp='$expUsuario', celular='$celUsuario' WHERE id='$id'";
     $executar_update = mysqli_query($conn, $update_usuario);
     

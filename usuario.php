@@ -232,7 +232,8 @@
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-payflow">
-                <h3 class="widget-user-username"><?= $user_name ?></h3>
+                <h3 class="widget-user-username"><?= $user_name ?></h3>         
+                <a data-toggle="modal" data-target="#configs" class="btn sobre-btn account"><i class="fas fa-cogs"></i></a>
                 <h5 class="widget-user-desc"><?= $user_empresa ?></h5>
               </div>
               <div class="widget-user-image">
@@ -282,7 +283,47 @@
                 <!-- /.row -->
               </div>
             </div>
-            <!-- /.widget-user -->
+            <div class="modal fade" id="configs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header card-payflow">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-lock mr-2"></i>Minha conta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="fas fa-times-circle"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-12">
+                      <form action="editar-conta.php" method="POST">
+                        <input value="<?= $user_id ?>" type="hidden" name="id">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1"><i class="fas fa-user mx-2"></i>Alterar usuário</label>
+                          <input value="<?= $user_conta ?>" name="usuario" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1"><i class="fas fa-lock mx-2"></i>Alterar senha</label>
+                          <input name="senha" type="password" class="form-control" id="exampleInputPassword1" minlength="6">
+                          <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seus dados com ninguém.</small>
+                        </div>
+                        <div class="form-group">
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" required>
+                          <label class="custom-control-label" for="customSwitch1">Confirmar alterações.</label>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background-color: #f7f7f7;" class="modal-footer">
+                    <a onclick="return confirmarDelete()" class="btn btn-danger delete-c" href="apagar-conta.php?id=<?= $user_id ?>">Deletar conta</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-3">
           <div class="card">
@@ -486,7 +527,16 @@
   msg.parentNode.removeChild(msg);   
   }, 4000);
 </script>
-
+<script>
+        function confirmarDelete(){
+            var result = confirm("Deseja realmente deletar sua conta? Esta ação não poderá ser desfeita e você perderá todos os seus dados.");
+            if(result){
+                return true;
+            }else{
+                return false;
+            }
+        }
+</script>
 <!-- JQuery Mask -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

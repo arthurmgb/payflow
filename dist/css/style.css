@@ -216,3 +216,20 @@ tbody tr:hover{
 .table-borda{
     border: 1px solid rgb(172, 172, 172) !important;
 }
+.account i:hover{
+    color: #fff !important;
+}
+.account{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+}
+.custom-control-label{
+    font-weight: 500 !important;
+}
+.delete-c{
+    position: absolute !important;
+    left: 0 !important;
+    margin-left: 15px;
+}
