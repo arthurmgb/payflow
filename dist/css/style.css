@@ -233,3 +233,16 @@ tbody tr:hover{
     left: 0 !important;
     margin-left: 15px;
 }
+.selec-cliente{
+    border-top: 3px solid #4d5585 !important;
+}
+.trash-position{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 8px;
+}
+.check-cliente{
+    transform: scale(1.6);
+    cursor: pointer;
+}

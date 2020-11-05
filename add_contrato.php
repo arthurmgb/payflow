@@ -1,5 +1,6 @@
 <?php 
   include_once("conexao.php");
+  include_once("selecionar-cliente.php");
   session_start();
   if(!empty($_SESSION['id'])){
       
@@ -221,6 +222,27 @@
     <div class="card border-top">
       <form method="POST" action="novo-contrato.php" class="sec-pad">
       <div class="form-row">
+          <div class="form-group col-md-12">
+        <button data-toggle="modal" data-target="#selecionar_cliente" type="button" class="btn btn-primary btn-block"><i class="fas fa-user-plus mr-1"></i> Selecionar Cliente</button>
+        </div>
+      </div>
+      <?php
+        while($row_cliente = mysqli_fetch_assoc($exec_selecao)){
+          echo"
+          <input type='hidden' name='cliente_id' value='{$row_cliente['id']}'>
+          <div class='card selec-cliente' style='width: 18rem;'>
+            <div class='card-body text-center'>
+              <a title='Remover cliente' href='add_contrato.php'><i class='fas fa-trash trash-color trash-position'></i></a>
+              <h5 class='card-text'>{$row_cliente['nome']}</h5>
+              <h6 class='card-text'>{$row_cliente['email']}</h6>
+            </div>
+          </div>
+          <h1></h1>
+          <h1></h1>
+          ";
+          }
+      ?>
+      <div class="form-row">
         <div class="form-group col-md-12 mt-2">
           <label for="nome" class="font-weight-bold ml-2">Primeiro vencimento</label>
           <input name="vencimento" type="date" class="form-control">
@@ -230,11 +252,6 @@
           <input name="valor" type="text" class="form-control">     
         </div>
       </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-        <button type="button" class="btn btn-primary btn-block"><i class="fas fa-user-plus mr-1"></i> Selecionar Cliente</button>
-        </div>
-        </div>
       <div class="form-row">
       <div class="form-group col-md-8">
     					<label class="font-weight-bold ml-2">Serviços</label>
@@ -282,8 +299,78 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<!-- Button trigger modal -->
 
+<!-- Modal Cliente-->
+<div class="modal fade" id="selecionar_cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <form action='' method='POST'>
+      <div class="modal-header card-payflow">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-users mr-2"></i>Selecionar cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <i aria-hidden="true" class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      <div class="col-12">
+      <div class="d-flex flex-row-reverse">
+      <a href="add_cliente.php" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Novo Cliente</a>
+      </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-12">
+      <table class="table table-bordered text-center">
+      <thead>                  
+            <tr>
+              <th><i class="fas fa-user-plus"></i></th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Cidade</th>
+              <th>Bairro</th>
+            </tr>
+         </thead>
+         <tbody>
+         
+        <?php 
+          $query_clientes = "SELECT * FROM clientes";
+          $exec_query = mysqli_query($conn, $query_clientes);
+          while($row_cliente = mysqli_fetch_assoc($exec_query)){
 
+            $idCliente = $row_cliente['id'];
+            $nomeCliente = $row_cliente['nome'];
+            $emailCliente = $row_cliente['email'];
+            $cidadeCliente = $row_cliente['cidade'];
+            $bairroCliente = $row_cliente['bairro'];
+
+            echo"
+              <tr>
+                <td><div class='form-group form-check'>
+                <input type='radio' name='clienteId' value=".$idCliente." class='form-check-input check-cliente' id='exampleCheck1' required>
+              </div></td>
+                <td>{$nomeCliente}</td>
+                <td>{$emailCliente}</td>
+                <td>{$cidadeCliente}</td>
+                <td>{$bairroCliente}</td>
+              </tr>
+              ";
+          }
+        ?>
+        </tbody>
+        </table>
+        </div>
+      </div>
+      </div>
+      <div style="background-color: #f7f7f7" class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!-- jQuery mask -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

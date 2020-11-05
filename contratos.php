@@ -275,13 +275,20 @@
                     $c_ativo = $row_contrato['ativo'];
                     $format_created = date('d/m/Y', strtotime($c_created)); 
                     $format_vencimento = date('d/m/Y', strtotime($c_vencimento)); 
+                    $key_cliente = $row_contrato['id_cliente'];
+                    
+                    $foreign_cliente = "SELECT * FROM clientes WHERE id='$key_cliente'";
+                    $exec_foreign_cliente = mysqli_query($conn, $foreign_cliente);
+                    while($row_Fcliente =  mysqli_fetch_assoc($exec_foreign_cliente)){
+                      $fNome = $row_Fcliente['nome'];
+                    }
                     
                     if($c_ativo === '1'){
 
                       echo "
                       <tr>
                        <td>{$c_id}</td>
-                       <td>NOME DO CLIENTE</td>
+                       <td>{$fNome}</td>
                        <td style='color: green;'>{$format_created}</td>
                        <td style='color: red;'>{$format_vencimento}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
@@ -301,7 +308,7 @@
                       echo "
                       <tr>
                        <td>{$c_id}</td>
-                       <td>NOME DO CLIENTE</td>
+                       <td>{$fNome}</td>
                        <td style='color: green;'>{$format_created}</td>
                        <td style='color: red;'>{$format_vencimento}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
