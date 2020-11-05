@@ -258,61 +258,134 @@
                   </thead>
                   <tbody>
                     <?php 
-                      $query_servicos = "SELECT * FROM servicos";
+
+                      $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+                      $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+                      $qtd_result = 10;
+                      $start = ($qtd_result * $pagina) - $qtd_result;
+                      
+
+                      $query_servicos = "SELECT * FROM servicos LIMIT $start, $qtd_result";
                       $exec_query = mysqli_query($conn, $query_servicos); 
+                      $reg_servicos = mysqli_num_rows($exec_query);
                       while($todos_servicos = mysqli_fetch_assoc($exec_query)){
 
-                        $servicos = $todos_servicos['servicos'];
-                        $criado = $todos_servicos['created'];
-                        $status = $todos_servicos['modo']; 
-                        $id = $todos_servicos['id'];
-                        $data = date('d/m/Y', strtotime($criado));
+                        $tservicos = $todos_servicos['servicos'];
+                        $tcriado = $todos_servicos['created'];
+                        $tstatus = $todos_servicos['modo']; 
+                        $tid = $todos_servicos['id'];
+                        $tdata = date('d/m/Y', strtotime($tcriado));
 
-                          if($status === 'Ativo'){
+                          if($tstatus === 'Ativo'){
                                 echo "
                                   <tr>
-                                    <td>{$id}</td>
-                                    <td>{$servicos}</td>
-                                    <td style='color: green; font-weight: 600;'>{$status}</td>
-                                    <td>{$data}</td>
+                                    <td>{$tid}</td>
+                                    <td>{$tservicos}</td>
+                                    <td style='color: green; font-weight: 600;'>{$tstatus}</td>
+                                    <td>{$tdata}</td>
                                     <td>
-                                      <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                      <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                                      <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                      <a href='view-servicos.php?id=".$tid."'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                      <a href='edit_servico.php?id=".$tid."'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                     </td>
-                                  </tr>";
+                                  </tr>
+                                  <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                      <div class='modal-content'>
+                                      <div class='modal-header cor-header'>
+                                          <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar serviço</h5>
+                                          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                          <i class='fas fa-times-circle'></i>
+                                          </button>
+                                      </div>
+                                      <div class='modal-body'>
+                                          <p class='h5'>Deseja realmente apagar esse servico?</p>
+                                      </div>
+                                      <div class='modal-footer cor-footer'>
+                                          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                          <a href='apagar-servicos.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                                      </div>
+                                      </div>
+                                    </div>
+                                  </div>";                                 
                                 }
                                 else{
                                   echo "
                                     <tr>
-                                      <td>{$id}</td>
-                                      <td>{$servicos}</td>
-                                      <td style='color: red; font-weight: 600;'>{$status}</td>
-                                      <td>{$data}</td>
+                                      <td>{$tid}</td>
+                                      <td>{$tservicos}</td>
+                                      <td style='color: red; font-weight: 600;'>{$tstatus}</td>
+                                      <td>{$tdata}</td>
                                       <td>
-                                        <a href=' 'class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                        <a href=' 'class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                                        <a href=' 'class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                                        <a href='view-servicos.php?id=".$tid." ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                        <a href='edit_servico.php?id=".$tid."' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                      <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                       </td>
-                                    </tr>";
+                                    </tr>
+                                    <div class='modal fade' id='apagar{$tid}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                        <div class='modal-header cor-header'>
+                                            <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar serviço</h5>
+                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                            <i class='fas fa-times-circle'></i>
+                                            </button>
+                                        </div>
+                                        <div class='modal-body'>
+                                            <p class='h5'>Deseja realmente apagar esse serviço?</p>
+                                        </div>
+                                        <div class='modal-footer cor-footer'>
+                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                            <a href='apagar-servicos.php?id=".$tid."' class='btn btn-danger'>Apagar</a>
+                                        </div>
+                                        </div>
+                                      </div>
+                                    </div>";
                                 }
                         } 
+                        $result_pg = "SELECT COUNT(id) AS num_result FROM servicos";
+                        $resultado_pg = mysqli_query($conn, $result_pg);
+                        $row_pg = mysqli_fetch_assoc($resultado_pg);
+                        $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
+                        $max_links = 1;
+
                     ?>
                   </tbody>
                 </table>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-              </div>
-            </div>
+                <?php
+                  
+                  if($reg_servicos === 0){
+                    echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                  }else{
 
+                  }
+                  ?>
+              </div>
+              <?php    
+                echo "<div class='card-footer clearfix'>
+                <ul class='pagination pagination-sm m-0 float-right'>
+                  <li class='page-item'><a class='page-link' href='servicos.php?pagina=1'>&laquo;</a></li>";
+
+                  for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+                    if($pag_ant >= 1){
+                        echo "<li class='page-item'><a class='page-link' href='servicos.php?pagina=$pag_ant'>$pag_ant</a></li>";
+                    }
+                }
+                echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
+
+                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+                if($pag_dep <= $quantidade_pg){
+                    echo "<li class='page-item'><a class='page-link' href='servicos.php?pagina=$pag_dep'>$pag_dep</a></li>";
+                }
+                }
+                echo"
+                  <li class='page-item'><a class='page-link' href='servicos.php?pagina=$quantidade_pg'>&raquo;</a></li>
+                </ul>
+                </div>";
+
+
+              ?>
+            </div>
           </div>
         </div>
       </div>
