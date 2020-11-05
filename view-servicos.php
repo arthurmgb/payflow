@@ -193,15 +193,27 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <?php
 
-  <!-- Content Wrapper. Contains page content -->
+      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+      $viewServicos = "SELECT * FROM servicos WHERE id='$id'";
+      $exec_view = mysqli_query($conn, $viewServicos);
+      while($dados = mysqli_fetch_assoc($exec_view)){
+          $nomeServico = $dados['servicos'];
+          $idServicos = $dados['id'];
+          $createdServicos = $dados['created'];
+          $statusServicos = $dados['modo'];
+          $formatCreated = date("d/m/Y",strtotime($createdServicos));
+
+      }
+  ?>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Nome do serviços</h1>
+            <h1 class="m-0 text-dark">Serviço: <?= $nomeServico ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -235,44 +247,28 @@
                 unset ($_SESSION['msg']);
               }
             ?>
-                      <div class="card">
-              <div class="card-header card-payflow">
+              <div class="card">
               <?php
-                      $editID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                      $editServico = "SELECT * FROM servicos WHERE id='$editID'";
-                      $query_Edit = mysqli_query($conn, $editServico);
-                      while($editInfo = mysqli_fetch_assoc($query_Edit)){
-                        $ServicosId = $editInfo['id'];
-                      }
-                    ?>
-                <h3 class="card-title"><i class="fas fa-tasks nav-icon pr-2"></i>Visualizar serviços</h3>
+                  $editID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+                  $editServico = "SELECT * FROM servicos WHERE id='$editID'";
+                  $query_Edit = mysqli_query($conn, $editServico);
+                  while($editInfo = mysqli_fetch_assoc($query_Edit)){
+                    $ServicosId = $editInfo['id'];
+                  }
+                ?>
+              <div class="card-header card-payflow">
+                <h3 class="card-title"><i class="fas fa-tasks nav-icon pr-2"></i>Visualizar Serviço</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
                     <div class="col-12 d-flex flex-row-reverse">
-                   
-                    <a href="listar_contratos.php" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
                     <a href="edit_servico.php?id=<?=$ServicosId?>" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
                     </div>
                 </div>
                 <hr>
                 <div class="row mt-3">
                     <div class="col-12">
-                    <?php
-
-                      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                      $viewServicos = "SELECT * FROM servicos WHERE id='$id'";
-                      $exec_view = mysqli_query($conn, $viewServicos);
-                      while($dados = mysqli_fetch_assoc($exec_view)){
-                          $nomeServico = $dados['servicos'];
-                          $idServicos = $dados['id'];
-                          $createdServicos = $dados['created'];
-                          $statusServicos = $dados['modo'];
-                          $formatCreated = date("d/m/Y",strtotime($createdServicos));
-
-                      }
-                    ?>
                     <?php 
                       if($statusServicos === 'Ativo'){
 
@@ -308,7 +304,7 @@
                             <td>{$idServicos}</td>
                             </tr>
                             <tr>
-                            <th scope='row'>Nome</th>
+                            <th scope='row'>Serviço</th>
                             <td>{$nomeServico}</td>
                             </tr>
                             <tr>

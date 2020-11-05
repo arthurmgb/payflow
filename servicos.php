@@ -299,7 +299,7 @@
                                           </button>
                                       </div>
                                       <div class='modal-body'>
-                                          <p class='h5'>Deseja realmente apagar esse servico?</p>
+                                          <p class='h5'>Deseja realmente apagar esse serviço?</p>
                                       </div>
                                       <div class='modal-footer cor-footer'>
                                           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
