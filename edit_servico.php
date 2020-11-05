@@ -201,137 +201,58 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Nome do serviços</h1>
+            <h1 class="m-0 text-dark">Editar Serviço</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Serviços</li>
-              <li class="breadcrumb-item active">Visualizar</li>
+              <li class="breadcrumb-item active">Editar</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      <div class="row mb-3">
-        <div class="col-12">  
-            <div class="d-flex">
-              <a href="servicos.php">
-              <button type="button" class="btn btn-primary"><i class="fas fa-arrow-left mr-1"></i> Voltar</button>
-              </a> 
-            </div>
-          </div>
+    
+      <!-- Main content -->
+      
+      <section class="content">
+      <?php
+      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+      $edit_query = "SELECT * FROM servicos WHERE id='$id'";
+      $executar_query = mysqli_query($conn, $edit_query);
+      $edit_servicos = mysqli_fetch_assoc($executar_query);
+      ?>
+    <div class="container-fluid">
+    <div class="row mb-3">
+      <div class="col-12">  
+        <div class="d-flex">
+          <a href="servicos.php">
+          <button type="button" class="btn btn-primary"><i class="fas fa-arrow-left mr-1"></i> Voltar</button>
+          </a> 
         </div>
-        <div class="row">
-          <div class="col-12">
-            <?php 
-              if(isset($_SESSION['msg'])){
-                echo $_SESSION['msg'];
-                unset ($_SESSION['msg']);
-              }
-            ?>
-                      <div class="card">
-              <div class="card-header card-payflow">
-              <?php
-                      $editID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                      $editServico = "SELECT * FROM servicos WHERE id='$editID'";
-                      $query_Edit = mysqli_query($conn, $editServico);
-                      while($editInfo = mysqli_fetch_assoc($query_Edit)){
-                        $ServicosId = $editInfo['id'];
-                      }
-                    ?>
-                <h3 class="card-title"><i class="fas fa-tasks nav-icon pr-2"></i>Visualizar serviços</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="row">
-                    <div class="col-12 d-flex flex-row-reverse">
-                   
-                    <a href="listar_contratos.php" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
-                    <a href="edit_servico.php?id=<?=$ServicosId?>" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row mt-3">
-                    <div class="col-12">
-                    <?php
-
-                      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                      $viewServicos = "SELECT * FROM servicos WHERE id='$id'";
-                      $exec_view = mysqli_query($conn, $viewServicos);
-                      while($dados = mysqli_fetch_assoc($exec_view)){
-                          $nomeServico = $dados['servicos'];
-                          $idServicos = $dados['id'];
-                          $createdServicos = $dados['created'];
-                          $statusServicos = $dados['modo'];
-                          $formatCreated = date("d/m/Y",strtotime($createdServicos));
-
-                      }
-                    ?>
-                    <?php 
-                      if($statusServicos === 'Ativo'){
-
-                        echo"
-                        <table class='table table-striped'>
-                        <tbody class='table-borda'>
-                            <tr>
-                            <th scope='row'>ID</th>
-                            <td>{$idServicos}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Serviço</th>
-                            <td>{$nomeServico}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Criado em</th>
-                            <td>{$formatCreated}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Status</th>
-                            <td style='color: green; font-weight: 600;'>{$statusServicos}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                        ";
-                      }else{
-
-                        echo"
-                        <table class='table table-striped'>
-                        <tbody class='table-borda'>
-                            <tr>
-                            <th scope='row'>ID</th>
-                            <td>{$idServicos}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Nome</th>
-                            <td>{$nomeServico}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Criado em</th>
-                            <td>{$formatCreated}</td>
-                            </tr>
-                            <tr>
-                            <th scope='row'>Status</th>
-                            <td style='color: red; font-weight: 600;'>{$statusServicos}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                        ";
-
-                      }
-                    ?>
-                    </div>
-                </div>
-              </div>
+      </div>
+    </div>
+    <div class="card border-top">
+      <form method="POST" class="sec-pad" action="editar-servicos.php">
+      <input type="hidden" name="id" value="<?= $edit_servicos['id']?>">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="cep" class="font-weight-bold ml-2">Nome do Serviço</label>
+          <input type="text" name="servicos" value="<?=$edit_servicos['servicos']?>" class="form-control">
         </div>
-
-          </div>
+        <div class="form-group col-md-12">
+        <input type="checkbox" name="modo" value="Ativo" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
+      </div>
+       <div class="d-flex justify-content-end">
+      <button class="btn btn-success save-btn" type="submit">Salvar</button>
+      </div>
+      </div>
+      </div>
+      </div>
+      </form>
       </div>
     </section>
     <!-- /.content -->
@@ -349,12 +270,11 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-  setTimeout(function(){ 
-  var msg = document.getElementById("cliente_cad");
-  msg.parentNode.removeChild(msg);
-  }, 5000);
-</script>
+
+
+<!-- jQuery mask -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -365,6 +285,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -374,9 +296,21 @@
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
 <script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
@@ -389,5 +323,79 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- Page script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+    
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+  })
+</script>
 </body>
 </html>

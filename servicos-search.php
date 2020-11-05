@@ -258,9 +258,17 @@
                   </thead>
                   <tbody>
                     <?php 
+
                       $valor_pesquisa = $_GET['pesquisar'];
-                      $query_servicos = "SELECT * FROM servicos WHERE id LIKE '%$valor_pesquisa%' OR servicos LIKE '%$valor_pesquisa%' OR created LIKE '%$valor_pesquisa%' OR modo LIKE '%$valor_pesquisa%'";
+
+                      $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+                      $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+                      $qtd_result = 10;
+                      $start = ($qtd_result * $pagina) - $qtd_result;
+
+                      $query_servicos = "SELECT * FROM servicos WHERE id LIKE '%$valor_pesquisa%' OR servicos LIKE '%$valor_pesquisa%' OR created LIKE '%$valor_pesquisa%' OR modo LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";
                       $exec_query = mysqli_query($conn, $query_servicos); 
+                      $reg_servicos = mysqli_num_rows($exec_query);
                       while($todos_servicos = mysqli_fetch_assoc($exec_query)){
 
                         $tservicos = $todos_servicos['servicos'];
@@ -277,8 +285,8 @@
                                 <td style='color: green; font-weight: 600;'>{$tstatus}</td>
                                 <td>{$tdata}</td>
                                 <td>
-                                  <a href=' ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                  <a href=' ' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                  <a href='view-servicos.php?id=".$tid."' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                  <a href='edit_servico.php?id=".$tid."' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                                 <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                 </td>
                               </tr>
@@ -310,8 +318,8 @@
                                       <td style='color: red; font-weight: 600;'>{$tstatus}</td>
                                       <td>{$tdata}</td>
                                       <td>
-                                        <a href=' ' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                                        <a href=' ' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                                        <a href='view-servicos.php?id=".$tid."' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                                        <a href='edit_servico.php?id=".$tid."' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                                       <a href='' data-target='#apagar{$tid}' data-toggle='modal' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                                       </td>
                                     </tr>
@@ -336,20 +344,42 @@
                                     </div>";
                                 }
                         } 
+                        $result_pg = "SELECT COUNT(id) AS num_result FROM servicos";
+                        $resultado_pg = mysqli_query($conn, $result_pg);
+                        $row_pg = mysqli_fetch_assoc($resultado_pg);
+                        $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
+                        $max_links = 1;
                     ?>
                   </tbody>
                 </table>
+                <?php 
+                      if($exec_query === 0){
+                        echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                      }
+                    ?>
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-              </div>
+              <?php
+               echo "<div class='card-footer clearfix'>
+               <ul class='pagination pagination-sm m-0 float-right'>
+                 <li class='page-item'><a class='page-link' href='servicos.php?pagina=1'>&laquo;</a></li>";
+
+                 for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+                   if($pag_ant >= 1){
+                       echo "<li class='page-item'><a class='page-link' href='servicos.php?pagina=$pag_ant'>$pag_ant</a></li>";
+                   }
+               }
+             echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
+
+             for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+               if($pag_dep <= $quantidade_pg){
+                   echo "<li class='page-item'><a class='page-link' href='servicos.php?pagina=$pag_dep'>$pag_dep</a></li>";
+               }
+           }
+             echo"
+                 <li class='page-item'><a class='page-link' href='servicos.php?pagina=$quantidade_pg'>&raquo;</a></li>
+               </ul>
+             </div>";
+              ?>
             </div>
 
           </div>
