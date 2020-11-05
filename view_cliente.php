@@ -193,7 +193,36 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <?php
+      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+      $viewCliente = "SELECT * FROM clientes WHERE id='$id'";
+      $exec_view = mysqli_query($conn, $viewCliente);
+      while($dados = mysqli_fetch_assoc($exec_view)){
 
+          $idCliente = $dados['id'];
+          $nomeCliente = $dados['nome'];
+          $createdCliente = $dados['created'];
+          $tipoCliente = $dados['tipo_cliente'];
+          $nascCliente = $dados['nascimento'];
+          $cpfCliente = $dados['cpf'];
+          $rgCliente = $dados['rg'];
+          $cepCliente = $dados['cep'];
+          $bairroCliente = $dados['bairro'];
+          $enderecoCliente = $dados['endereco'];
+          $numCliente = $dados['numero'];
+          $cidadeCliente = $dados['cidade'];
+          $estadoCliente = $dados['estado'];
+          $paisCliente = $dados['pais'];
+          $telCliente = $dados['telefone'];
+          $celCliente = $dados['celular'];
+          $emailCliente = $dados['email'];
+          $comercialCliente = $dados['comercial'];
+          $pessoalCliente = $dados['pessoal'];
+          $statusCliente = $dados['modo'];
+          $formatCreated = date("d/m/Y",strtotime($createdCliente));
+          $formatNasc = date("d/m/Y",strtotime($nascCliente));
+      }
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -201,7 +230,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Nome do cliente</h1>
+            <h1 class="m-0 text-dark">Cliente: <?= $nomeCliente ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -258,37 +287,6 @@
                 <hr>
                 <div class="row mt-3">
                     <div class="col-12">
-                    <?php
-
-                      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-                      $viewCliente = "SELECT * FROM clientes WHERE id='$id'";
-                      $exec_view = mysqli_query($conn, $viewCliente);
-                      while($dados = mysqli_fetch_assoc($exec_view)){
-
-                          $idCliente = $dados['id'];
-                          $nomeCliente = $dados['nome'];
-                          $createdCliente = $dados['created'];
-                          $tipoCliente = $dados['tipo_cliente'];
-                          $nascCliente = $dados['nascimento'];
-                          $cpfCliente = $dados['cpf'];
-                          $rgCliente = $dados['rg'];
-                          $cepCliente = $dados['cep'];
-                          $bairroCliente = $dados['bairro'];
-                          $enderecoCliente = $dados['endereco'];
-                          $numCliente = $dados['numero'];
-                          $cidadeCliente = $dados['cidade'];
-                          $estadoCliente = $dados['estado'];
-                          $paisCliente = $dados['pais'];
-                          $telCliente = $dados['telefone'];
-                          $celCliente = $dados['celular'];
-                          $emailCliente = $dados['email'];
-                          $comercialCliente = $dados['comercial'];
-                          $pessoalCliente = $dados['pessoal'];
-                          $statusCliente = $dados['modo'];
-                          $formatCreated = date("d/m/Y",strtotime($createdCliente));
-                          $formatNasc = date("d/m/Y",strtotime($nascCliente));
-                      }
-                    ?>
                     <?php 
                       if($statusCliente === 'Ativo'){
 
