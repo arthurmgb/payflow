@@ -255,18 +255,36 @@
       <div class="form-row">
       <div class="form-group col-md-8">
     					<label class="font-weight-bold ml-2">Serviços</label>
-	    					<select class="form-control">
-	      						<option>Selecionar</option>
+	    					<select name="servico_id" class="form-control">
+                    <?php 
+                    $query_servicos = "SELECT * FROM servicos";
+                    $exec_servicos = mysqli_query($conn, $query_servicos);
+                    while($row_servico = mysqli_fetch_assoc($exec_servicos)){
+          
+                      $idServico = $row_servico['id'];
+                      $nomeServico = $row_servico['servicos'];
+                      $modoServico = $row_servico['modo'];
+
+                      if($modoServico === 'Ativo'){
+
+                        echo"
+                        <option value='$idServico'>$nomeServico</option> 
+                      ";
+
+                      }
+                      
+                    }
+                    ?>
 	    					</select>
             </div>
             <div class="form-group col-md-4">
             <label class="font-weight-bold ml-2">Criar novo serviço</label>
-        <button type="button" class="btn btn-success btn-block"><i class="fas fa-plus mr-1"></i> Novo Serviço</button>
+        <button data-toggle="modal" data-target="#newservico" type="button" class="btn btn-success btn-block"><i class="fas fa-plus mr-1"></i> Novo Serviço</button>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="cep" class="font-weight-bold ml-2">Meses</label>
+          <label for="meses" class="font-weight-bold ml-2">Meses</label>
           <input name="meses" type="text" class="form-control">
         </div>
       </div>
@@ -368,6 +386,29 @@
         <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
       </div>
       </form>
+    </div>
+  </div>
+</div>
+<!-- Modal Serviço -->
+<div class="modal fade" id="newservico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header card-payflow">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-tasks mr-2"></i>Adicionar Serviço</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <i aria-hidden="true" class="fas fa-times-circle"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="novo-servico-contrato.php" method="POST">
+      <label for="newservico" class="font-weight-bold ml-2">Nome do Serviço</label>
+      <input name="newservico" class="form-control" type="text" required>
+      </div>
+      <div style="background-color: #f7f7f7" class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-success"><i class="fas fa-plus mr-1"></i>Adicionar</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

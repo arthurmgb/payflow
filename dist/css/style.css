@@ -1,3 +1,7 @@
+@font-face{
+    font-family: 'Clock';
+    src: url(./fonts/DS-DIGI.TTF);
+}
 .nav-link{
     margin-bottom: 10px !important;
 }
@@ -245,4 +249,13 @@ tbody tr:hover{
 .check-cliente{
     transform: scale(1.6);
     cursor: pointer;
+}
+.clock{
+	background-color: #DDDDDD;
+    padding: 5px;
+    border: 30px solid #F3F3F3;
+    font-family: 'Clock';
+	font-size: 4em;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
 }

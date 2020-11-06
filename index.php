@@ -313,7 +313,7 @@
           </div>
         </div>
           <div class="row">
-              <div class="col-12">
+              <div class="col-6">
               <div class="card">
               <div class="card-header card-payflow" id="task-list">
                 <h3 class="card-title">
@@ -366,7 +366,26 @@
                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#taskmodal"><i class="fas fa-plus mr-1"></i>Nova tarefa</button>
               </div>
             </div>
-              </div>  
+              </div> 
+              <div class="col-6">
+              <div class="card">
+              <div class="card-header card-payflow" id="clock">
+                <h3 class="card-title">
+                  <i class="far fa-clock mr-1"></i>
+                  Horário atual
+                </h3>
+                <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <div id="MyClockDisplay" class="clock text-center" onload="showTime()"></div>    
+              </div>
+            </div>
+              </div> 
               </div>
               <div class="row">
               <div class="col-12">
@@ -416,7 +435,37 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
+}
 
+showTime();
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

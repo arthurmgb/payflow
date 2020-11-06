@@ -14,8 +14,10 @@ $status = 'Inativo';
 
 $udpate_servicos = "UPDATE servicos SET servicos='$servicos', modo='$status'  WHERE id='$id'";
 $udpate_servicos_query = mysqli_query($conn, $udpate_servicos);
+
 if(mysqli_affected_rows($conn)){
     header("Location: servicos.php");
+    $_SESSION['msg'] = "<div id='cliente_cad' class='alert alert-success' role='alert'>Serviço editado com sucesso.</div>";
 }else{
-    echo "se fudeu novamente";
+    header("Location: servicos.php");
 }
