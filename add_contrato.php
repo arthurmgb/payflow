@@ -249,7 +249,12 @@
         </div>
         <div class="form-group col-md-12 mt-2">
           <label for="nascimento" class="font-weight-bold ml-2">Valor</label>
-          <input name="valor" type="text" class="form-control">     
+          <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">R$</span>
+          </div>
+          <input name="valor" type="text" class="form-control">   
+          </div>  
         </div>
       </div>
       <div class="form-row">
@@ -285,7 +290,7 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="meses" class="font-weight-bold ml-2">Meses</label>
-          <input name="meses" type="text" class="form-control">
+          <input name="meses" value="12" type="number" class="form-control">
         </div>
       </div>
       <div class="form-row">
