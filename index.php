@@ -242,7 +242,7 @@
             ?>
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo "{$reg_clientes}"?></h3>
+                <h3><?= $reg_clientes ?></h3>
                 <p>Clientes cadastrados</p>
               </div>
               <div class="icon">
@@ -254,9 +254,14 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
+            <?php 
+              $result_contratos = "SELECT * FROM contratos WHERE ativo='1'";
+              $contratos_query = mysqli_query($conn, $result_contratos);
+              $reg_contratos = mysqli_num_rows($contratos_query);
+            ?>
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>0</h3>
+                <h3><?= $reg_contratos ?></h3>
                 <p>Contratos ativos</p>
               </div>
               <div class="icon">

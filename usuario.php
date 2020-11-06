@@ -251,10 +251,12 @@
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-4 border-right">
+                  <a style="color: #212529" href="saldo.php">
                     <div class="description-block">
-                      <h5 class="description-header">0</h5>
+                      <h5 class="description-header">R$ 0,00</h5>
                       <span class="description-text">SALDO</span>
                     </div>
+                    </a>
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
@@ -264,18 +266,27 @@
                     $reg_clientes = mysqli_num_rows($clientes_query);
                   ?>
                   <div class="col-sm-4 border-right">
+                  <a style="color: #212529" href="clientes.php">
                     <div class="description-block">
-                      <h5 class="description-header"><?php echo "{$reg_clientes}"?></h5>
+                      <h5 class="description-header"><?= $reg_clientes ?></h5>
                       <span class="description-text">CLIENTES</span>
                     </div>
+                    </a>
                     <!-- /.description-block -->
                   </div>
+                  <?php 
+                    $result_contratos = "SELECT * FROM contratos";
+                    $contratos_query = mysqli_query($conn, $result_contratos);
+                    $reg_contratos = mysqli_num_rows($contratos_query);
+                  ?>
                   <!-- /.col -->
                   <div class="col-sm-4">
+                  <a style="color: #212529" href="contratos.php">
                     <div class="description-block">
-                      <h5 class="description-header">0</h5>
+                      <h5 class="description-header"><?= $reg_contratos ?></h5>
                       <span class="description-text">VENDAS</span>
                     </div>
+                    </a>
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
