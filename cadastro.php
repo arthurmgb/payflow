@@ -105,7 +105,7 @@ if($btnCadUsuario){
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="dist/img/login.png" alt="">
+    <img src="dist/img/login.png" alt="PayFlow">
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -31,7 +31,7 @@ session_start();
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="dist/img/login.png" alt="">
+    <img src="dist/img/login.png" alt="Payflow">
   </div>
   <div class="card">
     <div class="card-body login-card-body">
