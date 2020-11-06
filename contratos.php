@@ -264,6 +264,7 @@
                   <?php
                    $query_contratos = "SELECT * FROM contratos";    
                    $exec_contratos = mysqli_query($conn, $query_contratos);
+                   $reg_contratos = mysqli_num_rows($exec_contratos);
                    while($row_contrato = mysqli_fetch_assoc($exec_contratos)){
 
                     $c_id = $row_contrato['id'];
@@ -276,11 +277,19 @@
                     $format_created = date('d/m/Y', strtotime($c_created)); 
                     $format_vencimento = date('d/m/Y', strtotime($c_vencimento)); 
                     $key_cliente = $row_contrato['id_cliente'];
+                    $key_servico = $row_contrato['id_servico'];
                     
+                    //Chamada nome do Cliente
                     $foreign_cliente = "SELECT * FROM clientes WHERE id='$key_cliente'";
                     $exec_foreign_cliente = mysqli_query($conn, $foreign_cliente);
                     while($row_Fcliente =  mysqli_fetch_assoc($exec_foreign_cliente)){
                       $fNome = $row_Fcliente['nome'];
+                    }
+                    //Chamada nome do Serviço
+                    $foreign_servico = "SELECT * FROM servicos WHERE id='$key_servico'";
+                    $exec_foreign_servico = mysqli_query($conn, $foreign_servico);
+                    while($row_Fservico =  mysqli_fetch_assoc($exec_foreign_servico)){
+                      $fServico = $row_Fservico['servicos'];
                     }
                     
                     if($c_ativo === '1'){
@@ -293,7 +302,7 @@
                        <td style='color: red;'>{$format_vencimento}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
                        <td>{$c_meses}</td>
-                       <td>SERVIÇO</td>
+                       <td>{$fServico}</td>
                        <td style='color: green; font-weight: 600;'>Ativo</td>
                        <td>
                          <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
@@ -313,7 +322,7 @@
                        <td style='color: red;'>{$format_vencimento}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
                        <td>{$c_meses}</td>
-                       <td>SERVIÇO</td>
+                       <td>{$fServico}</td>
                        <td style='color: red; font-weight: 600;'>Inativo</td>
                        <td>
                          <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
@@ -328,6 +337,11 @@
                   ?> 
                   </tbody>
                 </table>
+                <?php 
+                  if($reg_contratos === 0){
+                    echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                  }
+                ?>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
