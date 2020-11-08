@@ -193,7 +193,12 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
+  <?php 
+      $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+      $get_name = "SELECT nome FROM clientes WHERE id='$id'";
+      $exec_name = mysqli_query($conn, $get_name);
+      $cliente_name = mysqli_fetch_assoc($exec_name);
+  ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -201,7 +206,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Contratos: Nome do cliente</h1>
+            <h1 class="m-0 text-dark">Contratos: <?= $cliente_name['nome'] ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -239,52 +244,248 @@
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="fas fa-file-signature mr-2"></i>Listagem de Contratos</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
-              <!-- Inicio Listagem -->
-              <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header bg-list" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <i class="fas fa-angle-down mr-3"></i>Nome do Serviço
-                        </button>
-                        <button class="btn btn-link float-right" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        00/00/000
-                        </button>
-                        <button class="btn btn-link text-success float-right" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Ativo
-                        </button>
-                    </h2>                
+
+                <?php 
+                  $select_contratos = "SELECT * FROM contratos WHERE id_cliente='$id'";
+                  $query_select = mysqli_query($conn, $select_contratos);
+                  $reg_lista_contratos = mysqli_num_rows($query_select);
+                ?>
+
+                <?php 
+                  while($contrato = mysqli_fetch_assoc($query_select)):
+                  $id_contrato = $contrato['id'];  
+                  $criacao = date('d/m/Y', strtotime($contrato['created']));
+                  $key_servico = $contrato['id_servico'];
+                  $foreign_servico = "SELECT servicos FROM servicos WHERE id='$key_servico'";
+                  $exec_foreign_servico = mysqli_query($conn, $foreign_servico);
+                  $servico_name = mysqli_fetch_assoc($exec_foreign_servico);
+                ?>
+                
+                 <?php if($contrato['ativo'] == 1): ?>
+                  <div class="accordion" id="acordeao">   
+                    <div class='card'>
+                      <div class='card-header bg-list'>
+                        <h2 class='mb-0'>
+
+                            <button class='btn btn-link text-left' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            <i class='fas fa-angle-down mr-3'></i><?=$servico_name['servicos']?>
+                            </button>
+
+                            <button class='btn btn-link float-right' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            <?=$criacao?>
+                            </button>
+
+                            <button class='btn btn-link font-weight-bold text-success float-right' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            Ativo
+                            </button>                          
+                        </h2>                
+                      </div>
                     </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        Aqui virá a tabela de pagamentos referente ao contrato selecionado.
+                      <div id="contrato<?= $key_servico ?>" class="collapse" data-parent="#acordeao">  
+                            <table class='table table-bordered text-center'>
+                              <thead>                  
+                                <tr>
+                                  <th>Vencimento</th>
+                                  <th>Pagamento</th>
+                                  <th>Status</th>
+                                  <th>Valor</th>
+                                  <th>Valor Pago</th>
+                                  <th>Serviço</th>
+                                  <th>Ações</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <?php 
+                               $query_mensal = "SELECT * FROM mensalidades WHERE id_contrato='$id_contrato'";
+                               $exec_mensal = mysqli_query($conn, $query_mensal);
+                              ?>
+                              <?php while($mensalidade = mysqli_fetch_assoc($exec_mensal)):
+
+                                $vencimento = $mensalidade['vencimento'];
+                                $pagamento = $mensalidade['pagamento'];
+                                $status_pag = $mensalidade['status'];                               
+                                $valor_pag = $mensalidade['valor'];
+                                $chave_servico = $mensalidade['id_servico'];
+                                //Format datas
+                                $vencimento_format = date('d/m/Y', strtotime($vencimento)); 
+                                $pagamento_format = date('d/m/Y', strtotime($pagamento));
+                                //Buscando nome do serviço
+                                $query_servico = "SELECT * FROM servicos WHERE id='$chave_servico'";
+                                $exec_servico = mysqli_query($conn, $query_servico);
+                                $nome_servico = mysqli_fetch_assoc($exec_servico);
+                                $servico = $nome_servico['servicos']; 
+
+                              ?>
+                                <?php if($status_pag === 'pendente'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'></td>
+                                  <td style='color: #F39A00; font-weight: 600;'>Pendente</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
+                                    <a href='' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
+                                    <a href='' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    <a href='' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                                <?php if($status_pag === 'pago'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'><?= $pagamento_format ?></td>
+                                  <td style='color: green; font-weight: 600;'>Pago</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
+                                    <a href='' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                                <?php if($status_pag === 'anulada'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'></td>
+                                  <td style='color: gray; font-weight: 600;'>Anulada</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                              <?php endwhile ?>
+                              </tbody>
+                            </table>    
+                      </div>
+                  </div>
+                  <?php endif ?>
+
+                 <?php if($contrato['ativo'] == 0): ?>
+                  <div class="accordion" id="acordeao">   
+                    <div class='card'>
+                      <div class='card-header bg-list'>
+                        <h2 class='mb-0'>
+
+                            <button class='btn btn-link text-left' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            <i class='fas fa-angle-down mr-3'></i><?=$servico_name['servicos']?>
+                            </button>
+
+                            <button class='btn btn-link float-right' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            <?=$criacao?>
+                            </button>
+
+                            <button class='btn btn-link font-weight-bold text-danger float-right' type='button' data-toggle='collapse' data-target='#contrato<?= $key_servico ?>' aria-expanded='false' aria-controls='contrato<?= $key_servico ?>'>
+                            Inativo
+                            </button>                          
+                        </h2>                
+                      </div>
                     </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header bg-list" id="headingDois">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapseDois" aria-expanded="true" aria-controls="collapseDois">
-                        <i class="fas fa-angle-down mr-3"></i>Nome do Serviço
-                        </button>
-                        <button class="btn btn-link float-right" type="button" data-toggle="collapse" data-target="#collapseDois" aria-expanded="true" aria-controls="collapseDois">
-                        00/00/000
-                        </button>
-                        <button class="btn btn-link text-danger float-right" type="button" data-toggle="collapse" data-target="#collapseDois" aria-expanded="true" aria-controls="collapseDois">
-                        Inativo
-                        </button>
-                    </h2>                
-                    </div>
-                    <div id="collapseDois" class="collapse" aria-labelledby="headingDois" data-parent="#accordionExample">
-                    <div class="card-body">
-                        Aqui virá a tabela de pagamentos referente ao contrato selecionado.
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <!-- Fim Listagem -->
+                      <div id="contrato<?= $key_servico ?>" class="collapse" data-parent="#acordeao">  
+                            <table class='table table-bordered text-center'>
+                              <thead>                  
+                                <tr>
+                                  <th>Vencimento</th>
+                                  <th>Pagamento</th>
+                                  <th>Status</th>
+                                  <th>Valor</th>
+                                  <th>Valor Pago</th>
+                                  <th>Serviço</th>
+                                  <th>Ações</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <?php 
+                               $query_mensal = "SELECT * FROM mensalidades WHERE id_contrato='$id_contrato'";
+                               $exec_mensal = mysqli_query($conn, $query_mensal);
+                              ?>
+                              <?php while($mensalidade = mysqli_fetch_assoc($exec_mensal)):
+
+                                $vencimento = $mensalidade['vencimento'];
+                                $pagamento = $mensalidade['pagamento'];
+                                $status_pag = $mensalidade['status'];                               
+                                $valor_pag = $mensalidade['valor'];
+                                $chave_servico = $mensalidade['id_servico'];
+                                //Format datas
+                                $vencimento_format = date('d/m/Y', strtotime($vencimento)); 
+                                $pagamento_format = date('d/m/Y', strtotime($pagamento));
+                                //Buscando nome do serviço
+                                $query_servico = "SELECT * FROM servicos WHERE id='$chave_servico'";
+                                $exec_servico = mysqli_query($conn, $query_servico);
+                                $nome_servico = mysqli_fetch_assoc($exec_servico);
+                                $servico = $nome_servico['servicos']; 
+
+                              ?>
+                                <?php if($status_pag === 'pendente'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'></td>
+                                  <td style='color: #F39A00; font-weight: 600;'>Pendente</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
+                                    <a href='' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
+                                    <a href='' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    <a href='' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                                <?php if($status_pag === 'pago'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'><?= $pagamento_format ?></td>
+                                  <td style='color: green; font-weight: 600;'>Pago</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
+                                    <a href='' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                                <?php if($status_pag === 'anulada'): ?> 
+                                <tr>
+                                  <td style='color: red;'><?= $vencimento_format ?></td>
+                                  <td style='color: green;'></td>
+                                  <td style='color: gray; font-weight: 600;'>Anulada</td>
+                                  <td style='color: green; font-weight: 600;'>R$ <?= $valor_pag ?></td>
+                                  <td style='color: #007BFF; font-weight: 600;'></td>
+                                  <td><?= $servico ?></td>      
+                                  <td>
+                                    <a href='' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
+                                  </td>
+                                </tr>
+                                <?php endif ?>
+
+                              <?php endwhile ?>
+                              </tbody>
+                            </table>    
+                      </div>
+                  </div>
+
+                  <?php endif ?>
+                  <?php endwhile ?>
+
+                <?php
+                if($reg_lista_contratos === 0){
+                  echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                }
+                ?>
+
               </div>
             </div>
           </div>
