@@ -230,7 +230,7 @@
               <div class="icon">
                 <i class="fas fa-cash-register"></i>
               </div>
-              <a href="saldo.php" class="small-box-footer">Ver mais<i class="fas fa-arrow-circle-right ml-2"></i></a>
+              <a href="saldo.php" class="small-box-footer">Mais detalhes<i class="fas fa-arrow-circle-right ml-2"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -248,7 +248,7 @@
               <div class="icon">
                 <i class="fas fa-users"></i>
               </div>
-              <a href="clientes.php" class="small-box-footer">Ver mais<i class="fas fa-arrow-circle-right ml-2"></i></a>
+              <a href="clientes.php" class="small-box-footer">Ver todos<i class="fas fa-arrow-circle-right ml-2"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -267,21 +267,27 @@
               <div class="icon">
                 <i class="fas fa-file-signature"></i>
               </div>
-              <a href="contratos.php" class="small-box-footer">Ver mais<i class="fas fa-arrow-circle-right ml-2"></i></a>
+              <a href="contratos.php" class="small-box-footer">Ver todos<i class="fas fa-arrow-circle-right ml-2"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
+            <?php
+              $atual = date('Y-m-d'); 
+              $query_inadimplentes = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento < '$atual'";
+              $exec_inadimplentes = mysqli_query($conn, $query_inadimplentes);
+              $reg_inadimplentes = mysqli_num_rows($exec_inadimplentes);
+            ?>
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>0</h3>
+                <h3><?= $reg_inadimplentes ?></h3>
                 <p>Inadimplência</p>
               </div>
               <div class="icon">
                 <i class="fas fa-sort-amount-down"></i>
               </div>
-              <a href="relatorios.php" class="small-box-footer">Ver mais<i class="fas fa-arrow-circle-right ml-2"></i></a>
+              <a href="inadimplentes.php" class="small-box-footer">Mais detalhes<i class="fas fa-arrow-circle-right ml-2"></i></a>
             </div>
           </div>
           </div>

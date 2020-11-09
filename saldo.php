@@ -232,32 +232,18 @@
           </div>
         </div>
         <div class="row">
-        <div class="col-3">
-            <div class="small-box bg-success">
+        <div class="col-12">
+            <div class="small-box bg-success mb-3">
               <div class="inner">
                 <h3>R$ 0,00</h3>
-
-                <p>Saldo</p>
+                <p class="mb-2" style="font-size: 1.2em;">Saldo em caixa</p>
               </div>
               <div class="icon">
                 <i class="fas fa-cash-register"></i>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header card-payflow">
-                <h3 class="card-title"><i class="fas fa-tasks mr-1"></i> Serviços vendidos</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>
-              </div>
-              <div class="card-body">
-                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-            </div>
         </div>
-        <div class="col-9">
+        <div class="col-12">
         <div class="card">
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="fas fa-cash-register mr-2"></i>Lançamentos</h3>
@@ -267,94 +253,20 @@
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
                       <th>Cliente</th>
                       <th>E-mail</th>
                       <th>Serviço</th>
-                      <th >Data do lançamento</th>
-                      <th >Valor lançado</th>
+                      <th>Data do lançamento</th>
+                      <th>Valor lançado</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>7.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>8.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>9.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
-                    </tr>
-                    <tr>
-                      <td>10.</td>
-                      <td>Marcos Antonio de Freitas Júnior</td>
-                      <td>marcossd@gmail.com</td>
-                      <td>Site</td>
-                      <td>10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 50,50</td>
+                      <td>Cliente</td>
+                      <td>cliente@gmail.com</td>
+                      <td>Serviço</td>
+                      <td style="color: green;">10/10/2020</td>
+                      <td style="color: green;font-weight: 600">R$ 500.00</td>
                     </tr>
                   </tbody>
                 </table>

@@ -201,12 +201,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Mensalidades</h1>
+            <h1 class="m-0 text-dark">Inadimplências</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Mensalidades</li>
+              <li class="breadcrumb-item">Mensalidades</li>
+              <li class="breadcrumb-item active">Inadimplência</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -218,7 +219,7 @@
     <section class="content">
       <div class="container-fluid">
       <div class="row mb-3">
-        <div class="col-12"> 
+        <div class="col-12">  
         <div class="d-flex flex-row-reverse">
           <form class="form-inline" method="GET" action="mensalidades-search.php">
               <div class="form-group">
@@ -254,11 +255,11 @@
                   </thead>
                   <tbody>
                   <?php
-                    $atual = date('Y-m'); 
-                    $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
-                    $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
-                    $reg_mensalidades = mysqli_num_rows($exec_mensalidades);
-                    while($mensalidade = mysqli_fetch_assoc($exec_mensalidades)){
+                    $atual = date('Y-m-d'); 
+                    $query_inad = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento < '$atual'";
+                    $exec_inad = mysqli_query($conn, $query_inad);
+                    $reg_inad = mysqli_num_rows($exec_inad);
+                    while($mensalidade = mysqli_fetch_assoc($exec_inad)){
                       
                       $id_mensalidade = $mensalidade['id'];
                       $id_cliente = $mensalidade['id_cliente'];
@@ -425,19 +426,19 @@
                   </tbody>
                 </table>
                 <?php 
-                    if($reg_mensalidades === 0){
+                    if($reg_inad === 0){
                       setlocale(LC_ALL, "pt-BR.UTF-8");
                       $mes = strftime("%B");
-                      echo "<div class='alert alert-registro'>Nenhuma mensalidade encontrada para o mês de {$mes}.</div>";
+                      echo "<div class='alert alert-registro'>Nenhuma inadimplência encontrada para o mês de {$mes}.</div>";
                     }
                   ?>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <div class="float-left">
+              <div class="float-left">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" onchange='window.location.assign("inadimplentes.php")' class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1">Inadimplentes</label>
+                    <input type="checkbox" onchange='window.location.assign("mensalidades.php")' class="custom-control-input" id="customSwitch2" checked>
+                    <label class="custom-control-label" for="customSwitch2">Inadimplentes</label>
                   </div>
                 </div>
                 <ul class="pagination pagination-sm m-0 float-right">

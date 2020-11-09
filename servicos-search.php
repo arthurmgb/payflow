@@ -294,13 +294,13 @@
                               <div class='modal-dialog modal-dialog-centered'>
                                   <div class='modal-content'>
                                   <div class='modal-header cor-header'>
-                                      <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                      <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar serviço</h5>
                                       <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                       <i class='fas fa-times-circle'></i>
                                       </button>
                                   </div>
                                   <div class='modal-body'>
-                                      <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                                      <p class='h5'>Deseja realmente apagar esse serviço?</p>
                                   </div>
                                   <div class='modal-footer cor-footer'>
                                       <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
@@ -327,13 +327,13 @@
                                     <div class='modal-dialog modal-dialog-centered'>
                                         <div class='modal-content'>
                                         <div class='modal-header cor-header'>
-                                            <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar cliente</h5>
+                                            <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar serviço</h5>
                                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                             <i class='fas fa-times-circle'></i>
                                             </button>
                                         </div>
                                         <div class='modal-body'>
-                                            <p class='h5'>Deseja realmente apagar esse cliente?</p>
+                                            <p class='h5'>Deseja realmente apagar esse serviço?</p>
                                         </div>
                                         <div class='modal-footer cor-footer'>
                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
@@ -352,11 +352,11 @@
                     ?>
                   </tbody>
                 </table>
-                <?php 
-                      if($exec_query === 0){
-                        echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
-                      }
-                    ?>
+                <?php
+                  if($reg_servicos === 0){
+                    echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
+                  }
+                  ?>
               </div>
               <?php
                echo "<div class='card-footer clearfix'>
