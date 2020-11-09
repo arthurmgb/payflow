@@ -302,11 +302,13 @@
                               ?>
                               <?php while($mensalidade = mysqli_fetch_assoc($exec_mensal)):
 
+                                $id_mensalidade = $mensalidade['id'];
                                 $vencimento = $mensalidade['vencimento'];
                                 $pagamento = $mensalidade['pagamento'];
                                 $status_pag = $mensalidade['status'];                               
                                 $valor_pag = $mensalidade['valor'];
                                 $chave_servico = $mensalidade['id_servico'];
+                                $chave_cliente = $mensalidade['id_cliente'];
                                 //Format datas
                                 $vencimento_format = date('d/m/Y', strtotime($vencimento)); 
                                 $pagamento_format = date('d/m/Y', strtotime($pagamento));
@@ -314,7 +316,7 @@
                                 $query_servico = "SELECT * FROM servicos WHERE id='$chave_servico'";
                                 $exec_servico = mysqli_query($conn, $query_servico);
                                 $nome_servico = mysqli_fetch_assoc($exec_servico);
-                                $servico = $nome_servico['servicos']; 
+                                $servico = $nome_servico['servicos'];
 
                               ?>
                                 <?php if($status_pag === 'pendente'): ?> 
@@ -326,12 +328,107 @@
                                   <td style='color: #007BFF; font-weight: 600;'></td>
                                   <td><?= $servico ?></td>      
                                   <td>
-                                    <a href='' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
-                                    <a href='' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
-                                    <a href='' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
-                                    <a href='' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
+                                    <a href='' data-toggle='modal' data-target='#pagar<?= $id_mensalidade ?>' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
+                                    <a href='' data-toggle='modal' data-target='#editar<?= $id_mensalidade ?>' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
+                                    <a href='' data-toggle='modal' data-target='#anular<?= $id_mensalidade ?>' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    <a href='' data-toggle='modal' data-target='#apagar<?= $id_mensalidade ?>' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
                                   </td>
                                 </tr>
+                                <!-- Excluir -->
+                                <div class='modal fade' id='apagar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header cor-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Excluir mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente excluir essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='excluir-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-danger'>Excluir</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Excluir -->
+                                <!-- Anular -->
+                                <div class='modal fade' id='anular<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-secondary'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-ban mr-2'></i>Anular mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente anular essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='anular-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-secondary'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Anular -->
+                                <!-- Pagar -->
+                                <div class='modal fade' id='pagar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-success'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-dollar-sign mr-2'></i>Pagar mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Confirmar pagamento?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='pagar-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-success'>Pagar</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Pagar -->
+                                <!-- Editar -->
+                                <div class='modal fade' id='editar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-warning'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-edit mr-2'></i>Editar mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle text-dark'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Vencimento</p>
+                                        <form action="editar-mensal.php" method="POST">
+                                        <div class="row mt-3">
+                                          <div class="col-12">
+                                          <div class="form-group">
+                                            <input type="hidden" value='<?= $chave_cliente ?>' name="cliente">
+                                            <input type="hidden" value='<?= $id_mensalidade ?>' name="mensalidade">
+                                            <input name='newdate' type="date" class="form-control" id="editar_data" required>
+                                          </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <button type='submit' class='btn btn-success'>Salvar</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Editar -->
                                 <?php endif ?>
 
                                 <?php if($status_pag === 'pago'): ?> 
@@ -344,9 +441,30 @@
                                   <td><?= $servico ?></td>      
                                   <td>
                                     <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
-                                    <a href='' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                    <a href='' data-toggle='modal' data-target='#estornar<?= $id_mensalidade ?>' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
                                   </td>
                                 </tr>
+                                <!-- Estornar -->
+                                <div class='modal fade' id='estornar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-primary'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-dollar-sign mr-2'></i>Estornar pagamento</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente estornar esse pagamento?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='estornar-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-primary'>Estornar</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Estornar -->
                                 <?php endif ?>
 
                                 <?php if($status_pag === 'anulada'): ?> 
@@ -358,9 +476,30 @@
                                   <td style='color: #007BFF; font-weight: 600;'></td>
                                   <td><?= $servico ?></td>      
                                   <td>
-                                    <a href='' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
+                                    <a href='' data-toggle='modal' data-target='#reabrir<?= $id_mensalidade ?>' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
                                   </td>
                                 </tr>
+                                <!-- Reabrir -->
+                                <div class='modal fade' id='reabrir<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-success'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class="fas fa-undo mr-2"></i>Reabrir mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente reabrir essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='reabrir-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-success'>Reabrir</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Reabrir -->
                                 <?php endif ?>
 
                               <?php endwhile ?>
@@ -409,12 +548,14 @@
                                $exec_mensal = mysqli_query($conn, $query_mensal);
                               ?>
                               <?php while($mensalidade = mysqli_fetch_assoc($exec_mensal)):
-
+                                
+                                $id_mensalidade = $mensalidade['id'];
                                 $vencimento = $mensalidade['vencimento'];
                                 $pagamento = $mensalidade['pagamento'];
                                 $status_pag = $mensalidade['status'];                               
                                 $valor_pag = $mensalidade['valor'];
                                 $chave_servico = $mensalidade['id_servico'];
+                                $chave_cliente = $mensalidade['id_cliente'];
                                 //Format datas
                                 $vencimento_format = date('d/m/Y', strtotime($vencimento)); 
                                 $pagamento_format = date('d/m/Y', strtotime($pagamento));
@@ -434,12 +575,107 @@
                                   <td style='color: #007BFF; font-weight: 600;'></td>
                                   <td><?= $servico ?></td>      
                                   <td>
-                                    <a href='' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
-                                    <a href='' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
-                                    <a href='' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
-                                    <a href='' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
+                                    <a href='' data-toggle='modal' data-target='#pagar<?= $id_mensalidade ?>' class='btn btn-success mr-1 my-1' title='Pagar'><i class='fas fa-dollar-sign mr-1'></i>Pagar</a>
+                                    <a href='' data-toggle='modal' data-target='#editar<?= $id_mensalidade ?>' class='btn btn-warning mr-1 my-1' title='Editar'><i class='fas fa-edit mr-1'></i>Editar</a>
+                                    <a href='' data-toggle='modal' data-target='#anular<?= $id_mensalidade ?>' class='btn btn-secondary mr-1 my-1' title='Anular'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    <a href='' data-toggle='modal' data-target='#apagar<?= $id_mensalidade ?>' class='btn btn-danger mr-1 my-1' title='Excluir'><i class='fas fa-trash mr-1'></i>Excluir</a>
                                   </td>
                                 </tr>
+                                <!-- Excluir -->
+                                <div class='modal fade' id='apagar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header cor-header'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Excluir mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente excluir essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='excluir-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-danger'>Excluir</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Excluir -->
+                                <!-- Anular -->
+                                <div class='modal fade' id='anular<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-secondary'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-ban mr-2'></i>Anular mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente anular essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='anular-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-secondary'><i class='fas fa-ban mr-1'></i>Anular</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Anular -->
+                                <!-- Pagar -->
+                                <div class='modal fade' id='pagar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-success'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-dollar-sign mr-2'></i>Pagar mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Confirmar pagamento?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='pagar-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-success'>Pagar</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Pagar -->
+                                <!-- Editar -->
+                                <div class='modal fade' id='editar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-warning'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-edit mr-2'></i>Editar mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle text-dark'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Vencimento</p>
+                                        <form action="editar-mensal.php" method="POST">
+                                        <div class="row mt-3">
+                                          <div class="col-12">
+                                          <div class="form-group">
+                                            <input type="hidden" value='<?= $chave_cliente ?>' name="cliente">
+                                            <input type="hidden" value='<?= $id_mensalidade ?>' name="mensalidade">
+                                            <input name='newdate' type="date" class="form-control" id="editar_data" required>
+                                          </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <button type='submit' class='btn btn-success'>Salvar</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Editar -->
                                 <?php endif ?>
 
                                 <?php if($status_pag === 'pago'): ?> 
@@ -452,9 +688,30 @@
                                   <td><?= $servico ?></td>      
                                   <td>
                                     <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
-                                    <a href='' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                    <a href='' data-toggle='modal' data-target='#estornar<?= $id_mensalidade ?>' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
                                   </td>
                                 </tr>
+                                <!-- Estornar -->
+                                <div class='modal fade' id='estornar<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-primary'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-dollar-sign mr-2'></i>Estornar pagamento</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente estornar esse pagamento?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='estornar-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-primary'>Estornar</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Estornar -->
                                 <?php endif ?>
 
                                 <?php if($status_pag === 'anulada'): ?> 
@@ -466,9 +723,30 @@
                                   <td style='color: #007BFF; font-weight: 600;'></td>
                                   <td><?= $servico ?></td>      
                                   <td>
-                                    <a href='' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
+                                  <a href='' data-toggle='modal' data-target='#reabrir<?= $id_mensalidade ?>' class='btn btn-success mr-1 my-1' title='Reabrir'><i class="fas fa-undo mr-1"></i>Reabrir</a>
                                   </td>
                                 </tr>
+                                <!-- Reabrir -->
+                                <div class='modal fade' id='reabrir<?= $id_mensalidade ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                  <div class='modal-dialog modal-dialog-centered'>
+                                    <div class='modal-content'>
+                                    <div class='modal-header bg-success'>
+                                        <h5 class='modal-title' id='exampleModalLabel'><i class="fas fa-undo mr-2"></i>Reabrir mensalidade</h5>
+                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <i class='fas fa-times-circle'></i>
+                                        </button>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <p class='h5'>Deseja realmente reabrir essa mensalidade?</p>
+                                    </div>
+                                    <div class='modal-footer cor-footer'>
+                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                        <a href='reabrir-mensal.php?id=<?= $id_mensalidade ?>&cliente=<?= $chave_cliente ?>' class='btn btn-success'>Reabrir</a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Reabrir -->
                                 <?php endif ?>
 
                               <?php endwhile ?>
@@ -507,6 +785,12 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("remove");
+  msg.parentNode.removeChild(msg);   
+  }, 3000);
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

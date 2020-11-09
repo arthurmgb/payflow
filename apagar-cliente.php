@@ -9,8 +9,11 @@ if(!empty($id)){
 
     if(mysqli_affected_rows($conn)){
         header("Location: clientes.php");
+        $_SESSION['msg'] = "<div id='cliente_cad' class='alert alert-success' role='alert'>
+        Cliente apagado com sucesso.
+        </div>";
     }else{
-        header("Location: 404.php");
+        header("Location: clientes.php");
     }
 }
 else{

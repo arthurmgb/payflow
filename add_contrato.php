@@ -358,7 +358,7 @@
          <tbody>
          
         <?php 
-          $query_clientes = "SELECT * FROM clientes";
+          $query_clientes = "SELECT * FROM clientes WHERE modo='Ativo'";
           $exec_query = mysqli_query($conn, $query_clientes);
           while($row_cliente = mysqli_fetch_assoc($exec_query)){
 

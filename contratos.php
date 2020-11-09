@@ -260,7 +260,7 @@
                       <th>Ações</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody>                  
                   <?php
                    $query_contratos = "SELECT * FROM contratos";    
                    $exec_contratos = mysqli_query($conn, $query_contratos);
@@ -291,6 +291,14 @@
                     while($row_Fservico =  mysqli_fetch_assoc($exec_foreign_servico)){
                       $fServico = $row_Fservico['servicos'];
                     }
+
+                    //Chamada fim do contrato
+                    $venc_query =  "SELECT * FROM mensalidades WHERE id_contrato='$c_id' ORDER BY vencimento DESC LIMIT 1";
+                    $venc_exec = mysqli_query($conn, $venc_query);
+                    $venc_final = mysqli_fetch_assoc($venc_exec);
+                    $fim_contrato = $venc_final['vencimento'];
+ 
+                    $fim_contrato_format = date('d/m/Y', strtotime($fim_contrato));
                     
                     if($c_ativo === '1'){
 
@@ -299,18 +307,56 @@
                        <td>{$c_id}</td>
                        <td>{$fNome}</td>
                        <td style='color: green;'>{$format_created}</td>
-                       <td style='color: red;'>{$format_vencimento}</td>
+                       <td style='color: red;'>{$fim_contrato_format}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
                        <td>{$c_meses}</td>
                        <td>{$fServico}</td>
                        <td style='color: green; font-weight: 600;'>Ativo</td>
                        <td>
-                         <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                         <a href='view-contrato.php?id={$c_id}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
                          <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                         <a href='' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
-                         <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                         <a href='' data-toggle='modal' data-target='#desativar{$c_id}' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
+                         <a href='' data-toggle='modal' data-target='#apagar{$c_id}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                        </td>
                      </tr>
+                     <div class='modal fade' id='apagar{$c_id}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                          <div class='modal-header cor-header'>
+                              <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar contrato</h5>
+                              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <i class='fas fa-times-circle'></i>
+                              </button>
+                          </div>
+                          <div class='modal-body'>
+                              <p class='h5'>Deseja realmente apagar esse contrato?</p>
+                          </div>
+                          <div class='modal-footer cor-footer'>
+                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                              <a href='apagar-contrato.php?id={$c_id}' class='btn btn-danger'>Apagar</a>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='modal fade' id='desativar{$c_id}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                          <div class='modal-header bg-secondary'>
+                              <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-ban mr-2'></i>Desativar contrato</h5>
+                              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <i class='fas fa-times-circle'></i>
+                              </button>
+                          </div>
+                          <div class='modal-body'>
+                              <p class='h5'>Deseja realmente desativar esse contrato?</p>
+                          </div>
+                          <div class='modal-footer cor-footer'>
+                              <button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Cancelar</button>
+                              <a href='desativar-contrato.php?id={$c_id}' class='btn btn-secondary'><i class='fas fa-ban mr-1'></i>Desativar</a>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
                       ";
 
                     }else{
@@ -319,18 +365,56 @@
                        <td>{$c_id}</td>
                        <td>{$fNome}</td>
                        <td style='color: green;'>{$format_created}</td>
-                       <td style='color: red;'>{$format_vencimento}</td>
+                       <td style='color: red;'>{$fim_contrato_format}</td>
                        <td style='color: green; font-weight: 600;'>R$ {$c_valor}</td>
                        <td>{$c_meses}</td>
                        <td>{$fServico}</td>
                        <td style='color: red; font-weight: 600;'>Inativo</td>
                        <td>
-                         <a href='' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                         <a href='view-contrato.php?id={$c_id}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
                          <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
-                         <a href='' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
-                         <a href='' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                         <a href='' data-toggle='modal' data-target='#ativar{$c_id}' class='btn btn-success btn-xs mr-1' title='Ativar'><i class='fas fa-check'></i></a>
+                         <a href='' data-toggle='modal' data-target='#apagar{$c_id}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                        </td>
                      </tr>
+                     <div class='modal fade' id='apagar{$c_id}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                          <div class='modal-header cor-header'>
+                              <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Apagar contrato</h5>
+                              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <i class='fas fa-times-circle'></i>
+                              </button>
+                          </div>
+                          <div class='modal-body'>
+                              <p class='h5'>Deseja realmente apagar esse contrato?</p>
+                          </div>
+                          <div class='modal-footer cor-footer'>
+                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                              <a href='apagar-contrato.php?id={$c_id}' class='btn btn-danger'>Apagar</a>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='modal fade' id='ativar{$c_id}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog modal-dialog-centered'>
+                          <div class='modal-content'>
+                          <div class='modal-header bg-success'>
+                              <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-check mr-2'></i>Reativar contrato</h5>
+                              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <i class='fas fa-times-circle'></i>
+                              </button>
+                          </div>
+                          <div class='modal-body'>
+                              <p class='h5'>Deseja reativar esse contrato?</p>
+                          </div>
+                          <div class='modal-footer cor-footer'>
+                              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                              <a href='ativar-contrato.php?id={$c_id}' class='btn btn-success'><i class='fas fa-check mr-1'></i>Ativar</a>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
                       ";
                     }
                    }
