@@ -221,7 +221,7 @@
 			<h4 class="m-2 text-dark ml-3">Filtrar Relatórios</h4>
 				<form class="sec-pad">
 					<div class="form-row">
-						<div class="form-group col-md-4 mt-2">
+						<div class="form-group col-md-6 mt-2">
 							<label class="font-weight-bold ml-2">Status</label>
 								<select class="form-control">
 		      						<option>Todos</option>
@@ -230,33 +230,7 @@
 		      						<option>Anulada</option>
 		    					</select>
 		    			</div>
-	    			<div class="form-group col-md-4 mt-2">
-    					<label class="font-weight-bold ml-2">Forma de pagamento</label>
-	    					<select class="form-control">
-	      						<option>Todos</option>
-	    						<option>Cartão de Crédito</option>
-	      						<option>Cartão de Débito</option>
-	      						<option>Depósito em conta</option>
-	      						<option>Boleto Bancário</option>
-	      						<option>Cheque</option>
-	      						<option>Saldo PagSeguro</option>
-	      						<option>Transferência Bancária</option>
-	      						<option>PIC PAY</option>
-	      						<option>NU BANK</option>
-	      						<option>NEXT</option>
-	      						<option>BB</option>
-	      						<option>CAIXA TED</option>
-	      						<option>CAIXA DOC</option>
-	      						<option>CAIXA LOTERIA</option>
-	      						<option>CAIXA FÁCIL</option>
-	      						<option>CAIXA AQUI</option>
-	      						<option>ITAU TED</option>
-	      						<option>ITAU DOC</option>
-	      						<option>ITAU ENVELOPE</option>
-	      						<option>CAIXA ENVELOPE</option>
-	    					</select>
-	    			</div>
-	    			<div class="form-group col-md-4 mt-2">
+	    			<div class="form-group col-md-6 mt-2">
     					<label class="font-weight-bold ml-2">Serviço</label>
 	    					<select class="form-control">
 	      						<option>Todos</option>
@@ -285,17 +259,9 @@
 						<input type="date" name="vencimento" class="form-control">
 					</div>
 				</div>
-				
 			
-				<div class="form-group col-md-13 mt-2">
-					<label class="font-weight-bold ml-2">Finalizado por</label>
-					<select class="form-control selectpicker" data-live-search="true">
-						<option >Todos</option>
-					</select>
-				</div>
-
-				<div class="d-flex justify-content-end">
-      				<a href="" class="btn btn-success btn-lg btn-block">Buscar</a>
+				<div class="d-flex">
+      		<a href="" class="btn btn-success btn-lg btn-block">Buscar</a>
       	</div>
 
 			</form>
@@ -312,6 +278,7 @@
 			</div>
 
 			<div class="table-responsive">
+
 				<table class="table table-striped">
 				  
 				  <thead>
@@ -320,7 +287,6 @@
 				      <th>Serviço</th>
 				      <th>Valor</th>
 				      <th>Status</th>
-				      <th width="15%">Finalizado por</th>
 				      <th>Vencimento</th>
 				      <th>Data de pagamento</th>
 				    </tr>
@@ -334,16 +300,15 @@
 				      <td></td>
 				      <td></td>
 				      <td></td>
-				      <td></td>
 				    </tr>
 
 				  </tbody>
+
 				</table>
 
 			</div>
 
       	</div>
-
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
