@@ -353,11 +353,8 @@
                   </tbody>
                 </table>
                 <?php
-                  
                   if($reg_servicos === 0){
                     echo "<div class='alert alert-registro'>Nenhum registro encontrado.</div>";
-                  }else{
-
                   }
                   ?>
               </div>

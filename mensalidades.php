@@ -231,16 +231,20 @@
         </div>
         <div class="row">
           <div class="col-12">
+          <?php 
+              if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset ($_SESSION['msg']);
+              }
+            ?>
             <div class="card">
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="far fa-money-bill-alt mr-2"></i>Lançamentos</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
                       <th>Cliente</th>
                       <th>Valor</th>
                       <th>Serviço</th>
@@ -249,147 +253,184 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>7.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    <tr>
-                      <td>8.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>9.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>10.</td>
-                      <td>João Flávio de Assis Araújo Rodrigues</td>
-                      <td style="color: green; font-weight: 600;">R$ 539,90</td>
-                      <td>Hospedagem</td>
-                      <td style="color: red;">26/09/2020</td>
-                      <td>
-                        <a href="" class="btn btn-primary btn-xs mr-1" title="Vizualizar"><i class="fas fa-eye"></i></a>
-                        <a href="" style="padding: 2px 8px;" class="btn btn-success btn-xs mr-1" title="Pagar"><i class="fas fa-dollar-sign"></i></a>
-                        <a href="" class="btn btn-warning btn-xs mr-1" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="" class="btn btn-secondary btn-xs mr-1" title="Desativar"><i class="fas fa-ban"></i></a>
-                        <a href="" class="btn btn-danger btn-xs mr-1" title="Excluir"><i class="fas fa-trash"></i></a>
-                      </td>
-                    </tr>
+                  <?php
+                    $atual = date('Y-m'); 
+                    $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
+                    $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
+                    $reg_mensalidades = mysqli_num_rows($exec_mensalidades);
+                    while($mensalidade = mysqli_fetch_assoc($exec_mensalidades)){
+                      
+                      $id_mensalidade = $mensalidade['id'];
+                      $id_cliente = $mensalidade['id_cliente'];
+                      $valor_mensal = $mensalidade['valor'];
+                      $id_servico = $mensalidade['id_servico']; 
+                      $vencimento = $mensalidade['vencimento'];
+                      
+                      //Formatar vencimento
+                      $venc_formatado = date('d/m/Y', strtotime($vencimento));
+                      
+                      //Selecionar cliente
+                      $select_cliente= "SELECT * FROM clientes WHERE id='$id_cliente'";
+                      $exec_cliente = mysqli_query($conn, $select_cliente);
+                      $nome = mysqli_fetch_assoc($exec_cliente);
+                      $nome_cliente = $nome['nome'];
+                      
+                      //Selecionar serviço
+                      $select_servico= "SELECT * FROM servicos WHERE id='$id_servico'";
+                      $exec_servico = mysqli_query($conn, $select_servico);
+                      $nome = mysqli_fetch_assoc($exec_servico);
+                      $nome_servico = $nome['servicos'];
+
+                      echo"
+                        <tr>
+                          <td>$nome_cliente</td>
+                          <td style='color: green; font-weight: 600;'>R$ $valor_mensal</td>
+                          <td>$nome_servico</td>
+                          <td style='color: red;'>$venc_formatado</td>
+                          <td>
+                            <a href='' data-toggle='modal' data-target='#view$id_mensalidade' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
+                            <a href='' data-toggle='modal' data-target='#pagar$id_mensalidade' style='padding: 2px 8px;' class='btn btn-success btn-xs mr-1' title='Pagar'><i class='fas fa-dollar-sign'></i></a>
+                            <a href='' data-toggle='modal' data-target='#editar$id_mensalidade' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
+                            <a href='' data-toggle='modal' data-target='#anular$id_mensalidade' class='btn btn-secondary btn-xs mr-1' title='Anular'><i class='fas fa-ban'></i></a>
+                            <a href='' data-toggle='modal' data-target='#apagar$id_mensalidade' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
+                          </td>
+                        </tr>
+                        <!-- View -->
+                        <div class='modal fade' id='view$id_mensalidade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header bg-primary'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='far fa-money-bill-alt mr-2'></i>Mensalidade</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                              <div class='row'>
+                                <div class='col-12'>
+                                  <ul class='list-group'>
+                                  <li class='list-group-item'><b>Cliente: </b><span class='ml-1'>$nome_cliente</span></li>
+                                  <li class='list-group-item'><b>Serviço: </b><span class='ml-1'>$nome_servico</span></li>
+                                  <li class='list-group-item'><b>Valor: </b><span style='color: green; font-weight: 600;' class='ml-1'>R$ $valor_mensal</span></li>
+                                  <li class='list-group-item'><b>Status: </b><span style='color: #F39A00; font-weight: 600;' class='ml-1'>Pendente</span></li>
+                                  <li class='list-group-item'><b>Vencimento: </b><span style='color: red;' class='ml-1'>$venc_formatado</span></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- View -->
+                        <!-- Excluir -->
+                        <div class='modal fade' id='apagar$id_mensalidade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header cor-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Excluir mensalidade</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Deseja realmente excluir essa mensalidade?</p>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                <a href='excluir-mensal.php?id=$id_mensalidade' class='btn btn-danger'>Excluir</a>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Excluir -->
+                        <!-- Anular -->
+                        <div class='modal fade' id='anular$id_mensalidade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header bg-secondary'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-ban mr-2'></i>Anular mensalidade</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Deseja realmente anular essa mensalidade?</p>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Cancelar</button>
+                                <a href='anular-mensal.php?id=$id_mensalidade' class='btn btn-secondary'><i class='fas fa-ban mr-1'></i>Anular</a>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Anular -->
+                        <!-- Pagar -->
+                        <div class='modal fade' id='pagar$id_mensalidade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header bg-success'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-dollar-sign mr-2'></i>Pagar mensalidade</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Confirmar pagamento?</p>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                <a href='pagar-mensal.php?id=$id_mensalidade' class='btn btn-success'>Pagar</a>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Pagar -->
+                        <!-- Editar -->
+                        <div class='modal fade' id='editar$id_mensalidade' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+                            <div class='modal-header bg-warning'>
+                                <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-edit mr-2'></i>Editar mensalidade</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <i class='fas fa-times-circle text-dark'></i>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <p class='h5'>Vencimento</p>
+                                <form action='editar-mensal.php' method='POST'>
+                                <div class='row mt-3'>
+                                  <div class='col-12'>
+                                  <div class='form-group'>
+                                    <input type='hidden' value='$id_mensalidade' name='mensalidade'>
+                                    <input name='newdate' type='date' class='form-control' id='editar_data' required>
+                                  </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class='modal-footer cor-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                <button type='submit' class='btn btn-success'>Salvar</button>
+                                </form>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Editar -->
+                      ";
+                    }
+                  ?>
                   </tbody>
                 </table>
+                <?php 
+                    if($reg_mensalidades === 0){
+                      setlocale(LC_ALL, "pt-BR.UTF-8");
+                      $mes = strftime("%B");
+                      echo "<div class='alert alert-registro'>Nenhuma mensalidade encontrada para o mês de {$mes}.</div>";
+                    }
+                  ?>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
@@ -422,7 +463,12 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script>
+  setTimeout(function(){ 
+  var msg = document.getElementById("remove");
+  msg.parentNode.removeChild(msg);   
+  }, 3000);
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
