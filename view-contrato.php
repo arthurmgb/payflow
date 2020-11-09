@@ -285,7 +285,6 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-row-reverse">
                     <a href="listar_contratos.php?id=<?= $ClienteID ?>" class="btn btn-success"><i class="far fa-money-bill-alt mr-2"></i>Visualizar mensalidades</a>
-                    <a href="edit_contrato.php?id=" class="btn btn-warning mx-2"><i class="fas fa-edit mr-1"></i>Editar</a>
                     </div>
                 </div>
                 <hr>

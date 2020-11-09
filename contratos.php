@@ -314,7 +314,6 @@
                        <td style='color: green; font-weight: 600;'>Ativo</td>
                        <td>
                          <a href='view-contrato.php?id={$c_id}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                         <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                          <a href='' data-toggle='modal' data-target='#desativar{$c_id}' class='btn btn-secondary btn-xs mr-1' title='Desativar'><i class='fas fa-ban'></i></a>
                          <a href='' data-toggle='modal' data-target='#apagar{$c_id}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                        </td>
@@ -372,7 +371,6 @@
                        <td style='color: red; font-weight: 600;'>Inativo</td>
                        <td>
                          <a href='view-contrato.php?id={$c_id}' class='btn btn-primary btn-xs mr-1' title='Vizualizar'><i class='fas fa-eye'></i></a>
-                         <a href='' class='btn btn-warning btn-xs mr-1' title='Editar'><i class='fas fa-edit'></i></a>
                          <a href='' data-toggle='modal' data-target='#ativar{$c_id}' class='btn btn-success btn-xs mr-1' title='Ativar'><i class='fas fa-check'></i></a>
                          <a href='' data-toggle='modal' data-target='#apagar{$c_id}' class='btn btn-danger btn-xs mr-1' title='Excluir'><i class='fas fa-trash'></i></a>
                        </td>
