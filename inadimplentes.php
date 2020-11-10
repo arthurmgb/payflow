@@ -255,6 +255,7 @@
                   </thead>
                   <tbody>
                   <?php
+                    date_default_timezone_set('America/Sao_Paulo');
                     $atual = date('Y-m-d'); 
                     $query_inad = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento < '$atual'";
                     $exec_inad = mysqli_query($conn, $query_inad);

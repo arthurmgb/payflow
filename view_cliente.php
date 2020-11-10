@@ -280,7 +280,7 @@
                         $ClienteID = $editInfo['id'];
                       }
                     ?>
-                    <a href="listar_contratos.php" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
+                    <a href="listar_contratos.php?id=<?= $ClienteID ?>" class="btn btn-success ml-1"><i class="fas fa-file-signature mr-1"></i>Listar Contratos</a>
                     <a href="edit_cliente.php?id=<?=$ClienteID?>" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
                     </div>
                 </div>

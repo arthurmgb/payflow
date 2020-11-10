@@ -2,6 +2,7 @@
 
 include_once("conexao.php");
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $cliente =  filter_input(INPUT_GET, 'cliente', FILTER_SANITIZE_NUMBER_INT);

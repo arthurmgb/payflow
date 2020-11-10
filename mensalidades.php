@@ -254,6 +254,7 @@
                   </thead>
                   <tbody>
                   <?php
+                    date_default_timezone_set('America/Sao_Paulo');
                     $atual = date('Y-m'); 
                     $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
                     $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
