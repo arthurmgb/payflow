@@ -251,9 +251,20 @@
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-4 border-right">
+                  <?php
+
+                  $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+                  $exec_total = mysqli_query($conn, $query_total);
+                  $total = mysqli_fetch_assoc($exec_total);
+
+                  // valor_total é a coluna em que a função "SUM" armazena o valor somado.
+
+                  $valor_somado = $total['valor_total'];
+
+                  ?>
                   <a style="color: #212529" href="saldo.php">
                     <div class="description-block">
-                      <h5 class="description-header">R$ 0,00</h5>
+                      <h5 class="description-header">R$ <?= $valor_somado ?></h5>
                       <span class="description-text">SALDO</span>
                     </div>
                     </a>

@@ -233,9 +233,18 @@
         </div>
         <div class="row">
         <div class="col-12">
+        <?php
+
+            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+            $exec_total = mysqli_query($conn, $query_total);
+            $total = mysqli_fetch_assoc($exec_total);
+
+            $valor_somado = $total['valor_total'];
+            
+        ?>
             <div class="small-box bg-success mb-3">
               <div class="inner">
-                <h3>R$ 0,00</h3>
+                <h3>R$ <?= $valor_somado ?></h3>
                 <p class="mb-2" style="font-size: 1.2em;">Saldo em caixa</p>
               </div>
               <div class="icon">
@@ -245,10 +254,15 @@
         </div>
         <div class="col-12">
         <div class="card">
+        <?php
+            
+          $query_saldo = "SELECT * FROM mensalidades WHERE status='pago'";
+          $exec_saldo = mysqli_query($conn, $query_saldo);
+          
+        ?>
               <div class="card-header card-payflow">
                 <h3 class="card-title"><i class="fas fa-cash-register mr-2"></i>Lançamentos</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered text-center">
                   <thead>                  
@@ -261,13 +275,47 @@
                     </tr>
                   </thead>
                   <tbody>
+                  <?php while($lancamento = mysqli_fetch_assoc($exec_saldo)): 
+                    
+                    //Definindo as variáveis
+
+                    $id_cliente = $lancamento['id_cliente'];
+                    $id_servico = $lancamento['id_servico'];
+                    $pagamento = $lancamento['pagamento'];
+                    $valor = $lancamento['valor'];
+                    
+                    //Formatando datas
+
+                    $pagamento_formatado = date('d/m/Y', strtotime($pagamento));
+
+                    //Buscando informações do cliente
+
+                    $query_cliente = "SELECT nome, email FROM clientes WHERE id='$id_cliente'";
+                    $exec_cliente = mysqli_query($conn, $query_cliente);
+                    $info_cliente = mysqli_fetch_assoc($exec_cliente);
+
+                    $nome_cliente = $info_cliente['nome'];
+                    $email_cliente = $info_cliente['email'];
+
+                    //Buscando nome do serviço
+
+                    $query_servico = "SELECT servicos FROM servicos WHERE id='$id_servico'";
+                    $exec_servico = mysqli_query($conn, $query_servico);
+                    $info_servico = mysqli_fetch_assoc($exec_servico);
+
+                    $nome_servico = $info_servico['servicos'];
+
+                  ?>
+
                     <tr>
-                      <td>Cliente</td>
-                      <td>cliente@gmail.com</td>
-                      <td>Serviço</td>
-                      <td style="color: green;">10/10/2020</td>
-                      <td style="color: green;font-weight: 600">R$ 500.00</td>
+                      <td><?= $nome_cliente ?></td>
+                      <td><?= $email_cliente ?></td>
+                      <td><?= $nome_servico ?></td>
+                      <td style="color: green;"><?= $pagamento_formatado ?></td>
+                      <td style="color: green;font-weight: 600">R$ <?= $valor ?></td>
                     </tr>
+
+                  <?php endwhile ?>
                   </tbody>
                 </table>
               </div>
