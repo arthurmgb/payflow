@@ -264,6 +264,7 @@
           
           $query_saldo = "SELECT * FROM mensalidades WHERE status='pago'AND pagamento LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";
           $exec_saldo = mysqli_query($conn, $query_saldo);
+          $reg_saldo = mysqli_num_rows($exec_saldo);
           
         ?>
               <div class="card-header card-payflow">
@@ -332,6 +333,11 @@
                   ?>
                   </tbody>
                 </table>
+                <?php 
+                  if($reg_saldo === 0){
+                    echo "<div class='alert alert-registro'>Nenhum lançamento encontrado para esta data.</div>";
+                  }
+                ?>
               </div>
               <!-- /.card-body -->
               <?php    
