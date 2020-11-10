@@ -257,6 +257,8 @@
                   <tbody>
                   <?php
 
+                    $valor_pesquisar = $_GET['pesquisar'];
+
                     $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
                     $qtd_result = 10;
@@ -264,7 +266,7 @@
 
                     date_default_timezone_set('America/Sao_Paulo');
                     $atual = date('Y-m-d'); 
-                    $query_inad = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento < '$atual' LIMIT $start, $qtd_result";
+                    $query_inad = "SELECT * FROM mensalidades WHERE id_cliente LIKE '%$valor_pesquisar%' AND status='pendente' AND vencimento < '$atual' LIMIT $start, $qtd_result";
                     $exec_inad = mysqli_query($conn, $query_inad);
                     $reg_inad = mysqli_num_rows($exec_inad);
                     while($mensalidade = mysqli_fetch_assoc($exec_inad)){

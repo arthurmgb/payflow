@@ -13,7 +13,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>PayFlow | Inadimplências</title>
+  <title>PayFlow | Mensalidades</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--Favicons-->
@@ -201,13 +201,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Inadimplências</h1>
+            <h1 class="m-0 text-dark">Mensalidades</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Mensalidades</li>
-              <li class="breadcrumb-item active">Inadimplência</li>
+              <li class="breadcrumb-item active">Mensalidades</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -219,9 +218,9 @@
     <section class="content">
       <div class="container-fluid">
       <div class="row mb-3">
-        <div class="col-12">  
+        <div class="col-12"> 
         <div class="d-flex flex-row-reverse">
-          <form class="form-inline" method="GET" action="inad-search.php">
+          <form class="form-inline" method="GET" action="mensal-search.php">
               <div class="form-group">
                 <input type="number" min="1" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar por ID...">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
@@ -257,17 +256,19 @@
                   <tbody>
                   <?php
 
+                    $valor_pesquisar = $_GET['pesquisar'];
+
                     $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
                     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
                     $qtd_result = 10;
                     $start = ($qtd_result * $pagina) - $qtd_result;
 
                     date_default_timezone_set('America/Sao_Paulo');
-                    $atual = date('Y-m-d'); 
-                    $query_inad = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento < '$atual' LIMIT $start, $qtd_result";
-                    $exec_inad = mysqli_query($conn, $query_inad);
-                    $reg_inad = mysqli_num_rows($exec_inad);
-                    while($mensalidade = mysqli_fetch_assoc($exec_inad)){
+                    $atual = date('Y-m'); 
+                    $query_mensalidades = "SELECT * FROM mensalidades WHERE id_cliente LIKE '%$valor_pesquisar%' AND status='pendente' AND vencimento LIKE '%$atual%' LIMIT $start, $qtd_result";
+                    $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
+                    $reg_mensalidades = mysqli_num_rows($exec_mensalidades);
+                    while($mensalidade = mysqli_fetch_assoc($exec_mensalidades)){
                       
                       $id_mensalidade = $mensalidade['id'];
                       $id_cliente = $mensalidade['id_cliente'];
@@ -432,7 +433,7 @@
                       ";
                     }
 
-                    $result_pg = "SELECT COUNT(id) AS num_result FROM mensalidades WHERE status='pendente' AND vencimento < '$atual'";
+                    $result_pg = "SELECT COUNT(id) AS num_result FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
                     $resultado_pg = mysqli_query($conn, $result_pg);
                     $row_pg = mysqli_fetch_assoc($resultado_pg);
                     $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
@@ -441,41 +442,41 @@
                   </tbody>
                 </table>
                 <?php 
-                    if($reg_inad === 0){
+                    if($reg_mensalidades === 0){
                       setlocale(LC_ALL, "pt-BR.UTF-8");
                       $mes = strftime("%B");
-                      echo "<div class='alert alert-registro'>Nenhuma inadimplência encontrada para o mês de {$mes}.</div>";
+                      echo "<div class='alert alert-registro'>Nenhuma mensalidade encontrada para o mês de {$mes}.</div>";
                     }
                   ?>
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-              <div class="float-left">
+                <div class="float-left">
                   <div class="custom-control custom-switch">
-                    <input type="checkbox" onchange='window.location.assign("mensalidades.php")' class="custom-control-input" id="customSwitch2" checked>
-                    <label class="custom-control-label" for="customSwitch2">Inadimplentes</label>
+                    <input type="checkbox" onchange='window.location.assign("inadimplentes.php")' class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Inadimplentes</label>
                   </div>
                 </div>
                 <?php    
 
                   echo "
                     <ul class='pagination pagination-sm m-0 float-right'>
-                      <li class='page-item'><a class='page-link' href='inadimplentes.php?pagina=1'>&laquo;</a></li>";
+                      <li class='page-item'><a class='page-link' href='mensalidades.php?pagina=1'>&laquo;</a></li>";
 
                       for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
                         if($pag_ant >= 1){
-                            echo "<li class='page-item'><a class='page-link' href='inadimplentes.php?pagina=$pag_ant'>$pag_ant</a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$pag_ant'>$pag_ant</a></li>";
                         }
                     }
                   echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
 
                   for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
                     if($pag_dep <= $quantidade_pg){
-                        echo "<li class='page-item'><a class='page-link' href='inadimplentes.php?pagina=$pag_dep'>$pag_dep</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$pag_dep'>$pag_dep</a></li>";
                     }
                   }
                   echo"
-                      <li class='page-item'><a class='page-link' href='inadimplentes.php?pagina=$quantidade_pg'>&raquo;</a></li>
+                      <li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$quantidade_pg'>&raquo;</a></li>
                     </ul>";
 
                   ?>

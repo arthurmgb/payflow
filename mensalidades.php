@@ -220,9 +220,9 @@
       <div class="row mb-3">
         <div class="col-12"> 
         <div class="d-flex flex-row-reverse">
-          <form class="form-inline" method="GET" action="mensalidades-search.php">
+          <form class="form-inline" method="GET" action="mensal-search.php">
               <div class="form-group">
-                <input type="text" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar...">
+                <input type="number" min="1" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar por ID...">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
           </form>
@@ -245,6 +245,7 @@
                 <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
+                      <th>ID</th>
                       <th>Cliente</th>
                       <th>Valor</th>
                       <th>Serviço</th>
@@ -254,9 +255,15 @@
                   </thead>
                   <tbody>
                   <?php
+
+                    $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+                    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+                    $qtd_result = 10;
+                    $start = ($qtd_result * $pagina) - $qtd_result;
+
                     date_default_timezone_set('America/Sao_Paulo');
                     $atual = date('Y-m'); 
-                    $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
+                    $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%' LIMIT $start, $qtd_result";
                     $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
                     $reg_mensalidades = mysqli_num_rows($exec_mensalidades);
                     while($mensalidade = mysqli_fetch_assoc($exec_mensalidades)){
@@ -284,6 +291,7 @@
 
                       echo"
                         <tr>
+                          <td>$id_cliente</td>
                           <td>$nome_cliente</td>
                           <td style='color: green; font-weight: 600;'>R$ $valor_mensal</td>
                           <td>$nome_servico</td>
@@ -422,6 +430,12 @@
                         <!-- Editar -->
                       ";
                     }
+
+                    $result_pg = "SELECT COUNT(id) AS num_result FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
+                    $resultado_pg = mysqli_query($conn, $result_pg);
+                    $row_pg = mysqli_fetch_assoc($resultado_pg);
+                    $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
+                    $max_links = 1;
                   ?>
                   </tbody>
                 </table>
@@ -441,13 +455,29 @@
                     <label class="custom-control-label" for="customSwitch1">Inadimplentes</label>
                   </div>
                 </div>
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
+                <?php    
+
+                  echo "
+                    <ul class='pagination pagination-sm m-0 float-right'>
+                      <li class='page-item'><a class='page-link' href='mensalidades.php?pagina=1'>&laquo;</a></li>";
+
+                      for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+                        if($pag_ant >= 1){
+                            echo "<li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$pag_ant'>$pag_ant</a></li>";
+                        }
+                    }
+                  echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
+
+                  for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+                    if($pag_dep <= $quantidade_pg){
+                        echo "<li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$pag_dep'>$pag_dep</a></li>";
+                    }
+                  }
+                  echo"
+                      <li class='page-item'><a class='page-link' href='mensalidades.php?pagina=$quantidade_pg'>&raquo;</a></li>
+                    </ul>";
+
+                  ?>
               </div>
             </div>
 
