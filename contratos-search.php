@@ -262,10 +262,14 @@
                   </thead>
                   <tbody>                  
                   <?php
+                  $valor_pesquisa = $_GET['pesquisar'];
 
-                    
+                  $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+                  $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+                  $qtd_result = 10;
+                  $start = ($qtd_result * $pagina) - $qtd_result;
 
-                   $query_contratos = "SELECT * FROM contratos";    
+                   $query_contratos = "SELECT * FROM contratos WHERE  id LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";    
                    $exec_contratos = mysqli_query($conn, $query_contratos);
                    $reg_contratos = mysqli_num_rows($exec_contratos);
                    while($row_contrato = mysqli_fetch_assoc($exec_contratos)){
@@ -282,6 +286,7 @@
                     $key_cliente = $row_contrato['id_cliente'];
                     $key_servico = $row_contrato['id_servico'];
                     
+
                     //Chamada nome do Cliente
                     $foreign_cliente = "SELECT * FROM clientes WHERE id='$key_cliente'";
                     $exec_foreign_cliente = mysqli_query($conn, $foreign_cliente);
@@ -419,6 +424,12 @@
                       ";
                     }
                    }
+                        $result_pg = "SELECT COUNT(id) AS num_result FROM contratos";
+                        $resultado_pg = mysqli_query($conn, $result_pg);
+                        $row_pg = mysqli_fetch_assoc($resultado_pg);
+                        $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
+                        $max_links = 1;
+
                   ?> 
                   </tbody>
                 </table>
@@ -428,18 +439,30 @@
                   }
                 ?>
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-              </div>
-            </div>
+              <?php    
+                echo "<div class='card-footer clearfix'>
+                <ul class='pagination pagination-sm m-0 float-right'>
+                  <li class='page-item'><a class='page-link' href='contratos.php?pagina=1'>&laquo;</a></li>";
 
+                  for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+                    if($pag_ant >= 1){
+                        echo "<li class='page-item'><a class='page-link' href='contratos.php?pagina=$pag_ant'>$pag_ant</a></li>";
+                    }
+                }
+                echo"<li class='page-item'><a style='background-color: #E9ECEF;' class='page-link'>$pagina</a></li>";
+
+                for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+                if($pag_dep <= $quantidade_pg){
+                    echo "<li class='page-item'><a class='page-link' href='contratos.php?pagina=$pag_dep'>$pag_dep</a></li>";
+                }
+                }
+                echo"
+                  <li class='page-item'><a class='page-link' href='contratos.php?pagina=$quantidade_pg'>&raquo;</a></li>
+                </ul>
+                </div>";
+              ?>
+              <!-- /.card-body -->
+            </div>
           </div>
         </div>
       </div>

@@ -222,7 +222,7 @@
         <div class="d-flex flex-row-reverse">
           <form class="form-inline" method="GET" action="contratos-search.php">
               <div class="form-group">
-                <input type="text" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar...">
+                <input type="number" name="pesquisar"  min="1" class="form-control form-payflow" placeholder="Pesquisar por ID..">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
               <a class="ml-2" href="add_contrato.php">
@@ -264,7 +264,7 @@
                   <?php
                   $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
                   $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-                  $qtd_result = 1;
+                  $qtd_result = 10;
                   $start = ($qtd_result * $pagina) - $qtd_result;
 
                    $query_contratos = "SELECT * FROM contratos LIMIT $start, $qtd_result";    
@@ -421,7 +421,7 @@
                       ";
                     }
                    }
-                        $result_pg = "SELECT COUNT(id) AS num_result FROM servicos";
+                        $result_pg = "SELECT COUNT(id) AS num_result FROM contratos";
                         $resultado_pg = mysqli_query($conn, $result_pg);
                         $row_pg = mysqli_fetch_assoc($resultado_pg);
                         $quantidade_pg = ceil($row_pg['num_result'] / $qtd_result);
