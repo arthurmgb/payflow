@@ -224,6 +224,14 @@
             $exec_servico = mysqli_query($conn, $busca_servico);
             $nomeServico = mysqli_fetch_assoc($exec_servico);
             $nome_servico = $nomeServico['servicos'];
+
+            //Chamada fim do contrato
+            $venc_query =  "SELECT * FROM mensalidades WHERE id_contrato='$ContratoID' ORDER BY vencimento DESC LIMIT 1";
+            $venc_exec = mysqli_query($conn, $venc_query);
+            $venc_final = mysqli_fetch_assoc($venc_exec);
+            $fim_contrato = $venc_final['vencimento'];
+
+            $fim_contrato_format = date('d/m/Y', strtotime($fim_contrato));
         }
 
         
@@ -298,7 +306,7 @@
                         <tbody class='table-borda'>
                             <tr>
                             <th scope='row'>Vencimento</th>
-                            <td style='color: red;'>{$format_vencimento}</td>
+                            <td style='color: red;'>{$fim_contrato_format}</td>
                             </tr>
                             <tr>
                             <th scope='row'>Status</th>
@@ -338,7 +346,7 @@
                         <tbody class='table-borda'>
                             <tr>
                             <th scope='row'>Vencimento</th>
-                            <td style='color: red;'>{$format_vencimento}</td>
+                            <td style='color: red;'>{$fim_contrato_format}</td>
                             </tr>
                             <tr>
                             <th scope='row'>Status</th>
