@@ -222,7 +222,7 @@
         <div class="d-flex flex-row-reverse">
           <form class="form-inline" method="GET" action="contratos-search.php">
               <div class="form-group">
-                <input type="text" name="pesquisar" class="form-control form-payflow" placeholder="Pesquisar...">
+              <input type="number" name="pesquisar"  min="1" class="form-control form-payflow" placeholder="Pesquisar por ID..">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
               <a class="ml-2" href="add_contrato.php">
