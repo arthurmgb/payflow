@@ -224,7 +224,7 @@
         <div class="d-flex flex-row-reverse">
           <form class="form-inline" method="GET" action="saldo-search.php">
               <div class="form-group">
-                <input type="date" name="pesquisar" class="form-control form-payflow">
+              <input type="date" name="pesquisar" class="form-control form-payflow">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
           </form>
@@ -255,13 +255,14 @@
         <div class="col-12">
         <div class="card">
         <?php
-            
+          $valor_pesquisa = $_GET['pesquisar'];
+
           $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
           $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
           $qtd_result = 10;
           $start = ($qtd_result * $pagina) - $qtd_result;
           
-          $query_saldo = "SELECT * FROM mensalidades WHERE status='pago' LIMIT $start, $qtd_result";
+          $query_saldo = "SELECT * FROM mensalidades WHERE status='pago'AND pagamento LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";
           $exec_saldo = mysqli_query($conn, $query_saldo);
           
         ?>
@@ -288,7 +289,6 @@
                     $id_servico = $lancamento['id_servico'];
                     $pagamento = $lancamento['pagamento'];
                     $valor = $lancamento['valor'];
-                    
                     //Formatando datas
 
                     $pagamento_formatado = date('d/m/Y', strtotime($pagamento));
@@ -355,8 +355,6 @@
                   <li class='page-item'><a class='page-link' href='saldo.php?pagina=$quantidade_pg'>&raquo;</a></li>
                 </ul>
                 </div>";
-
-
               ?>
             </div>
         </div>
