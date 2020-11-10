@@ -222,7 +222,7 @@
         <div class="d-flex flex-row-reverse">
           <form class="form-inline" method="GET" action="contratos-search.php">
               <div class="form-group">
-                <input type="number" name="pesquisar"  min="1" class="form-control form-payflow" placeholder="Pesquisar por ID..">
+              <input type="number" name="pesquisar"  min="1" class="form-control form-payflow" placeholder="Pesquisar por ID..">
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
               <a class="ml-2" href="add_contrato.php">
@@ -262,12 +262,14 @@
                   </thead>
                   <tbody>                  
                   <?php
+                  $valor_pesquisa = $_GET['pesquisar'];
+
                   $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
                   $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
                   $qtd_result = 10;
                   $start = ($qtd_result * $pagina) - $qtd_result;
 
-                   $query_contratos = "SELECT * FROM contratos LIMIT $start, $qtd_result";    
+                   $query_contratos = "SELECT * FROM contratos WHERE  id LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";    
                    $exec_contratos = mysqli_query($conn, $query_contratos);
                    $reg_contratos = mysqli_num_rows($exec_contratos);
                    while($row_contrato = mysqli_fetch_assoc($exec_contratos)){
@@ -284,6 +286,7 @@
                     $key_cliente = $row_contrato['id_cliente'];
                     $key_servico = $row_contrato['id_servico'];
                     
+
                     //Chamada nome do Cliente
                     $foreign_cliente = "SELECT * FROM clientes WHERE id='$key_cliente'";
                     $exec_foreign_cliente = mysqli_query($conn, $foreign_cliente);
