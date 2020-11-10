@@ -222,9 +222,20 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
+            <?php
+
+            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+            $exec_total = mysqli_query($conn, $query_total);
+            $total = mysqli_fetch_assoc($exec_total);
+            
+            // valor_total é a coluna em que a função "SUM" armazena o valor somado.
+            
+            $valor_somado = $total['valor_total'];
+
+            ?>
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>R$ 0,00</h3>
+                <h3>R$ <?= $valor_somado ?></h3>
                 <p>Saldo</p>
               </div>
               <div class="icon">
@@ -295,7 +306,7 @@
           <div class="col-6">
             <div class="card">
               <div class="card-header card-payflow">
-                <h3 class="card-title"><i class="fas fa-tasks mr-1"></i> Serviços vendidos</h3>
+                <h3 class="card-title"><i class="far fa-money-bill-alt mr-2"></i>Mensalidades</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
@@ -433,6 +444,22 @@
         </div>
     </section>
   </div>
+  <?php
+
+    //Mensalidades pendentes
+
+    $atual = date('Y-m'); 
+    $query_mensalidades = "SELECT * FROM mensalidades WHERE status='pendente' AND vencimento LIKE '%$atual%'";
+    $exec_mensalidades = mysqli_query($conn, $query_mensalidades);
+    $reg_mensalidades = mysqli_num_rows($exec_mensalidades);
+
+    //Mensalidades pagas
+
+    $query_saldo = "SELECT * FROM mensalidades WHERE status='pago'";
+    $exec_saldo = mysqli_query($conn, $query_saldo);
+    $reg_pagas = mysqli_num_rows($exec_saldo);          
+
+  ?>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; <?= date('Y')?> <a href="index.php">PayFlow</a>.</strong>
@@ -517,17 +544,14 @@ showTime();
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
-          'Site', 
-          'Sistema',
-          'Hospedagem', 
-          'Manutenção', 
-          'Formatação', 
-          'Backup', 
+          'Pagas', 
+          'Pendentes',
+          'Inadimplentes', 
       ],
       datasets: [
         {
-          data: [700,500,400,600,300,100],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          data: [<?php echo $reg_pagas; ?>,<?php echo $reg_mensalidades; ?>,<?php echo $reg_inadimplentes; ?>],
+          backgroundColor : ['#00a65a', '#f39c12', '#f56954',],
         }
       ]
     }
