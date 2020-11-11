@@ -442,6 +442,7 @@
                                   <td>
                                     <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
                                     <a href='' data-toggle='modal' data-target='#estornar<?= $id_mensalidade ?>' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                    <a href="print.php?id=<?=$id_mensalidade?>" class="btn btn-outline-success"><i class="fas fa-receipt mr-1"></i>Recibo</a>
                                   </td>
                                 </tr>
                                 <!-- Estornar -->
@@ -689,6 +690,7 @@
                                   <td>
                                     <a href='' class='btn btn-secondary mr-1 my-1 disabled' title='Pago'><i class='fas fa-dollar-sign mr-1' aria-disabled="true"></i>Pago</a>
                                     <a href='' data-toggle='modal' data-target='#estornar<?= $id_mensalidade ?>' class='btn btn-primary mr-1 my-1' title='Estornar'><i class='fas fa-dollar-sign mr-1'></i>Estornar pagamento</a>
+                                    <a href="print.php?id=<?=$id_mensalidade?>" class="btn btn-outline-success"><i class="fas fa-receipt mr-1"></i>Recibo</a>
                                   </td>
                                 </tr>
                                 <!-- Estornar -->
