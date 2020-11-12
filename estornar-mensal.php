@@ -6,7 +6,7 @@ session_start();
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $cliente =  filter_input(INPUT_GET, 'cliente', FILTER_SANITIZE_NUMBER_INT);
 
-$estornar_query = "UPDATE mensalidades SET status='pendente' WHERE id='$id'";
+$estornar_query = "UPDATE mensalidades SET status='pendente', caixa='nao' WHERE id='$id'";
 $exec_estornar = mysqli_query($conn, $estornar_query);
 
 if(mysqli_affected_rows($conn)){

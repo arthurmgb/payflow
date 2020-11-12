@@ -228,6 +228,7 @@
                   <button class="btn btn-edit" type="submit"><i class="fas fa-search"></i></button>
               </div>
           </form>
+          <a href="" data-toggle="modal" data-target="#limparcaixa" type="button" class="btn btn-danger mr-3"><i class="fas fa-trash-alt mr-1"></i>Limpar caixa</a>
           </div>
           </div>
         </div>
@@ -378,11 +379,29 @@
     Todos os direitos reservados.
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Excluir -->
+<div class='modal fade' id='limparcaixa' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog modal-dialog-centered'>
+    <div class='modal-content'>
+    <div class='modal-header cor-header'>
+        <h5 class='modal-title' id='exampleModalLabel'><i class='fas fa-trash-alt mr-2'></i>Limpar caixa</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+        <i class='fas fa-times-circle'></i>
+        </button>
+    </div>
+    <div class='modal-body'>
+        <p class='h5'>Deseja realmente limpar o caixa?</p>
+        <small class="form-text text-muted">O valor total do saldo será zerado.</small>
+    </div>
+    <div class='modal-footer cor-footer'>
+        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+        <a href='limpar_caixa.php' class='btn btn-danger'>Limpar</a>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- Excluir -->
+
 </div>
 <!-- ./wrapper -->
 
