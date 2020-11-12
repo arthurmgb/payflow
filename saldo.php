@@ -236,13 +236,14 @@
         <div class="col-12">
         <?php
 
-            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE caixa='sim'";
             $exec_total = mysqli_query($conn, $query_total);
             $total = mysqli_fetch_assoc($exec_total);
 
             $valor_somado = $total['valor_total'];
             
         ?>
+        <?php if($valor_somado != 0): ?>
             <div class="small-box bg-success mb-3">
               <div class="inner">
                 <h3>R$ <?= $valor_somado ?></h3>
@@ -252,6 +253,18 @@
                 <i class="fas fa-cash-register"></i>
               </div>
             </div>
+          <?php endif ?>
+        <?php if($valor_somado == 0): ?>
+            <div class="small-box bg-success mb-3">
+              <div class="inner">
+                <h3>R$ 0.00</h3>
+                <p class="mb-2" style="font-size: 1.2em;">Saldo em caixa</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+            </div>
+          <?php endif ?>
         </div>
         <div class="col-12">
         <div class="card">
@@ -262,7 +275,7 @@
           $qtd_result = 10;
           $start = ($qtd_result * $pagina) - $qtd_result;
           
-          $query_saldo = "SELECT * FROM mensalidades WHERE status='pago' LIMIT $start, $qtd_result";
+          $query_saldo = "SELECT * FROM mensalidades WHERE caixa='sim' LIMIT $start, $qtd_result";
           $exec_saldo = mysqli_query($conn, $query_saldo);
           $reg_saldo = mysqli_num_rows($exec_saldo);
           
