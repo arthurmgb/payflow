@@ -235,7 +235,7 @@
         <div class="col-12">
         <?php
 
-            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+            $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE caixa='sim'";
             $exec_total = mysqli_query($conn, $query_total);
             $total = mysqli_fetch_assoc($exec_total);
 
@@ -262,7 +262,7 @@
           $qtd_result = 10;
           $start = ($qtd_result * $pagina) - $qtd_result;
           
-          $query_saldo = "SELECT * FROM mensalidades WHERE status='pago'AND pagamento LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";
+          $query_saldo = "SELECT * FROM mensalidades WHERE caixa='sim'AND pagamento LIKE '%$valor_pesquisa%' LIMIT $start, $qtd_result";
           $exec_saldo = mysqli_query($conn, $query_saldo);
           $reg_saldo = mysqli_num_rows($exec_saldo);
           

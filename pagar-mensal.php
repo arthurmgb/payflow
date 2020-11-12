@@ -9,7 +9,7 @@ $cliente =  filter_input(INPUT_GET, 'cliente', FILTER_SANITIZE_NUMBER_INT);
 $pago = date('Y/m/d');
 
 if(!empty($cliente)){
-    $pagar_query = "UPDATE mensalidades SET status='pago', pagamento='$pago' WHERE id='$id'";
+    $pagar_query = "UPDATE mensalidades SET status='pago', caixa='sim', pagamento='$pago' WHERE id='$id'";
     $exec_pagar = mysqli_query($conn, $pagar_query);
     
     if(mysqli_affected_rows($conn)){
@@ -22,7 +22,7 @@ if(!empty($cliente)){
         header("Location: listar_contratos.php");
     }
 }else{
-    $pagar_query = "UPDATE mensalidades SET status='pago', pagamento='$pago' WHERE id='$id'";
+    $pagar_query = "UPDATE mensalidades SET status='pago', caixa='sim', pagamento='$pago' WHERE id='$id'";
     $exec_pagar = mysqli_query($conn, $pagar_query);
     
     if(mysqli_affected_rows($conn)){
