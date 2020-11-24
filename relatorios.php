@@ -218,22 +218,27 @@
     <section class="content">
       <div class="container-fluid">
     	<div class="card border-top">
-			<h4 class="m-2 text-dark ml-3">Filtrar Relatórios</h4>
-				<form class="sec-pad">
+			<h4 class="m-2 text-dark ml-3">Filtrar Mensalidades</h4>
+				<form action="relatorios-filtro.php" method="GET" class="sec-pad">
 					<div class="form-row">
 						<div class="form-group col-md-6 mt-2">
 							<label class="font-weight-bold ml-2">Status</label>
-								<select class="form-control">
-		      						<option>Todos</option>
-		    						<option>Pago</option>
-		      						<option>Pendente</option>
-		      						<option>Anulada</option>
+								<select name="situacao" class="form-control">
+		    						<option value="pago">Pago</option>
+		      					<option value="pendente">Pendente</option>
+		      					<option value="anulada">Anulada</option>
 		    					</select>
 		    			</div>
 	    			<div class="form-group col-md-6 mt-2">
     					<label class="font-weight-bold ml-2">Serviço</label>
-	    					<select class="form-control">
-	      						<option>Todos</option>
+	    					<select name="servico" class="form-control">
+                <?php
+                $get_servicos = "SELECT * FROM servicos WHERE modo='Ativo'"; 
+                $exec_get = mysqli_query($conn, $get_servicos);         
+                ?>
+                <?php while($servico = mysqli_fetch_assoc($exec_get)): ?>
+	      					<option value="<?= $servico['id'] ?>"><?= $servico['servicos'] ?></option>
+                <?php endwhile ?>
 	    					</select>
 	    			</div>
 				</div> <!-- /. form-row -->
@@ -245,23 +250,23 @@
 					</div>
 					<div class="form-group col-md-6 mt-2">
 						<label class="font-weight-bold ml-2">Até</label>
-						<input type="date" name="vencimento" class="form-control">
+						<input type="date" name="fim_venc" class="form-control">
 					</div>
 				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-6 mt-2">
 						<label class="font-weight-bold ml-2">Pagamento</label>
-						<input type="date" name="vencimento" class="form-control">
+						<input type="date" name="pagamento" class="form-control">
 					</div>
 					<div class="form-group col-md-6 mt-2">
 						<label class="font-weight-bold ml-2">Até</label>
-						<input type="date" name="vencimento" class="form-control">
+						<input type="date" name="fim_pag" class="form-control">
 					</div>
 				</div>
 			
 				<div class="d-flex">
-      		<a href="" class="btn btn-success btn-lg btn-block">Buscar</a>
+      		<button type="submit" class="btn btn-success btn-lg btn-block"><i class="fas fa-search mr-2"></i>Buscar</button>
       	</div>
 
 			</form>
@@ -270,16 +275,11 @@
       	<div class="card border-top">   		
 			<div class="row navbar">
 				<h4 class="text-dark ml-3">Resultados</h4>	
-				<div class="nav justify-content-end">   
-					<a href="" class="btn print-edit mr-2">
-	           <i class="fas fa-print mr-1"></i>Imprimir 
-	        </a>
-				</div>
 			</div>
 
 			<div class="table-responsive">
 
-				<table class="table table-striped">
+				<table class="table table-striped text-center">
 				  
 				  <thead>
 				    <tr>
@@ -294,7 +294,7 @@
 
 				  <tbody>
 				    <tr>
-				      <td>Nenhum registro encontrado</td>
+				      <td>Nenhum registro encontrado.</td>
 				      <td></td>
 				      <td></td>
 				      <td></td>
