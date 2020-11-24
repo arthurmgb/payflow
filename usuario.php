@@ -253,7 +253,7 @@
                   <div class="col-sm-4 border-right">
                   <?php
 
-                  $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE status='pago'";
+                  $query_total = "SELECT SUM(valor) AS valor_total FROM mensalidades WHERE caixa='sim'";
                   $exec_total = mysqli_query($conn, $query_total);
                   $total = mysqli_fetch_assoc($exec_total);
 
@@ -264,7 +264,12 @@
                   ?>
                   <a style="color: #212529" href="saldo.php">
                     <div class="description-block">
+                      <?php if($valor_somado != 0): ?>
                       <h5 class="description-header">R$ <?= $valor_somado ?></h5>
+                      <?php endif ?>
+                      <?php if($valor_somado == 0): ?>
+                        <h5 class="description-header">R$ 0.00</h5>
+                      <?php endif ?>
                       <span class="description-text">SALDO</span>
                     </div>
                     </a>
